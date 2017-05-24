@@ -6,3 +6,13 @@
 
 
 <h1>This week's Field</h1>
+
+<h2>Download DraftKing's Salaries </h2>
+
+@*<input type="button" value="Get DK Salaries" onclick="@("window.location.href='" + @Url.Action("DraftKings", "GolfersController") + "'");" style= font-size: 1.2em/> *@
+
+<form method="post" asp-controller="Golfers" asp-action="DraftKings">
+
+    <input type="submit" value="Get DraftKings Golfers" />
+
+</form>

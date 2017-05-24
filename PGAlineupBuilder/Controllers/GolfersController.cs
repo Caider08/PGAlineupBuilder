@@ -15,5 +15,12 @@ namespace PGAlineupBuilder.Controllers
         {
             return View();
         }
+
+        
+        public IActionResult DraftKings()
+        {
+            //return Redirect("DraftKingsRoster");
+            return View("DraftKingsRoster");
+        }
     }
 }
