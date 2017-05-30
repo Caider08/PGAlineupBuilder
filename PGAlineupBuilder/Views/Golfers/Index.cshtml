@@ -12,7 +12,16 @@
 @*<input type="button" value="Get DK Salaries" onclick="@("window.location.href='" + @Url.Action("DraftKings", "GolfersController") + "'");" style= font-size: 1.2em/> *@
 
 <form method="post" asp-controller="Golfers" asp-action="DraftKings">
-
-    <input type="submit" value="Get DraftKings Golfers" />
+    
+    <input type="submit" value="Get DraftKings' Golfers" />
 
 </form>
+
+<h2>Download FanDuel's Salaries</h2>
+
+<form method="post" asp-controller="Golfers" asp-action="FanDuel">
+
+    <input type="submit" value="Get FanDuel's Golfers"/>
+
+</form>
+

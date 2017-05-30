@@ -22,5 +22,10 @@ namespace PGAlineupBuilder.Controllers
             //return Redirect("DraftKingsRoster");
             return View("DraftKingsRoster");
         }
+
+        public IActionResult FanDuel()
+        {
+            return View("FanDuelRoster");
+        }
     }
 }
