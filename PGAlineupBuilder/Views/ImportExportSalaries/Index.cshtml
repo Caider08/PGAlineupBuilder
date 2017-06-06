@@ -5,9 +5,6 @@
 }
 <h2>Upload DK Salaries</h2>
 
-<form method="post" asp-action="DKimport" asp-controller="ImportExportSalariesController" enctype="multipart/form-data">
-       <input type="file" name="DKfiles" multiple/>
-       <input type="submit" value="Upload DK Salaries" />
-</form>
+<p><a asp-controller="ImportExportSalaries" asp-action="UploadDKcsv">Upload DK Salaries</a></p>
 
 <h2>Upload FanDuel Salaries</h2>

@@ -6,6 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using PGAlineupBuilder.ViewModels;
+using PGAlineupBuilder.Models;
+using PGAlineupBuilder.Data;
+
+
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -13,12 +18,19 @@ namespace PGAlineupBuilder.Controllers
 {
     public class ImportExportSalariesController : Controller
     {
-        private IHostingEnvironment _environment;
+        private PGAlineupBuilderDbContext context;
 
-        public ImportExportSalariesController(IHostingEnvironment environment)
+        public ImportExportSalariesController(PGAlineupBuilderDbContext dbContext)
         {
-            _environment = environment;
+            context = dbContext;
         }
+
+        //private IHostingEnvironment _environment;
+
+        //public ImportExportSalariesController(IHostingEnvironment environment)
+        //{
+        //    _environment = environment;
+        //}
 
         // GET: /<controller>/
         public IActionResult Index()
@@ -26,21 +38,55 @@ namespace PGAlineupBuilder.Controllers
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> DKimport(ICollection<IFormFile> DKfiles)
+        public IActionResult UploadDKcsv()
         {
-            var DKuploads = Path.Combine(_environment.WebRootPath, "DKuploads");
-            foreach(var file in DKfiles)
-            {
-                if (file.Length > 0)
-                {
-                    using (var fileStream = new FileStream(Path.Combine(DKuploads, file.FileName), FileMode.Create))
-                    {
-                        await file.CopyToAsync(fileStream);
-                    }
-                }
-            }
-            return View("Index");
+            UploadDKcsvViewModel uploadDKcsvViewModel = new UploadDKcsvViewModel();
+            return View(uploadDKcsvViewModel);
+       
         }
+
+        [HttpPost]
+        public async Task<IActionResult> DKimport(UploadDKcsvViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var salary = new DKcsvUpload
+                {
+                    Name = model.Name,
+
+                };
+                using (var memoryStream = new MemoryStream())
+                {
+                    await model.csvUpload.CopyToAsync(memoryStream);
+                    salary.csvUpload = memoryStream.ToArray();
+                }
+
+                context.DKup.Add(salary);
+                return Redirect("/Index");
+
+            }
+
+            return View("/UploadDKcsv");
+           
+        }
+
+
+
+        //[HttpPost]
+        //public async Task<IActionResult> DKimport(ICollection<IFormFile> DKfiles)
+        //{
+        //    var DKuploads = Path.Combine(_environment.WebRootPath, "DKuploads");
+        //    foreach(var file in DKfiles)
+        //    {
+        //        if (file.Length > 0)
+        //        {
+        //            using (var fileStream = new FileStream(Path.Combine(DKuploads, file.FileName), FileMode.Create))
+        //            {
+        //                await file.CopyToAsync(fileStream);
+        //            }
+        //        }
+        //    }
+        //    return View("Index");
+        //}
     }
 }

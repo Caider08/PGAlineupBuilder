@@ -11,6 +11,7 @@ namespace PGAlineupBuilder.Data
     {
         public DbSet<DKsalarys> DKS { get; set; }
 
+
         public PGAlineupBuilderDbContext(DbContextOptions<PGAlineupBuilderDbContext> options)
             : base(options)
         { }
@@ -20,5 +21,7 @@ namespace PGAlineupBuilder.Data
             base.OnModelCreating(builder);
 
         }
+
+        public DbSet<DKcsvUpload> DKup { get; set; }
     }
 }
