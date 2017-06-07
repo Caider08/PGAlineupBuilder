@@ -46,18 +46,18 @@ namespace PGAlineupBuilder.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DKimport(UploadDKcsvViewModel model)
+        public async Task<IActionResult> DKimport(UploadDKcsvViewModel uploadDKcsvViewModel)
         {
             if (ModelState.IsValid)
             {
                 var salary = new DKcsvUpload
                 {
-                    Name = model.Name,
+                    Name = uploadDKcsvViewModel.Name,
 
                 };
                 using (var memoryStream = new MemoryStream())
                 {
-                    await model.csvUpload.CopyToAsync(memoryStream);
+                    await uploadDKcsvViewModel.csvUpload.CopyToAsync(memoryStream);
                     salary.csvUpload = memoryStream.ToArray();
                 }
 
