@@ -8,21 +8,21 @@ using System.IO;
 
 namespace PGAlineupBuilder.ViewModels
 {
-    public class UploadDKcsvViewModel
-    {
-        public string Name { get; set; }
+    //public class UploadDKcsvViewModel
+   // {
+       // public string Name { get; set; }
 
-        public IFormFile csvUpload { get; set; }
+       // public IFormFile csvUpload { get; set; }
 
 
 
-        public UploadDKcsvViewModel()
-        {
+      //  public UploadDKcsvViewModel()
+       // {
 
-        }
+       // }
             
 
 
 
-    }
+   // }
 }

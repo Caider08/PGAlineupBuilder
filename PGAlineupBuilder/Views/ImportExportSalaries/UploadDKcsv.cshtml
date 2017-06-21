@@ -3,7 +3,7 @@
 *@
 @{
 }
-@model PGAlineupBuilder.ViewModels.UploadDKcsvViewModel
+@* @model PGAlineupBuilder.ViewModels.UploadDKcsvViewModel *@
 
 <h2>Upload DK Salaries</h2>
 
@@ -11,3 +11,7 @@
     <input type="file" name="DKfiles" multiple />
     <input type="submit" value="Upload DK Salaries" />
 </form> 
+
+<div>@ViewBag.Message</div>
+
+

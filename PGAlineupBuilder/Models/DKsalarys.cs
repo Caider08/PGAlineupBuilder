@@ -14,7 +14,9 @@ namespace PGAlineupBuilder.Models
 
         public string Name { get; set; }
 
-        public IList<Golfer> Golfers { get; set; }
+        public byte[] csvUpload { get; set; }
+
+       // public IList<Golfer> Golfers { get; set; }
 
 
     }

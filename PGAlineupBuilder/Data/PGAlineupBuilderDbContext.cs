@@ -22,6 +22,6 @@ namespace PGAlineupBuilder.Data
 
         }
 
-        public DbSet<DKcsvUpload> DKup { get; set; }
+       
     }
 }
