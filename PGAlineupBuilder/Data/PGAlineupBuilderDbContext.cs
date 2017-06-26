@@ -11,6 +11,8 @@ namespace PGAlineupBuilder.Data
     {
         public DbSet<DKsalarys> DKS { get; set; }
 
+        public DbSet<DkTourney> DKT { get; set; }
+
 
         public PGAlineupBuilderDbContext(DbContextOptions<PGAlineupBuilderDbContext> options)
             : base(options)

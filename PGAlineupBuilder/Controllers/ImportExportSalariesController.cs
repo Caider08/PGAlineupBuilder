@@ -38,6 +38,7 @@ namespace PGAlineupBuilder.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            ViewBag.dksalaries = context.DKS.ToList();
             return View();
         }
 
@@ -76,9 +77,9 @@ namespace PGAlineupBuilder.Controllers
 
 
         [HttpPost]
-        public IActionResult DKimport(ICollection<IFormFile> DKfiles)
+        public async Task<IActionResult> DKimport(ICollection<IFormFile> DKfiles, string uploadName)
         {
-            var DKuploads = Path.Combine(_environment.WebRootPath, "DKuploads");
+               // Path.Combine(_environment.WebRootPath, "DKuploads");
 
             // var DKuploads = Path.GetTempFileName();
 
@@ -87,33 +88,69 @@ namespace PGAlineupBuilder.Controllers
             foreach(var file in DKfiles)
             {
                 if (file.Length > 0)
-               {
-                    var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    //filename = _environment.WebRootPath + $@"\{filename}";
-                    size += file.Length;
-
-                    using (FileStream fstream = new FileStream(Path.Combine(DKuploads, filename), FileMode.Create))
+                {
+                    if (!string.IsNullOrEmpty(uploadName))
                     {
-                        file.CopyTo(fstream);
-                        fstream.Flush();
-                    }
+                        var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                        //string filename = file.FileName;
+                        //string experimentPath = @"C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\DKuploads";
+                        //filename = _environment.WebRootPath + $@"\{filename}";
+                        // var DKuploads = _environment.ContentRootPath + Path.DirectorySeparatorChar.ToString() + "DKuploads" + Path.DirectorySeparatorChar.ToString() + $@"\{filename}";
+                        // var DKuploads = _environment.WebRootPath + Path.DirectorySeparatorChar.ToString() + "DKuploads" + Path.DirectorySeparatorChar.ToString() + $@"{filename}";
+                        // var DKuploads = System.IO.Path.Combine(_environment.ContentRootPath, "DKuploads", filename);
+                        var DKuploads = System.IO.Path.Combine(_environment.ContentRootPath, "DKuploads");
+                        // Name = file.FileName,
 
-                    ViewBag.Message = $"{DKfiles.Count} file(s) / {size} bytes uploaded sucessfully!";
-                    return View("UploadDKcsv");
+                        // };
+                        string UPLOADname = uploadName;
+
+
+                        using (FileStream fstream = new FileStream(Path.Combine(DKuploads, UPLOADname), FileMode.Create))
+                        {
+
+                            await file.CopyToAsync(fstream);
+
+                            fstream.Flush();
+                        }
+                        //using (MemoryStream memoryStream = new MemoryStream())
+                        // {
+                        // await file.CopyToAsync(memoryStream);
+                        // byte[] uploadByteArray = memoryStream.ToArray();
+                        //string uploadString = uploadByteArray.ToString();
+
+                        // System.IO.File.WriteAllBytes(DKuploads, uploadByteArray);
+
+
+
+                        //dkU.csvUpload = memoryStream.ToArray();
+
+                        // }
+
+                        // context.DKS.Add(dkU);
+                        // context.SaveChanges();
+
+                        size += file.Length;
+
+                        ViewBag.Message = $"{DKfiles.Count} file(s) / {file.FileName}, {size} bytes uploaded sucessfully!";
+                        return View("UploadDKcsv");
 
                         // using (var fileStream = new FileStream(Path.Combine(DKuploads, file.FileName), FileMode.Create))
                         // {
-                        //await file.CopyToAsync(fileStream);
-                  //  }
-                }
-                else
-                {
-                    return View("UploadDKcsv");
-                }
-                
-            }
+                        //;
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Name your file please";
+                        return View("UploadDKcsv");
+                    }
 
-            return View("Index");
+                }
+
+
+            }
+            
+            ViewBag.Message = "Select a file please";
+            return View("UploadDKcsv");
         }
     }
 }
