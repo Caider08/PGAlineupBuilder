@@ -38,7 +38,7 @@ namespace PGAlineupBuilder.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            ViewBag.dksalaries = context.DKS.ToList();
+            
             return View();
         }
 
