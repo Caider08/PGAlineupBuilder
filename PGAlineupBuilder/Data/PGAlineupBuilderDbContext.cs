@@ -9,9 +9,10 @@ namespace PGAlineupBuilder.Data
 {
     public class PGAlineupBuilderDbContext: DbContext
     {
-        public DbSet<DKsalarys> DKS { get; set; }
 
         public DbSet<DkTourney> DKT { get; set; }
+
+        public DbSet<Golfer> GOLFER { get; set; }
 
 
         public PGAlineupBuilderDbContext(DbContextOptions<PGAlineupBuilderDbContext> options)

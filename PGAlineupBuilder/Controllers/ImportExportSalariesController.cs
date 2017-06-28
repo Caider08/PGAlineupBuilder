@@ -152,5 +152,21 @@ namespace PGAlineupBuilder.Controllers
             ViewBag.Message = "Select a file please";
             return View("UploadDKcsv");
         }
+
+        [HttpPost]
+        public IActionResult DKcreate(string uploadName)
+        {
+            if (string.IsNullOrWhiteSpace(uploadName))
+            {
+
+                return View("SalariesCreated");
+            }
+
+            ViewBag.Message = "Upload a file please";
+            return View("UploadDKcsv");
+        
+            
+        }   
+
     }
 }

@@ -12,5 +12,7 @@ namespace PGAlineupBuilder.Models
         public int Salary { get; set; }
 
         public string Name { get; set; }
+
+        public string GameInfo { get; set; }
     }
 }
