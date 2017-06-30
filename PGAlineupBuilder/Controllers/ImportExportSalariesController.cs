@@ -13,6 +13,7 @@ using Microsoft.Net.Http.Headers;
 
 
 
+
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace PGAlineupBuilder.Controllers
@@ -130,9 +131,10 @@ namespace PGAlineupBuilder.Controllers
                         // context.SaveChanges();
 
                         size += file.Length;
-
-                        ViewBag.Message = $"{DKfiles.Count} file(s) / {file.FileName}, {size} bytes uploaded sucessfully!";
-                        return View("UploadDKcsv");
+                        //TempData["fileUpload"] = UPLOADname;
+                       // ViewBag.Message = $"{DKfiles.Count} file(s) / {file.FileName}, {size} bytes uploaded sucessfully!";
+                       // return View("UploadDKcsv");
+                       return RedirectToAction("DKcreate", "ImportExportSalaries", new { Uname = $"{UPLOADname}" });
 
                         // using (var fileStream = new FileStream(Path.Combine(DKuploads, file.FileName), FileMode.Create))
                         // {
@@ -153,12 +155,23 @@ namespace PGAlineupBuilder.Controllers
             return View("UploadDKcsv");
         }
 
-        [HttpPost]
-        public IActionResult DKcreate(string uploadName)
+        
+        public IActionResult DKcreate(string Uname)
         {
-            if (string.IsNullOrWhiteSpace(uploadName))
-            {
+           // string uploadName;
 
+            //uploadName = TempData["fileUpload"] as string;
+
+            if (!string.IsNullOrWhiteSpace(Uname))
+            {
+                List<string> theseGolfers = new List<string>();
+                
+                theseGolfers = PGAuploads.WeeksGolfers(Uname);
+
+                string GameInfo = PGAuploads.WeeksGameInfo(Uname);
+
+                ViewBag.Game = GameInfo;
+                ViewBag.Golfers = theseGolfers;
                 return View("SalariesCreated");
             }
 

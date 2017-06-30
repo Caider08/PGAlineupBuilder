@@ -13,17 +13,32 @@ namespace PGAlineupBuilder.Models
 
         public static List<string[]> rows = new List<string[]>();
 
+        public static string WeeksGameInfo(string tourneyName)
+        {
+            string gameINFO;
+
+            LoadWeek(tourneyName);
+
+            gameINFO = rows[8][12];
+
+            return gameINFO;
+        }
+
         public static List<string> WeeksGolfers(string tourneyName)
         {
             List<string> Golfers = new List<string>();
 
             LoadWeek(tourneyName);
 
+            
+
             foreach (string[] row in rows)
             {
                 Golfers.Add(row[9]);
             }
 
+            Golfers.RemoveRange(0, 8);
+        
             return Golfers;
 
         }
@@ -51,14 +66,14 @@ namespace PGAlineupBuilder.Models
                     }
                 }
             }
-            for (int i=0; i<7; i++)
-            {
-                string[] junks = rows[i];
-                rows.Remove(junks);
-            }
+           // for (int i=0; i<8; i++)
+           // {
+               // string[] junks = rows[i];
+               // rows.Remove(junks);
+           // }
 
-            string[] headers = rows[7];
-            rows.Remove(headers);
+            //string[] headers = rows[0];
+           // rows.Remove(headers);
 
 
             // Parse each row array into a more friendly Dictionary
@@ -82,30 +97,30 @@ namespace PGAlineupBuilder.Models
         /*
          * Parse a single line of a CSV file into a string array
          */
-        private static string[] CSVRowToStringArray(string row, char fieldSeparator = ',', char stringSeparator = '\"')
+        private static string[] CSVRowToStringArray(string row, char fieldSeparator = ',') //char stringSeparator = '\"')
         {
-            bool isBetweenQuotes = false;
+           // bool isBetweenQuotes = false;
             StringBuilder valueBuilder = new StringBuilder();
             List<string> rowValues = new List<string>();
 
             // Loop through the row string one char at a time
             foreach (char c in row.ToCharArray())
             {
-                if ((c == fieldSeparator && !isBetweenQuotes))
+                if ((c == fieldSeparator)) //&& !isBetweenQuotes))
                 {
                     rowValues.Add(valueBuilder.ToString());
                     valueBuilder.Clear();
                 }
                 else
                 {
-                    if (c == stringSeparator)
-                    {
-                        isBetweenQuotes = !isBetweenQuotes;
-                    }
-                    else
-                    {
-                        valueBuilder.Append(c);
-                    }
+                    //if (c == stringSeparator)
+                    //{
+                   //     isBetweenQuotes = !isBetweenQuotes;
+                   // }
+                   // else
+                   // {
+                    valueBuilder.Append(c);
+                   // }
                 }
             }
 
