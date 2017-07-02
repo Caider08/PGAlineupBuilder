@@ -19,14 +19,14 @@ namespace PGAlineupBuilder.Models
 
             LoadWeek(tourneyName);
 
-            gameINFO = rows[8][12];
+            gameINFO = $"{rows[8][12]} 2017";
 
             return gameINFO;
         }
 
-        public static List<string> WeeksGolfers(string tourneyName)
+        public static List<Golfer> WeeksGolfers(string tourneyName)
         {
-            List<string> Golfers = new List<string>();
+            List<Golfer> Golfers = new List<Golfer>();
 
             LoadWeek(tourneyName);
 
@@ -34,10 +34,18 @@ namespace PGAlineupBuilder.Models
 
             foreach (string[] row in rows)
             {
-                Golfers.Add(row[9]);
+                Golfer newGolfer = new Golfer()
+                {
+                    Name = row[9],
+                    ID = int.Parse(row[10]),
+                    Salary = int.Parse(row[11]),
+                    GameInfo = row[12] + "2017",
+             
+                };
+                Golfers.Add(newGolfer);
             }
 
-            Golfers.RemoveRange(0, 8);
+           //Golfers.RemoveRange(0, 8);
         
             return Golfers;
 
@@ -66,6 +74,9 @@ namespace PGAlineupBuilder.Models
                     }
                 }
             }
+
+            rows.RemoveRange(0, 8);
+
            // for (int i=0; i<8; i++)
            // {
                // string[] junks = rows[i];

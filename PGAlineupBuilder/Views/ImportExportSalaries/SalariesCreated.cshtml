@@ -4,11 +4,27 @@
 @{
 }
 <h1>@ViewBag.Game</h1>
-<ol>
-    @foreach (string golfer in ViewBag.Golfers)
-    {
-        <li>@golfer</li>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Salary</th>
+    </tr>
+    @foreach (Golfer golfer in ViewBag.Golfers)
+    {  <tr>
+            <td>@golfer.ID</td>
+            <td>@golfer.Name</td>
+            <td>@golfer.Salary</td>
+        </tr>
+    }
+</table>
 
+
+@*<ol>    @foreach (Golfer golfer in ViewBag.Golfers)
+    {
+        <li>@golfer.ID</li>
+        <li>@golfer.Name</li>
+        <li>@golfer.Salary</li>
     }
 
-</ol>
+</ol>*@

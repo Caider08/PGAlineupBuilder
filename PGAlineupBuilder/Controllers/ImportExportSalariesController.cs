@@ -164,11 +164,17 @@ namespace PGAlineupBuilder.Controllers
 
             if (!string.IsNullOrWhiteSpace(Uname))
             {
-                List<string> theseGolfers = new List<string>();
+                List<Golfer> theseGolfers = new List<Golfer>();
                 
                 theseGolfers = PGAuploads.WeeksGolfers(Uname);
 
                 string GameInfo = PGAuploads.WeeksGameInfo(Uname);
+
+                DkTourney DKtourney = new DkTourney()
+                {
+                    Name = GameInfo,
+                    Participants = theseGolfers,
+                };
 
                 ViewBag.Game = GameInfo;
                 ViewBag.Golfers = theseGolfers;
