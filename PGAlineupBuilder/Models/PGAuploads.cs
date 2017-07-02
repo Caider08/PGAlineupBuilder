@@ -37,7 +37,7 @@ namespace PGAlineupBuilder.Models
                 Golfer newGolfer = new Golfer()
                 {
                     Name = row[9],
-                    ID = int.Parse(row[10]),
+                    Playerid = int.Parse(row[10]),
                     Salary = int.Parse(row[11]),
                     GameInfo = row[12] + "2017",
              

@@ -11,6 +11,6 @@ namespace PGAlineupBuilder.Models
 
         public string Name { get; set; }
 
-        public IList<Golfer> Participants { get; set; }
+        public List<Golfer> Participants { get; set; }
     }
 }

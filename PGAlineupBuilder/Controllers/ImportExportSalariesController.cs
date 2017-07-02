@@ -170,11 +170,20 @@ namespace PGAlineupBuilder.Controllers
 
                 string GameInfo = PGAuploads.WeeksGameInfo(Uname);
 
+                foreach(Golfer golfer in theseGolfers)
+                {
+                    context.GOLFER.Add(golfer);
+                   
+                }
+
                 DkTourney DKtourney = new DkTourney()
                 {
                     Name = GameInfo,
                     Participants = theseGolfers,
                 };
+
+                context.DKT.Add(DKtourney);
+                context.SaveChanges();
 
                 ViewBag.Game = GameInfo;
                 ViewBag.Golfers = theseGolfers;

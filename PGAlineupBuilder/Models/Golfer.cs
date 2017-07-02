@@ -8,6 +8,8 @@ namespace PGAlineupBuilder.Models
     public class Golfer
     {
         public int ID { get; set; }
+        
+        public int Playerid { get; set; }
 
         public int Salary { get; set; }
 
