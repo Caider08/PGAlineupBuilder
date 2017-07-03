@@ -10,6 +10,7 @@ using PGAlineupBuilder.ViewModels;
 using PGAlineupBuilder.Models;
 using PGAlineupBuilder.Data;
 using Microsoft.Net.Http.Headers;
+using System.Data.SqlClient;
 
 
 
@@ -158,9 +159,11 @@ namespace PGAlineupBuilder.Controllers
         
         public IActionResult DKcreate(string Uname)
         {
-           // string uploadName;
+            // string uploadName;
 
             //uploadName = TempData["fileUpload"] as string;
+
+            
 
             if (!string.IsNullOrWhiteSpace(Uname))
             {
@@ -170,24 +173,36 @@ namespace PGAlineupBuilder.Controllers
 
                 string GameInfo = PGAuploads.WeeksGameInfo(Uname);
 
-                foreach(Golfer golfer in theseGolfers)
+                var isDuplicate = context.DKT.Any(a => a.Name == GameInfo);
+                
+                if (isDuplicate)
                 {
-                    context.GOLFER.Add(golfer);
-                   
+                    ViewBag.Message = "You've already uploaded this tournament";
+                    return View("UploadDKcsv");
+                }
+                else
+                {
+                    foreach (Golfer golfer in theseGolfers)
+                    {
+                        context.GOLFER.Add(golfer);
+
+                    }
+
+                    DkTourney DKtourney = new DkTourney()
+                    {
+                        Name = GameInfo,
+                        Participants = theseGolfers,
+                    };
+
+                    context.DKT.Add(DKtourney);
+                    context.SaveChanges();
+
+                    ViewBag.Game = GameInfo;
+                    ViewBag.Golfers = theseGolfers;
+                    return View("SalariesCreated");
                 }
 
-                DkTourney DKtourney = new DkTourney()
-                {
-                    Name = GameInfo,
-                    Participants = theseGolfers,
-                };
-
-                context.DKT.Add(DKtourney);
-                context.SaveChanges();
-
-                ViewBag.Game = GameInfo;
-                ViewBag.Golfers = theseGolfers;
-                return View("SalariesCreated");
+               
             }
 
             ViewBag.Message = "Upload a file please";

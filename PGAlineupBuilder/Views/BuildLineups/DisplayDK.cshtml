@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model PGAlineupBuilder.Models.DkTourney
+
+
+    <p>@Model.Name</p>
+<ol>
+    @foreach(Golfer golfer in Model.Participants)
+    {
+        <li>@golfer.Name</li><li>@golfer.Salary</li>
+
+    }
+</ol>
+
+
+@* if(Model.Equals  )
+{
+    <p>No Tourneys Selected!</p>
+    <a asp-action="ChooseDK" asp-controller="BuildLineups">Go Choose a DK Tournament</a>
+}
+*@
