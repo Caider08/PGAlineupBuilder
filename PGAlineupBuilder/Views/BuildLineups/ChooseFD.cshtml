@@ -4,6 +4,14 @@
 @{
 }
 
+<ol>
+    @foreach(Golfer golfer in @ViewBag.ListTest)
+    {    
+        <li>
+            @golfer.Name
+         </li>
+     }
+</ol>
 <h2>Sorry, No FanDuel Tournaments Yet</h2>
 
 <a asp-action="Index" asp-controller="BuildLineups">Build Lineups</a>

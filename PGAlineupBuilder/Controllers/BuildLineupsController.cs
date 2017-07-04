@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using PGAlineupBuilder.Data;
 using PGAlineupBuilder.Models;
 using Microsoft.AspNetCore.Hosting;
+using PGAlineupBuilder.ViewModels;
 
 namespace PGAlineupBuilder.Controllers
 {
@@ -13,13 +14,10 @@ namespace PGAlineupBuilder.Controllers
     {
         private PGAlineupBuilderDbContext context;
 
-        private readonly IHostingEnvironment _environment;
 
-        public BuildLineupsController(IHostingEnvironment environment, PGAlineupBuilderDbContext dbContext)
+        public BuildLineupsController( PGAlineupBuilderDbContext dbContext)
         {
-            environment = _environment;
             context = dbContext;
-
         }
 
         public IActionResult Index()
@@ -36,14 +34,32 @@ namespace PGAlineupBuilder.Controllers
 
         public IActionResult ChooseFD()
         {
+            List<Golfer> testGolfers = new List<Golfer>();
+
+            string testGolf = "The GreenBrier Classic 2017";
+
+            var tourney = context.DKT.Single(s => s.Name == testGolf);
+
+            testGolfers = tourney.Participants;
+
+            ViewBag.ListTest = testGolfers;
+
             return View();
         }
 
         public IActionResult DisplayDK(string DKselected)
         {
-            var DKSelected = context.DKT.Single(s => s.Name == DKselected);
+            DkTourney dkSelected = context.DKT.Single(s => s.Name == DKselected);
 
-            return View(DKSelected);
+            List<Golfer> selectedGolfers = new List<Golfer>();
+
+           // foreach()
+            selectedGolfers = dkSelected.Participants;
+
+            DisplayTourneySalariesViewModel DisplayDKT = new DisplayTourneySalariesViewModel(dkSelected, selectedGolfers);
+            
+
+            return View(DisplayDKT);
         }
 
     }

@@ -4,12 +4,12 @@
 @{
 }
 
-@model PGAlineupBuilder.Models.DkTourney
+@model PGAlineupBuilder.ViewModels.DisplayTourneySalariesViewModel
 
 
-    <p>@Model.Name</p>
+    <p>Model.Name</p>
 <ol>
-    @foreach(Golfer golfer in Model.Participants)
+    @foreach(Golfer golfer in Model.DKParticipants)
     {
         <li>@golfer.Name</li><li>@golfer.Salary</li>
 
