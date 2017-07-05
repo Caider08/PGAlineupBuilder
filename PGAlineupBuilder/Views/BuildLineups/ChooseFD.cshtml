@@ -3,9 +3,9 @@
 *@
 @{
 }
-
+<h1>@ViewBag.TestTourney.Name</h1>
 <ol>
-    @foreach(Golfer golfer in @ViewBag.ListTest)
+    @foreach(Golfer golfer in ViewBag.ListTest)
     {    
         <li>
             @golfer.Name

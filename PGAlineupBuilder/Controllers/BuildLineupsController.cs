@@ -7,6 +7,7 @@ using PGAlineupBuilder.Data;
 using PGAlineupBuilder.Models;
 using Microsoft.AspNetCore.Hosting;
 using PGAlineupBuilder.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace PGAlineupBuilder.Controllers
 {
@@ -34,14 +35,19 @@ namespace PGAlineupBuilder.Controllers
 
         public IActionResult ChooseFD()
         {
-            List<Golfer> testGolfers = new List<Golfer>();
+           // List<Golfer> testGolfers = new List<Golfer>();
 
-            string testGolf = "The GreenBrier Classic 2017";
+            string testGolf = "The Greenbrier Classic 2017";
 
             var tourney = context.DKT.Single(s => s.Name == testGolf);
 
-            testGolfers = tourney.Participants;
+            int Tid = tourney.ID;
 
+            var testGolfers = context.GOLFER.Where(c => c.DkTourneyID == Tid).ToList<Golfer>();
+
+            
+
+            ViewBag.TestTourney = tourney;
             ViewBag.ListTest = testGolfers;
 
             return View();
@@ -53,8 +59,11 @@ namespace PGAlineupBuilder.Controllers
 
             List<Golfer> selectedGolfers = new List<Golfer>();
 
-           // foreach()
-            selectedGolfers = dkSelected.Participants;
+            foreach(Golfer golfer in dkSelected.Participants)
+            {
+                selectedGolfers.Add(golfer);
+            }
+            
 
             DisplayTourneySalariesViewModel DisplayDKT = new DisplayTourneySalariesViewModel(dkSelected, selectedGolfers);
             

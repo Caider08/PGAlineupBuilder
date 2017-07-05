@@ -8,9 +8,10 @@ using PGAlineupBuilder.Data;
 namespace PGAlineupBuilder.Migrations
 {
     [DbContext(typeof(PGAlineupBuilderDbContext))]
-    partial class PGAlineupBuilderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170704081125_ClassesUpdated")]
+    partial class ClassesUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -33,9 +34,7 @@ namespace PGAlineupBuilder.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("DkTourneyID");
-
-                    b.Property<int>("Exposure");
+                    b.Property<int?>("DkTourneyID");
 
                     b.Property<string>("GameInfo");
 
@@ -44,10 +43,6 @@ namespace PGAlineupBuilder.Migrations
                     b.Property<int>("Playerid");
 
                     b.Property<int>("Salary");
-
-                    b.Property<string>("Website");
-
-                    b.Property<int>("YearCreated");
 
                     b.HasKey("ID");
 
@@ -60,8 +55,7 @@ namespace PGAlineupBuilder.Migrations
                 {
                     b.HasOne("PGAlineupBuilder.Models.DkTourney")
                         .WithMany("Participants")
-                        .HasForeignKey("DkTourneyID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("DkTourneyID");
                 });
         }
     }

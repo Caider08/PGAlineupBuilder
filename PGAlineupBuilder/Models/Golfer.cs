@@ -8,6 +8,8 @@ namespace PGAlineupBuilder.Models
     public class Golfer
     {
         public int ID { get; set; }
+
+        public int DkTourneyID { get; set; }
         
         public int Playerid { get; set; }
 
@@ -16,5 +18,17 @@ namespace PGAlineupBuilder.Models
         public string Name { get; set; }
 
         public string GameInfo { get; set; }
+
+        public int YearCreated { get; set; }
+
+        public int Exposure { get; set; }
+
+        public string Website { get; set; }
+
+
+        public Golfer()
+        {
+            Exposure = 0;
+        }
     }
 }

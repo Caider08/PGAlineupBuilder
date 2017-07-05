@@ -12,7 +12,7 @@ namespace PGAlineupBuilder.ViewModels
     {
         public DkTourney Name { get; set; }
 
-        public List<Golfer> DKParticipants { get; set; }
+        public IList<Golfer> Participants { get; set; }
 
         public int NumberOfRosters { get; set; }
 
@@ -22,12 +22,20 @@ namespace PGAlineupBuilder.ViewModels
 
         public DisplayTourneySalariesViewModel()
         {
+           // List<Golfer> DKParticipants = new List<Golfer>();
         }
 
-        public DisplayTourneySalariesViewModel(DkTourney dkt, List<Golfer> dktGolfers)
+        public DisplayTourneySalariesViewModel(DkTourney dkt, IEnumerable<Golfer> dktGolfers)
         {
+            Participants = new List<Golfer>();
+            
+            foreach (var golfer in dktGolfers)
+            {
+                Participants.Add(golfer);
+            }
+
             dkt = Name;
-            dktGolfers = DKParticipants;
+           
         }
 
 

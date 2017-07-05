@@ -17,9 +17,13 @@ namespace PGAlineupBuilder.Models
         {
             string gameINFO;
 
+            int year;
+
+            year = int.Parse(DateTime.Now.ToString("yyyy"));
+
             LoadWeek(tourneyName);
 
-            gameINFO = $"{rows[8][12]} 2017";
+            gameINFO = $"{rows[8][12]} {year}";
 
             return gameINFO;
         }
@@ -30,8 +34,8 @@ namespace PGAlineupBuilder.Models
 
             LoadWeek(tourneyName);
 
+            int year = int.Parse(DateTime.Now.ToString("yyyy"));
             
-
             foreach (string[] row in rows)
             {
                 Golfer newGolfer = new Golfer()
@@ -39,7 +43,9 @@ namespace PGAlineupBuilder.Models
                     Name = row[9],
                     Playerid = int.Parse(row[10]),
                     Salary = int.Parse(row[11]),
-                    GameInfo = row[12] + "2017",
+                    GameInfo = $"{row[12]} {year}",
+                    Website = "DK",
+                    YearCreated = year,
              
                 };
                 Golfers.Add(newGolfer);

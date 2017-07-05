@@ -188,10 +188,10 @@ namespace PGAlineupBuilder.Controllers
 
                     }
 
-                    DkTourney DKtourney = new DkTourney()
+                    DkTourney DKtourney = new DkTourney(theseGolfers)
                     {
                         Name = GameInfo,
-                        Participants = theseGolfers,
+                        
                     };
 
                     context.DKT.Add(DKtourney);

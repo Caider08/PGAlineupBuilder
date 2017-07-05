@@ -11,11 +11,22 @@ namespace PGAlineupBuilder.Models
 
         public string Name { get; set; }
 
-        public List<Golfer> Participants { get; set; }
+        public IList<Golfer> Participants { get; set; }
+
 
         public DkTourney()
         {
+            List<Golfer> Participants = new List<Golfer>();
+        }
+
+        public DkTourney(IEnumerable<Golfer> golfers)
+        {
             Participants = new List<Golfer>();
+
+            foreach(var golfer in golfers)
+            {
+                Participants.Add(golfer);
+            }
         }
     }
 }
