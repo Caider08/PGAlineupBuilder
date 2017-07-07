@@ -179,7 +179,36 @@ textarea {
 optgroup {
   font-weight: bold;
 }
+
 table {
+    border: 1px;
+    width: 80%;
+    height: 100%;
+}
+
+th {
+    text-align: center;
+    background-color: #009999;
+    color: azure;
+}
+
+table caption {
+    font-size: 200%;
+}
+
+tr:hover {
+    background-color: #FFB273;
+}
+
+tr:nth-of-type(odd) {
+    background-color: #33CCCC;
+}
+
+tr:nth-of-type(even) {
+    background-color: #5CCCCC;
+}
+
+/*table {
   border-spacing: 0;
   border-collapse: collapse;
 }
@@ -187,6 +216,7 @@ td,
 th {
   padding: 0;
 }
+ */
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
   *,

@@ -7,14 +7,43 @@
 @model PGAlineupBuilder.ViewModels.DisplayTourneySalariesViewModel
 
 
-    <p>@Model.Name</p>
-<ol>
-    @foreach(Golfer golfer in Model.DKParticipants)
-    {
-        <li>@golfer.Name</li><li>@golfer.Salary</li>
+    <p>@Model.Name.Name</p>
 
-    }
-</ol>
+<form method="post" asp-controller="BuildLineupsController" asp-action="BuildDK">
+    <label asp-for="NumberOfRosters"></label>
+    <input asp-for="NumberOfRosters" />
+    <span asp-validation-for="NumberOfRosters"> </span>
+
+    <label asp-for="MaxSalary"></label>
+    <input asp-for="MaxSalary" />
+    <span asp-validation-for="MaxSalary"> </span>
+
+    <label asp-for="MinSalary"></label>
+    <input asp-for="MinSalary" />
+    <span asp-validation-for="MinSalary"> </span>
+
+    <input type="submit" value="GENERATE LINEUPS" />
+
+    <table style="width:80%">
+        <tr>
+            <th>GolferID</th>
+            <th>Golfer</th>
+            <th>$ Cost</th>
+            <th>Exposure</th>
+        </tr>
+       @foreach (Golfer golfer in Model.Participants)
+        {
+             <tr>
+                    <td>@golfer.Playerid</td>
+                    <td>@golfer.Name</td>
+                    <td>@golfer.Salary</td>
+                    <td>@golfer.Exposure</td>
+            </tr>  
+        }
+
+    </table>
+</form>
+
 
 
 @* if(Model.Equals  )

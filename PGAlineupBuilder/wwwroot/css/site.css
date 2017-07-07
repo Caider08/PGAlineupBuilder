@@ -23,6 +23,36 @@ textarea {
     line-height: 1.4;
 }
 
+table {
+    border: 1px;
+    width: 80%;
+    height: 100%;
+}
+
+th {
+    text-align: center;
+    background-color: #009999;
+    color: azure;
+}
+
+table caption {
+    font-size: 200%;
+}
+
+tr:hover {
+    background-color: #FFB273;
+}
+
+tr:nth-of-type(odd) {
+    background-color: #33CCCC;
+}
+
+tr:nth-of-type(even) {
+    background-color: #5CCCCC;
+}
+
+
+
 /* buttons and links extension to use brackets: [ click me ] */
 .btn-bracketed::before {
     display: inline-block;

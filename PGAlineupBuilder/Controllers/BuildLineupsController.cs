@@ -16,7 +16,7 @@ namespace PGAlineupBuilder.Controllers
         private PGAlineupBuilderDbContext context;
 
 
-        public BuildLineupsController( PGAlineupBuilderDbContext dbContext)
+        public BuildLineupsController(PGAlineupBuilderDbContext dbContext)
         {
             context = dbContext;
         }
@@ -35,7 +35,7 @@ namespace PGAlineupBuilder.Controllers
 
         public IActionResult ChooseFD()
         {
-           // List<Golfer> testGolfers = new List<Golfer>();
+            // List<Golfer> testGolfers = new List<Golfer>();
 
             string testGolf = "The Greenbrier Classic 2017";
 
@@ -45,7 +45,7 @@ namespace PGAlineupBuilder.Controllers
 
             var testGolfers = context.GOLFER.Where(c => c.DkTourneyID == Tid).ToList<Golfer>();
 
-            
+
 
             ViewBag.TestTourney = tourney;
             ViewBag.ListTest = testGolfers;
@@ -57,19 +57,29 @@ namespace PGAlineupBuilder.Controllers
         {
             DkTourney dkSelected = context.DKT.Single(s => s.Name == DKselected);
 
-            List<Golfer> selectedGolfers = new List<Golfer>();
+            int DKTid = dkSelected.ID;
 
-            foreach(Golfer golfer in dkSelected.Participants)
+            List<Golfer> selectedGolfers = context.GOLFER.Where(s => s.DkTourneyID == DKTid).ToList<Golfer>();
+
+
+            DisplayTourneySalariesViewModel DisplayDKT = new DisplayTourneySalariesViewModel(dkSelected, selectedGolfers)
             {
-                selectedGolfers.Add(golfer);
-            }
-            
 
-            DisplayTourneySalariesViewModel DisplayDKT = new DisplayTourneySalariesViewModel(dkSelected, selectedGolfers);
-            
+            };
+
 
             return View(DisplayDKT);
         }
 
+        [HttpPost]
+        public IActionResult BuildDK (DisplayTourneySalariesViewModel DisplayDKT)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+
+            return View("DisplayDK", DisplayDKT);
+        }
     }
 }
