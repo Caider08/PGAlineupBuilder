@@ -11,9 +11,9 @@ namespace PGAlineupBuilder.ViewModels
 {
     public class DisplayTourneySalariesViewModel
     {
-        public DkTourney Name { get; set; }
+        public DkTourney DKname { get; set; }
 
-        public IList<Golfer> Participants { get; set; }
+        public IList<Golfer> TourneyParticipants { get; set; }
 
         [Required(ErrorMessage = "Minimum 1 lineup Maximum 150")]
         [Range(1,150)]
@@ -33,25 +33,28 @@ namespace PGAlineupBuilder.ViewModels
         public DisplayTourneySalariesViewModel()
         {
             // List<Golfer> DKParticipants = new List<Golfer>();
+            TourneyParticipants = new List<Golfer>();
+            DKname = new DkTourney();
+
             NumberOfRosters = 1;
             MaxSalary = 50000;
             MinSalary = 38500;
         }
 
-        public DisplayTourneySalariesViewModel(DkTourney dkt, IEnumerable<Golfer> dktGolfers)
+        public DisplayTourneySalariesViewModel(DkTourney dkt, List<Golfer> dktGolfers)
         {
-            Participants = new List<Golfer>();
+            TourneyParticipants = new List<Golfer>();
             
             foreach (var golfer in dktGolfers)
             {
-                Participants.Add(golfer);
-                NumberOfRosters = 1;
-                MaxSalary = 50000;
-                MinSalary = 38500;
-
+                TourneyParticipants.Add(golfer);
+               
             }
 
-            Name = dkt;
+            NumberOfRosters = 1;
+            MaxSalary = 50000;
+            MinSalary = 38500;
+            DKname = dkt;
            
         }
 

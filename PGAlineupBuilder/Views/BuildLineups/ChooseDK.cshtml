@@ -6,7 +6,7 @@
 
 @model List<PGAlineupBuilder.Models.DkTourney>
 
-<form method="post" asp-action="DisplayDK" asp-controller="BuildLineups">
+<form method="post" asp-action="getDK" asp-controller="BuildLineups">
     <select name="DKselected">
         @foreach (var tourney in Model)
         {

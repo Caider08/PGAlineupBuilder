@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PGAlineupBuilder.Controllers
 {
+    
     public class BuildLineupsController : Controller
     {
         private PGAlineupBuilderDbContext context;
@@ -53,7 +54,8 @@ namespace PGAlineupBuilder.Controllers
             return View();
         }
 
-        public IActionResult DisplayDK(string DKselected)
+        
+        public IActionResult getDK(string DKselected)
         {
             DkTourney dkSelected = context.DKT.Single(s => s.Name == DKselected);
 
@@ -61,25 +63,107 @@ namespace PGAlineupBuilder.Controllers
 
             List<Golfer> selectedGolfers = context.GOLFER.Where(s => s.DkTourneyID == DKTid).ToList<Golfer>();
 
+           // TempData["dkSELECTED"] = new DkTourney() { Name = dkSelected.Name, Participants = dkSelected.Participants };
+           // selectedGolfers = (List<Golfer>)TempData["dkGOLFERS"];
 
-            DisplayTourneySalariesViewModel DisplayDKT = new DisplayTourneySalariesViewModel(dkSelected, selectedGolfers)
+            //TempData.Keep("dkSELECTED");
+           // TempData.Keep("dkGOLFERS");
+
+
+             DisplayTourneySalariesViewModel model = new DisplayTourneySalariesViewModel(dkSelected, selectedGolfers)
             {
 
             };
 
-
-            return View(DisplayDKT);
+            //ViewBag.SelectedDKT = dkSelected;
+            //ViewBag.SelectedDKgolfers = selectedGolfers;
+            return View("DisplayDK", model);
         }
 
         [HttpPost]
-        public IActionResult BuildDK (DisplayTourneySalariesViewModel DisplayDKT)
+        public IActionResult DisplayDK(DisplayTourneySalariesViewModel model)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                return View();
-            }
+                var dkTourneyName = context.DKT.Single(s => s.Name == model.DKname.Name);
+                int numbaLineups = model.NumberOfRosters;
+                int maxS = model.MaxSalary;
+                int minS = model.MaxSalary;
 
-            return View("DisplayDK", DisplayDKT);
+                ViewBag.Success = dkTourneyName.Name;
+                return View("BuiltDK");
+
+            }
+            else
+            {
+                //if (model.NumberOfRosters < 1 || model.NumberOfRosters > 150)
+               // {
+               //     ViewBag.RosterError = "Please Build between 1-150 lineups";
+               //     return View(model);
+               // }
+               // else if (model.MinSalary < 38500 || model.MinSalary > 50000)
+               // {
+                   // ViewBag.MinError = "Please choose between 38,500 and 50,000 for Salary Floor";
+                   // return View(model);
+               // }
+               // else if (model.MaxSalary < 38500 || model.MaxSalary > 50000)
+               // {
+                    //ViewBag.MaxError = "Please choose between 38,500 and 50,000 for Salary Max";
+                   // return View(model);
+                //}
+                //else if (model.MinSalary > model.MaxSalary)
+               // {
+               //     ViewBag.SalaryError = "Max Salary must be greater than Salary Floor";
+               //     return View(model);
+               // }
+               
+                return View(model);
+                
+            }
+            
+
+
+
         }
+           
+
+            
+
+        
+           // string dkTourneyName = golfers.First().GameInfo;
+
+            //if (Rosters < 1 || Rosters > 150)
+            //{
+           //     ViewBag.SelectedDKT = dkTourneyName;
+           //     ViewBag.RosterError = "Please build between 1-150 lineups";
+            //    return View("DisplayDK", golfers);
+           // }
+            
+
+           
+            //var tourney = model.Name;
+            //string dkselected = tourney.Name;
+          
+           // IEnumerable<Golfer> displaysGolfers = incomingDisplay.Participants.ToList();
+           // DkTourney displaysTourney = incomingDisplay.Name;
+
+            //if (ModelState.IsValid)
+           // {
+               // int numbaLineups = model.NumberOfRosters;
+               // int maxS = model.MaxSalary;
+                //int minS = model.MaxSalary;
+
+
+
+                //return View("BuildDK");
+            //}
+
+            // DisplayTourneySalariesViewModel anotherDisplayDKT = new DisplayTourneySalariesViewModel(displaysTourney, displaysGolfers)
+            // {
+
+            //  };
+        
+            //return RedirectToAction("getDK", "BuildLineups", new { id = dkselected });
+        
     }
 }
