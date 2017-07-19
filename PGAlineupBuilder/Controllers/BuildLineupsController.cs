@@ -86,11 +86,58 @@ namespace PGAlineupBuilder.Controllers
             if(ModelState.IsValid)
             {
                 var dkTourneyName = context.DKT.Single(s => s.Name == model.DKname.Name);
+                IList<Golfer> currentGolfers = model.TourneyParticipants;
+           
                 int numbaLineups = model.NumberOfRosters;
                 int maxS = model.MaxSalary;
                 int minS = model.MaxSalary;
 
-                ViewBag.Success = dkTourneyName.Name;
+                foreach(var golfer in currentGolfers)
+                {
+                    double GolferPercentage = (golfer.Exposure / 100);
+                    double newExposure = GolferPercentage * numbaLineups;
+
+                }
+
+                List<DKlineup> generatedLineups = new List<DKlineup>();
+
+                for (var l=0; l < numbaLineups; l++)
+                 {
+                    int lineupcounter = 0;
+
+                    DKlineup newLineup = new DKlineup
+                    {
+                        LineupID = lineupcounter,
+                    };
+
+                    while (newLineup.Lineup.Count() < 7)
+                    {
+                        Golfer chosenGolfer = new Golfer();
+
+                        while (newLineup.LineupGolfers.Contains(chosenGolfer) || (newLineup.LineupSalary + chosenGolfer.Salary > maxS))
+                        {
+                            chosenGolfer = currentGolfers.Single(s => s.Exposure >= 0);
+                        }
+
+                        newLineup.LineupGolfers.Add(chosenGolfer);
+
+                        if (newLineup.Lineup.Count() == 6 && newLineup.LineupSalary < minS)
+                        {
+                            newLineup.LineupGolfers.Remove(chosenGolfer);
+                        }
+
+                        newLineup.Lineup.Add(chosenGolfer.Playerid);
+                        newLineup.LineupSalary += chosenGolfer.Salary;
+
+                    }
+
+                    generatedLineups.Add(newLineup);
+                    lineupcounter++;
+                    
+                 }
+
+                ViewBag.Success = generatedLineups;
+                ViewBag.Tname = dkTourneyName;
                 return View("BuiltDK");
 
             }

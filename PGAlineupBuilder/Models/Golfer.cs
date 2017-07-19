@@ -21,7 +21,23 @@ namespace PGAlineupBuilder.Models
 
         public int YearCreated { get; set; }
 
-        public int Exposure { get; set; }
+        public double Exposure
+        {
+            get
+            {
+                return Exposure;
+            }
+
+            set
+            {
+                if (value < 0 || value > 0)
+                {
+                    value = 0;
+                }
+
+                Exposure = 0;
+            }
+        }
 
         public string Website { get; set; }
 

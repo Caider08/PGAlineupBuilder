@@ -4,4 +4,67 @@
 @{
 }
 
-<h1>@ViewBag.Success</h1>
+<h1>Generated Lineups for @ViewBag.Tname</h1>
+<table>
+    <tr>
+        <th>Lineup#</th>
+        <th>Golfer1 ID</th>
+        <th>Golfer2 ID</th>
+        <th>Golfer3 ID</th>
+        <th>Golfer4 ID</th>
+        <th>Golfer5 ID</th>
+        <th>Golfer6 ID</th>
+    </tr>
+    <tr>
+        @foreach (DKlineup dkL in ViewBag.Success)
+        {
+            <td>@dkL.LineupID</td>
+            @foreach (int playerID in dkL.Lineup)
+            {
+
+                <td>@playerID</td>
+
+            }
+        }
+    </tr>
+   
+</table>
+
+
+<table>
+    <tr>
+        <th>Lineup#</th>
+        <th>Golfer1</th>
+        <th>Golfer1 Salary</th>
+        <th>Golfer2</th>
+        <th>Golfer2 Salary</th>
+        <th>Golfer3</th>
+        <th>Golfer3 Salary</th>
+        <th>Golfer4</th>
+        <th>Golfer4 Salary</th>
+        <th>Golfer5</th>
+        <th>Golfer5 Salary</th>
+        <th>Golfer6</th>
+        <th>Golfer6 Salary</th>
+        <th>Lineup Salary</th>
+      
+    </tr>
+    @foreach (DKlineup dkl in ViewBag.Success)
+    {
+        <tr>
+            <td>@dkl.LineupID</td>
+
+           @foreach (Golfer golfer in dkl.LineupGolfers)
+            {
+
+                <td>@golfer.Name</td>
+                <td>@golfer.Salary</td>
+               
+            }
+            <td>@dkl.LineupSalary</td>
+        </tr>
+
+    }
+
+
+</table>
