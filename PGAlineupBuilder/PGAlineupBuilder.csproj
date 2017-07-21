@@ -38,6 +38,8 @@
     <Folder Include="DKuploads\" />
     <Folder Include="DKuploads\" />
     <Folder Include="DKuploads\" />
+    <Folder Include="DKuploads\" />
+    <Folder Include="DKuploads\" />
   </ItemGroup>
 
 </Project>

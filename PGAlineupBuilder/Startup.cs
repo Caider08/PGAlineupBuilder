@@ -56,7 +56,7 @@ namespace PGAlineupBuilder
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-            services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
+            //services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,6 +11,7 @@ using PGAlineupBuilder.Models;
 using PGAlineupBuilder.Data;
 using Microsoft.Net.Http.Headers;
 using System.Data.SqlClient;
+using System.Net;
 
 
 
@@ -23,9 +24,9 @@ namespace PGAlineupBuilder.Controllers
     {
         private PGAlineupBuilderDbContext context;
 
-       // public ImportExportSalariesController(PGAlineupBuilderDbContext dbContext)
+        // public ImportExportSalariesController(PGAlineupBuilderDbContext dbContext)
         //{
-           // context = dbContext;
+        // context = dbContext;
         //}
 
         private readonly IHostingEnvironment _environment;
@@ -40,16 +41,16 @@ namespace PGAlineupBuilder.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            
+
             return View();
         }
 
         public IActionResult UploadDKcsv()
         {
-           // UploadDKcsvViewModel uploadDKcsvViewModel = new UploadDKcsvViewModel();
+            // UploadDKcsvViewModel uploadDKcsvViewModel = new UploadDKcsvViewModel();
             return View("UploadDKcsv");
 
-         }
+        }
 
         // [HttpPost]
         // public async Task<IActionResult> DKimport(UploadDKcsvViewModel uploadDKcsvViewModel)
@@ -79,15 +80,15 @@ namespace PGAlineupBuilder.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> DKimport(ICollection<IFormFile> DKfiles, string uploadName)
+        public IActionResult DKimport(ICollection<IFormFile> DKfiles, string uploadName)
         {
-               // Path.Combine(_environment.WebRootPath, "DKuploads");
+            // Path.Combine(_environment.WebRootPath, "DKuploads");
 
             // var DKuploads = Path.GetTempFileName();
 
             long size = 0;
 
-            foreach(var file in DKfiles)
+            foreach (var file in DKfiles)
             {
                 if (file.Length > 0)
                 {
@@ -110,7 +111,7 @@ namespace PGAlineupBuilder.Controllers
                         using (FileStream fstream = new FileStream(Path.Combine(DKuploads, UPLOADname), FileMode.Create))
                         {
 
-                            await file.CopyToAsync(fstream);
+                            file.CopyTo(fstream);
 
                             fstream.Flush();
                         }
@@ -133,9 +134,9 @@ namespace PGAlineupBuilder.Controllers
 
                         size += file.Length;
                         //TempData["fileUpload"] = UPLOADname;
-                       // ViewBag.Message = $"{DKfiles.Count} file(s) / {file.FileName}, {size} bytes uploaded sucessfully!";
-                       // return View("UploadDKcsv");
-                       return RedirectToAction("DKcreate", "ImportExportSalaries", new { Uname = $"{UPLOADname}" });
+                        // ViewBag.Message = $"{DKfiles.Count} file(s) / {file.FileName}, {size} bytes uploaded sucessfully!";
+                        // return View("UploadDKcsv");
+                        return RedirectToAction("DKcreate", "ImportExportSalaries", new { Uname = $"{UPLOADname}" });
 
                         // using (var fileStream = new FileStream(Path.Combine(DKuploads, file.FileName), FileMode.Create))
                         // {
@@ -151,65 +152,86 @@ namespace PGAlineupBuilder.Controllers
 
 
             }
-            
+
             ViewBag.Message = "Select a file please";
             return View("UploadDKcsv");
+
+
+
+
         }
 
-        
         public IActionResult DKcreate(string Uname)
         {
             // string uploadName;
 
             //uploadName = TempData["fileUpload"] as string;
 
-            
-
-            if (!string.IsNullOrWhiteSpace(Uname))
+            try
             {
-                List<Golfer> theseGolfers = new List<Golfer>();
-                
-                theseGolfers = PGAuploads.WeeksGolfers(Uname);
-
-                string GameInfo = PGAuploads.WeeksGameInfo(Uname);
-
-                var isDuplicate = context.DKT.Any(a => a.Name == GameInfo);
-                
-                if (isDuplicate)
+                if (!string.IsNullOrWhiteSpace(Uname))
                 {
-                    ViewBag.Message = "You've already uploaded this tournament";
-                    return View("UploadDKcsv");
-                }
-                else
-                {
-                    foreach (Golfer golfer in theseGolfers)
+                    List<Golfer> theseGolfers = new List<Golfer>();
+
+                    theseGolfers = PGAuploads.WeeksGolfers(Uname);
+
+                    string GameInfo = PGAuploads.WeeksGameInfo(Uname);
+
+                    var isDuplicate = context.DKT.Any(a => a.Name == GameInfo);
+
+                    if (isDuplicate)
                     {
-                        context.GOLFER.Add(golfer);
+                        ViewBag.Message = "You've already uploaded this tournament";
+                        return View("UploadDKcsv");
+                    }
+                    else
+                    {
+                        foreach (Golfer golfer in theseGolfers)
+                        {
+                            context.GOLFER.Add(golfer);
 
+                        }
+
+                        DkTourney DKtourney = new DkTourney(theseGolfers)
+                        {
+                            Name = GameInfo,
+
+                        };
+
+                        context.DKT.Add(DKtourney);
+                        context.SaveChanges();
+
+                        ViewBag.Game = GameInfo;
+                        ViewBag.Golfers = theseGolfers;
+                        return View("SalariesCreated");
                     }
 
-                    DkTourney DKtourney = new DkTourney(theseGolfers)
-                    {
-                        Name = GameInfo,
-                        
-                    };
 
-                    context.DKT.Add(DKtourney);
-                    context.SaveChanges();
-
-                    ViewBag.Game = GameInfo;
-                    ViewBag.Golfers = theseGolfers;
-                    return View("SalariesCreated");
                 }
 
-               
+                ViewBag.Message = "Upload a file please";
+                return View("UploadDKcsv");
+
             }
+            catch (WebException e)
+            {
+                if (e.Status == WebExceptionStatus.ProtocolError)
+                {
+                    WebResponse resp = e.Response;
+                    using (StreamReader sr = new StreamReader(resp.GetResponseStream()))
+                    {
+                        Response.WriteAsync(sr.ReadToEnd());
+                    }
+                }
 
-            ViewBag.Message = "Upload a file please";
-            return View("UploadDKcsv");
-        
-            
-        }   
+                return View("ImportError");
 
+
+            }
+        }
     }
 }
+
+        
+
+
