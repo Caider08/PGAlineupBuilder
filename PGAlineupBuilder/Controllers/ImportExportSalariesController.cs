@@ -10,7 +10,6 @@ using PGAlineupBuilder.ViewModels;
 using PGAlineupBuilder.Models;
 using PGAlineupBuilder.Data;
 using Microsoft.Net.Http.Headers;
-using System.Data.SqlClient;
 using System.Net;
 
 
@@ -24,13 +23,9 @@ namespace PGAlineupBuilder.Controllers
     {
         private PGAlineupBuilderDbContext context;
 
-        // public ImportExportSalariesController(PGAlineupBuilderDbContext dbContext)
-        //{
-        // context = dbContext;
-        //}
-
         private readonly IHostingEnvironment _environment;
 
+        
         public ImportExportSalariesController(IHostingEnvironment environment, PGAlineupBuilderDbContext dbContext)
         {
             _environment = environment;
@@ -47,7 +42,6 @@ namespace PGAlineupBuilder.Controllers
 
         public IActionResult UploadDKcsv()
         {
-            // UploadDKcsvViewModel uploadDKcsvViewModel = new UploadDKcsvViewModel();
             return View("UploadDKcsv");
 
         }
@@ -78,9 +72,9 @@ namespace PGAlineupBuilder.Controllers
 
         //}
 
-
+        //Takes files from UploadDKcsv file and writes them to DKuploads Directory and passes string "UploadName" to DKcreate Method
         [HttpPost]
-        public IActionResult DKimport(ICollection<IFormFile> DKfiles, string uploadName)
+        public async Task<IActionResult> DKimport(ICollection<IFormFile> DKfiles, string uploadName)
         {
             // Path.Combine(_environment.WebRootPath, "DKuploads");
 
@@ -111,7 +105,7 @@ namespace PGAlineupBuilder.Controllers
                         using (FileStream fstream = new FileStream(Path.Combine(DKuploads, UPLOADname), FileMode.Create))
                         {
 
-                            file.CopyTo(fstream);
+                            await file.CopyToAsync(fstream);
 
                             fstream.Flush();
                         }
@@ -136,6 +130,11 @@ namespace PGAlineupBuilder.Controllers
                         //TempData["fileUpload"] = UPLOADname;
                         // ViewBag.Message = $"{DKfiles.Count} file(s) / {file.FileName}, {size} bytes uploaded sucessfully!";
                         // return View("UploadDKcsv");
+                        // ViewBag.FileName = UPLOADname;
+                        // return View("UploadDKcsv");
+
+
+                        //pass UPLOADname to DKcreate to create/push new DkTourney and its Golfers to the Database
                         return RedirectToAction("DKcreate", "ImportExportSalaries", new { Uname = $"{UPLOADname}" });
 
                         // using (var fileStream = new FileStream(Path.Combine(DKuploads, file.FileName), FileMode.Create))
@@ -161,6 +160,8 @@ namespace PGAlineupBuilder.Controllers
 
         }
 
+        //Where the 502.3 ERROR is currently happening (first appeared in another Method of another Controller before I wiped the Database)
+        //Method takes a string and uses the string to reference the file in DKuploads to pull a DkTourney and its golfers from...Then creates them and pushes to Database.
         public IActionResult DKcreate(string Uname)
         {
             // string uploadName;
@@ -177,6 +178,7 @@ namespace PGAlineupBuilder.Controllers
 
                     string GameInfo = PGAuploads.WeeksGameInfo(Uname);
 
+                    //check to see if this Tournament has already been pushed to the Database.
                     var isDuplicate = context.DKT.Any(a => a.Name == GameInfo);
 
                     if (isDuplicate)
@@ -185,7 +187,7 @@ namespace PGAlineupBuilder.Controllers
                         return View("UploadDKcsv");
                     }
                     else
-                    {
+                    {   //PUSH created Golfers and DkTourney to the Database
                         foreach (Golfer golfer in theseGolfers)
                         {
                             context.GOLFER.Add(golfer);
@@ -226,11 +228,13 @@ namespace PGAlineupBuilder.Controllers
 
                 return View("ImportError");
 
-
             }
+
+
         }
     }
 }
+  
 
         
 

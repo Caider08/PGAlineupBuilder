@@ -27,6 +27,7 @@ namespace PGAlineupBuilder.Controllers
             return View();
         }
 
+        //get all the DkTourneys from the Database and display in View
         public IActionResult ChooseDK()
         {
             var DKTourneys = context.DKT.ToList();
@@ -34,6 +35,7 @@ namespace PGAlineupBuilder.Controllers
             return View(DKTourneys);
         }
 
+        //just a Test...FanDuel part of site not built / implemented yet.
         public IActionResult ChooseFD()
         {
             // List<Golfer> testGolfers = new List<Golfer>();
@@ -54,7 +56,7 @@ namespace PGAlineupBuilder.Controllers
             return View();
         }
 
-        
+        //Take selected DkTourney and return a newly created DisplayTourneySalariesViewModel
         public IActionResult getDK(string DKselected)
         {
             DkTourney dkSelected = context.DKT.Single(s => s.Name == DKselected);
@@ -92,6 +94,7 @@ namespace PGAlineupBuilder.Controllers
                 int maxS = model.MaxSalary;
                 int minS = model.MaxSalary;
 
+                //adjust Exposure %s for each Golfer specified from the View
                 foreach(var golfer in currentGolfers)
                 {
                     double GolferPercentage = (golfer.Exposure / 100);
@@ -101,6 +104,7 @@ namespace PGAlineupBuilder.Controllers
 
                 List<DKlineup> generatedLineups = new List<DKlineup>();
 
+                //beging building lineups according to # from numbaLineups
                 for (var l=0; l < numbaLineups; l++)
                  {
                     int lineupcounter = 0;
@@ -110,6 +114,7 @@ namespace PGAlineupBuilder.Controllers
                         LineupID = lineupcounter,
                     };
 
+                    //try to create 6 man Lineup while falling into specified Salary Usage Range
                     while (newLineup.Lineup.Count() < 7)
                     {
                         Golfer chosenGolfer = new Golfer();
@@ -121,16 +126,19 @@ namespace PGAlineupBuilder.Controllers
 
                         newLineup.LineupGolfers.Add(chosenGolfer);
 
+                        //Remove Golfer if Golfer is 6th Golfer in the Lineup and MaxSalary has been passed
                         if (newLineup.Lineup.Count() == 6 && newLineup.LineupSalary < minS)
                         {
                             newLineup.LineupGolfers.Remove(chosenGolfer);
                         }
 
+                        //add golfer to Lineup and Increase runningSalary amount
                         newLineup.Lineup.Add(chosenGolfer.Playerid);
                         newLineup.LineupSalary += chosenGolfer.Salary;
 
                     }
 
+                    //add Newly created Lineup to list of lineups and increment the lineup count
                     generatedLineups.Add(newLineup);
                     lineupcounter++;
                     

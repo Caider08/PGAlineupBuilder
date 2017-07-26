@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\PGAlineupBuilder",
+    "\\PGAlineupBuilder\\bin",
+    "\\PGAlineupBuilder\\Controllers",
+    "\\PGAlineupBuilder\\Data",
+    "\\PGAlineupBuilder\\Views",
+    "\\PGAlineupBuilder\\Views\\ImportExportSalaries"
+  ],
+  "SelectedNode": "\\PGAlineupBuilder\\Views\\ImportExportSalaries\\UploadDKcsv.cshtml",
+  "PreviewInSolutionExplorer": false
+}

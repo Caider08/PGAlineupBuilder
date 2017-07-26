@@ -11,6 +11,10 @@
   <PropertyGroup>
     <UserSecretsId>aspnet-PGAlineupBuilder-9c1c2b2e-a40c-40a2-ba79-0d0948f6f037</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\web.config" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
@@ -40,6 +44,7 @@
     <Folder Include="DKuploads\" />
     <Folder Include="DKuploads\" />
     <Folder Include="DKuploads\" />
+  
   </ItemGroup>
 
 </Project>

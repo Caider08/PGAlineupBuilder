@@ -13,6 +13,7 @@ namespace PGAlineupBuilder.Models
 
         public static List<string[]> rows = new List<string[]>();
 
+        //pulls Name of tournament from specified file (tourneyName) from DKuploads Directory
         public static string WeeksGameInfo(string tourneyName)
         {
             string gameINFO;
@@ -28,6 +29,7 @@ namespace PGAlineupBuilder.Models
             return gameINFO;
         }
 
+        //creates List of Golfers from specified file (tourneyName) from DKuploads Directory
         public static List<Golfer> WeeksGolfers(string tourneyName)
         {
             List<Golfer> Golfers = new List<Golfer>();
@@ -57,7 +59,7 @@ namespace PGAlineupBuilder.Models
 
         }
 
-
+        //pull csv file (nameOfTourney) from DKuploads and remove the junk(Directions etc.. from top of csv file)
         private static void LoadWeek(string nameOfTourney)
         {
 
@@ -80,6 +82,8 @@ namespace PGAlineupBuilder.Models
                     }
                 }
             }
+
+            //remove Directions and other fluff from top of csv file 
 
             rows.RemoveRange(0, 8);
 
