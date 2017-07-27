@@ -115,7 +115,7 @@ namespace PGAlineupBuilder.Controllers
                     };
 
                     //try to create 6 man Lineup while falling into specified Salary Usage Range
-                    while (newLineup.Lineup.Count() < 7)
+                    while (newLineup.LineupGolfers.Count() < 7)
                     {
                         Golfer chosenGolfer = new Golfer();
 
