@@ -21,21 +21,24 @@ namespace PGAlineupBuilder.Models
 
         public int YearCreated { get; set; }
 
+        private double _exposure;
+
         public double Exposure
         {
             get
             {
-                return Exposure;
+                return _exposure;
             }
 
             set
             {
                 if (value < 0 || value > 100)
                 {
-                    value = 0;
+                    _exposure = 0;
+                    return;
                 }
 
-                Exposure = 0;
+                _exposure = value;
             }
         }
 
