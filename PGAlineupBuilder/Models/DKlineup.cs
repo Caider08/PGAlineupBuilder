@@ -9,7 +9,7 @@ namespace PGAlineupBuilder.Models
     {
         public List<int> Lineup { get; set; }
 
-        public virtual List<Golfer> LineupGolfers { get; set; }
+        public IList<Golfer> LineupGolfers { get; set; }
 
         public int LineupSalary { get; set; }
 
@@ -24,8 +24,8 @@ namespace PGAlineupBuilder.Models
             amount_golfers = 0;
             LineupSalary = 0;
             LineupID = 0;
-            List<Golfer> LineupGolfers = new List<Golfer>();
-            List<int> Lineup = new List<int>();
+            LineupGolfers = new List<Golfer>();
+            Lineup = new List<int>();
 
             //this.LineupID = System.Threading.Interlocked.Increment(ref lineup_Counter);
         }

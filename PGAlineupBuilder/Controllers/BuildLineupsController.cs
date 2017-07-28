@@ -89,52 +89,87 @@ namespace PGAlineupBuilder.Controllers
             {
                 var dkTourneyName = context.DKT.Single(s => s.Name == model.DKname.Name);
                 IList<Golfer> currentGolfers = model.TourneyParticipants;
+
+                //Get a list of Golfers with > 0 Exposure
+                IList<Golfer> ExposureGolfers = currentGolfers.Where(s => s.Exposure > 0).ToList();
+                
            
                 int numbaLineups = model.NumberOfRosters;
                 int maxS = model.MaxSalary;
                 int minS = model.MaxSalary;
 
                 //adjust Exposure %s for each Golfer specified from the View
-                foreach(var golfer in currentGolfers)
+                foreach(var golfer in ExposureGolfers)
                 {
                     double GolferPercentage = (golfer.Exposure / 100);
-                    double newExposure = GolferPercentage * numbaLineups;
+                    golfer.Exposure = Math.Round((GolferPercentage * numbaLineups), 0);
 
                 }
 
                 List<DKlineup> generatedLineups = new List<DKlineup>();
 
+                int lineupcounter = 0;
+
                 //beging building lineups according to # from numbaLineups
                 for (var l=0; l < numbaLineups; l++)
                  {
-                    int lineupcounter = 0;
-
+                    
                     DKlineup newLineup = new DKlineup
                     {
                         LineupID = lineupcounter,
                     };
 
+                    List<Golfer> DuplicateList = new List<Golfer>();
+
                     //try to create 6 man Lineup while falling into specified Salary Usage Range
                     while (newLineup.LineupGolfers.Count() < 7)
                     {
-                        Golfer chosenGolfer = new Golfer();
+                      
+                        Golfer chosenGolfer = ExposureGolfers.First(s => s.Exposure >= 0);
 
-                        while (newLineup.LineupGolfers.Contains(chosenGolfer) || (newLineup.LineupSalary + chosenGolfer.Salary > maxS))
+                        //keep chosing random golfers from ExposureGolfers list until one is found that is not in the DuplicateList
+                        while (DuplicateList.Contains(chosenGolfer) || ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
                         {
-                            chosenGolfer = currentGolfers.Single(s => s.Exposure >= 0);
+                            var rando = new Random();
+                            chosenGolfer = ExposureGolfers[rando.Next(ExposureGolfers.Count)];
+                            if (chosenGolfer.Exposure <= 0)
+                            {
+                                chosenGolfer = ExposureGolfers[rando.Next(ExposureGolfers.Count)];
+                            }
                         }
 
                         newLineup.LineupGolfers.Add(chosenGolfer);
 
-                        //Remove Golfer if Golfer is 6th Golfer in the Lineup and MaxSalary has been passed
-                        if (newLineup.Lineup.Count() == 6 && newLineup.LineupSalary < minS)
+                        //keep re-selecting a golfer until one fits within the Max Salary range
+                       // while ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS)
+                      //  {
+                      //      newLineup.LineupGolfers.Remove(chosenGolfer);
+                      //      chosenGolfer = currentGolfers.First(s => s.Exposure >= 0);
+                      //      newLineup.LineupGolfers.Add(chosenGolfer);
+                      //  }
+
+                        
+
+                        //Remove Golfer if Golfer is 6th Golfer in the Lineup and minSalary hasn't been met and start WHILE LOOP over
+                        if (newLineup.LineupGolfers.Count() == 6 && ((newLineup.LineupSalary + chosenGolfer.Salary) < minS))
                         {
                             newLineup.LineupGolfers.Remove(chosenGolfer);
                         }
-
-                        //add golfer to Lineup and Increase runningSalary amount
-                        newLineup.Lineup.Add(chosenGolfer.Playerid);
-                        newLineup.LineupSalary += chosenGolfer.Salary;
+                        if (newLineup.Lineup.Count() == 6 && ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
+                        {
+                            newLineup.LineupGolfers.Remove(chosenGolfer);
+                        }
+                        else
+                        {
+                            //add golfer to Lineup and Increase runningSalary amount and newLineup.amount
+                            newLineup.Lineup.Add(chosenGolfer.Playerid);
+                            newLineup.LineupSalary += chosenGolfer.Salary;
+                            chosenGolfer.Exposure -= 1;
+                            newLineup.amount_golfers += 1;
+                            DuplicateList.Add(chosenGolfer);
+                        }
+                      
+                    
 
                     }
 
