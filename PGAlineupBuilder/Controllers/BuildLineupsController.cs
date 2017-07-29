@@ -104,7 +104,7 @@ namespace PGAlineupBuilder.Controllers
            
                 int numbaLineups = model.NumberOfRosters;
                 int maxS = model.MaxSalary;
-                int minS = model.MaxSalary;
+                int minS = model.MinSalary;
 
                 //adjust Exposure %s for each Golfer specified from the View if Lineup amount > 5
                 if (numbaLineups > 5)
@@ -117,7 +117,9 @@ namespace PGAlineupBuilder.Controllers
                     }
 
                 }
-             
+
+                List<Golfer> NewExposureSorted = ExposureGolfers.OrderByDescending(g => g.Exposure).ToList();
+
                 List<DKlineup> generatedLineups = new List<DKlineup>();
 
                 int lineupcounter = 0;
@@ -132,23 +134,29 @@ namespace PGAlineupBuilder.Controllers
                             LineupID = lineupcounter,
                         };
 
+
                         List<Golfer> DuplicateList = new List<Golfer>();
 
                         //try to create 6 man Lineup while falling into specified Salary Usage Range
-                        while (newLineup.LineupGolfers.Count() < 7)
+                        while (newLineup.LineupGolfers.Count() < 6)
                         {
 
-                            Golfer chosenGolfer = ExposureGolfers.First(s => s.Exposure > 0);
+                            Golfer chosenGolfer = NewExposureSorted.First(s => s.Exposure > 0);
 
                             //keep chosing random golfers from ExposureGolfers list until one is found that is not in the DuplicateList
-                            while (DuplicateList.Contains(chosenGolfer) || ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS) || ((newLineup.LineupGolfers.Count() == 4) && (newLineup.LineupSalary + chosenGolfer.Salary > 42500)))
+                            while (DuplicateList.Contains(chosenGolfer) || ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
                             {
                                 var rando = new Random();
-                                chosenGolfer = ExposureGolfers[rando.Next(ExposureGolfers.Count)];
+                                chosenGolfer = NewExposureSorted[rando.Next(ExposureGolfers.Count)];
                                 if (chosenGolfer.Exposure <= 0)
                                 {
-                                    chosenGolfer = ExposureGolfers[rando.Next(ExposureGolfers.Count)];
+                                    chosenGolfer = NewExposureSorted[rando.Next(ExposureGolfers.Count)];
                                 }
+                            }
+
+                            if (newLineup.LineupGolfers.Count() == 4 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 6700)))
+                            {
+                                newLineup.LineupGolfers.Clear();
                             }
 
                             newLineup.LineupGolfers.Add(chosenGolfer);
@@ -168,7 +176,7 @@ namespace PGAlineupBuilder.Controllers
                             {
                                 newLineup.LineupGolfers.Remove(chosenGolfer);
                             }
-                            if (newLineup.Lineup.Count() == 6 && ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
+                            else if (newLineup.Lineup.Count() == 6 && ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
                             {
                                 newLineup.LineupGolfers.Remove(chosenGolfer);
                             }
@@ -192,7 +200,7 @@ namespace PGAlineupBuilder.Controllers
 
                     }
 
-                    ViewBag.Success = generatedLineups;
+                    ViewBag.Success = generatedLineups.ToList();
                     ViewBag.Tname = dkTourneyName;
                     return View("BuiltDK");
 
