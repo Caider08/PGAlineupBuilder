@@ -3,9 +3,53 @@
 *@
 @{
 }
+@model PGAlineupBuilder.ViewModels.BuiltDKLineupsViewModel
 
-<h1>Generated Lineups for @ViewBag.Tname</h1>
-<table>
+<h1>Generated Lineups for @Model.BuiltDK.Name</h1>
+
+<form method="post" asp-action="ExportLineupsCSV" asp-controller="BuildLineups">
+    <div class="form-group">
+        <label asp-for="BuiltDK"></label>
+        <input class="form-control" asp-for="BuiltDK" type="hidden" />
+    </div>
+
+    <div class="form-group">
+        @foreach(DKlineup lineUP in Model.listDKlineups)
+        {
+            @foreach(int playaID in lineUP.Lineup)
+            {
+                @playaID
+
+            }
+
+        }
+    </div>
+
+    <input type="submit" value="Export Your lineups as CSV" />
+
+    <div class="form-group">
+        <table>
+          <tr>
+            @foreach (DKlineup lineup in Model.listDKlineups)
+            {
+                @foreach(Golfer golfer in lineup.LineupGolfers)
+                {
+                    <td>@golfer.Name</td>
+                    <td><input asp-for="@golfer.ID" type="hidden" /></td>
+                    <td>@golfer.Salary</td>
+
+                }
+                <td>@lineup.LineupSalary</td>
+            }
+           </tr>
+          </table>
+ 
+    </div>
+
+</form>
+
+
+@**<table>
     <tr>
         <th>Lineup#</th>
         <th>Golfer1 ID</th>
@@ -29,7 +73,8 @@
     </tr>
    
 </table>
-
+<br />
+<br />
 
 <table>
     <tr>
@@ -67,4 +112,4 @@
     }
 
 
-</table>
+</table>**@

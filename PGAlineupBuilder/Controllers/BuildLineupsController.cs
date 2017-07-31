@@ -84,12 +84,13 @@ namespace PGAlineupBuilder.Controllers
             return View("DisplayDK", model);
         }
 
-        [HttpPost]
+      
         public IActionResult DisplayDK(DisplayTourneySalariesViewModel model)
         {
             if(ModelState.IsValid)
             {
                 var dkTourneyName = context.DKT.Single(s => s.Name == model.DKname.Name);
+                string TourneyBuildName = dkTourneyName.Name;
                 IList<Golfer> currentGolfers = model.TourneyParticipants;
 
                 //Get a list of Golfers with > 0 Exposure
@@ -123,8 +124,8 @@ namespace PGAlineupBuilder.Controllers
                 List<DKlineup> generatedLineups = new List<DKlineup>();
 
                 int lineupcounter = 0;
-                try
-                {
+                //try
+               // {
                     //begin building lineups according to # from numbaLineups
                     for (var l = 0; l < numbaLineups; l++)
                     {
@@ -154,11 +155,17 @@ namespace PGAlineupBuilder.Controllers
                                 }
                             }
 
+                            if (newLineup.LineupGolfers.Count() == 3 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 13200)))
+                            {
+                                newLineup.LineupGolfers.Clear();
+                            }
+
                             if (newLineup.LineupGolfers.Count() == 4 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 6700)))
                             {
                                 newLineup.LineupGolfers.Clear();
                             }
 
+                          
                             newLineup.LineupGolfers.Add(chosenGolfer);
 
                             //keep re-selecting a golfer until one fits within the Max Salary range
@@ -200,19 +207,23 @@ namespace PGAlineupBuilder.Controllers
 
                     }
 
-                    ViewBag.Success = generatedLineups.ToList();
-                    ViewBag.Tname = dkTourneyName;
-                    return View("BuiltDK");
-
-                }
-                catch(Exception e)
+                BuiltDKLineupsViewModel yourCreatedLineups = new BuiltDKLineupsViewModel(dkTourneyName, generatedLineups)
                 {
 
+                };
+                //ViewBag.Success = generatedLineups;
+                //ViewBag.tourneyname = dkTourneyName;
+                return View("BuiltDK", yourCreatedLineups);
 
-                    ViewBag.Exception = $"{e.Message}";
-                    return View(model);
+               // }
+               // catch(Exception e)
+               // {
 
-                }
+
+                  //  ViewBag.Exception = $"{e.Message}";
+                  //  return View(model);
+
+                //}
              
 
 
