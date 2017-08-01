@@ -1,0 +1,84 @@
+G,G,G,G,G,G,,Instructions,,,,,,
+,,,,,,,1. Locate the player you want to select in the list below ,,,,,,
+,,,,,,,2. Copy the ID of your player (you can use the Name + ID column or the ID column) ,,,,,,
+,,,,,,,3. Paste the ID into the roster position desired ,,,,,,
+,,,,,,,4. You must include an ID for each player; you cannot use just the player's name ,,,,,,
+,,,,,,,5. You can create up to 500 lineups per file ,,,,,,
+ ,,,,,,,,,,,,,
+,,,,,,,Position,Name + ID,Name,ID,Salary,GameInfo,TeamAbbrev 
+,,,,,,,G,Jordan Spieth (9155934),Jordan Spieth,9155934,12000,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Dustin Johnson (9155935),Dustin Johnson,9155935,11800,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Rory McIlroy (9155936),Rory McIlroy,9155936,11400,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Brooks Koepka (9155937),Brooks Koepka,9155937,11100,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Rickie Fowler (9155938),Rickie Fowler,9155938,10600,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Hideki Matsuyama (9155939),Hideki Matsuyama,9155939,10200,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Justin Rose (9155940),Justin Rose,9155940,9900,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Jon Rahm (9155941),Jon Rahm,9155941,9700,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Henrik Stenson (9155942),Henrik Stenson,9155942,9500,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Jason Day (9155943),Jason Day,9155943,9400,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Matt Kuchar (9155944),Matt Kuchar,9155944,9300,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Sergio Garcia (9155945),Sergio Garcia,9155945,9200,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Paul Casey (9155946),Paul Casey,9155946,9000,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Adam Scott (9155947),Adam Scott,9155947,8800,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Branden Grace (9155948),Branden Grace,9155948,8600,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Tommy Fleetwood (9155949),Tommy Fleetwood,9155949,8400,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Daniel Berger (9155950),Daniel Berger,9155950,8300,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Justin Thomas (9155951),Justin Thomas,9155951,8200,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Alexander Noren (9155952),Alexander Noren,9155952,8100,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Marc Leishman (9155953),Marc Leishman,9155953,8000,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Zach Johnson (9155954),Zach Johnson,9155954,8000,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Phil Mickelson (9155955),Phil Mickelson,9155955,7900,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Rafael Cabrera-Bello (9155956),Rafael Cabrera-Bello,9155956,7900,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Louis Oosthuizen (9155957),Louis Oosthuizen,9155957,7800,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Patrick Reed (9155958),Patrick Reed,9155958,7800,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Lee Westwood (9155959),Lee Westwood,9155959,7700,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Bubba Watson (9155960),Bubba Watson,9155960,7700,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,J.B. Holmes (9155961),J.B. Holmes,9155961,7600,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Chris Wood (9155962),Chris Wood,9155962,7600,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Kevin Chappell (9155963),Kevin Chappell,9155963,7500,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Gary Woodland (9155964),Gary Woodland,9155964,7500,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Charley Hoffman (9155965),Charley Hoffman,9155965,7400,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Brian Harman (9155966),Brian Harman,9155966,7400,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Thomas Pieters (9155967),Thomas Pieters,9155967,7300,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Xander Schauffele (9155968),Xander Schauffele,9155968,7300,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Charl Schwartzel (9155969),Charl Schwartzel,9155969,7200,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Jason Dufner (9155970),Jason Dufner,9155970,7200,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Ross Fisher (9155971),Ross Fisher,9155971,7200,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Kevin Kisner (9155972),Kevin Kisner,9155972,7100,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Thorbjorn Olesen (9155973),Thorbjorn Olesen,9155973,7100,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Russell Henley (9155974),Russell Henley,9155974,7100,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Bernd Wiesberger (9155975),Bernd Wiesberger,9155975,7000,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Andy Sullivan (9155976),Andy Sullivan,9155976,7000,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Matthew Fitzpatrick (9155977),Matthew Fitzpatrick,9155977,7000,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Tyrrell Hatton (9155978),Tyrrell Hatton,9155978,6900,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Emiliano Grillo (9155979),Emiliano Grillo,9155979,6900,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Bill Haas (9155980),Bill Haas,9155980,6900,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Bryson DeChambeau (9155981),Bryson DeChambeau,9155981,6800,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Billy Horschel (9155982),Billy Horschel,9155982,6800,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Francesco Molinari (9155983),Francesco Molinari,9155983,6800,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Jhonattan Vegas (9155984),Jhonattan Vegas,9155984,6700,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Kyle Stanley (9155985),Kyle Stanley,9155985,6700,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Brendan Steele (9155986),Brendan Steele,9155986,6700,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Renato Paratore (9155987),Renato Paratore,9155987,6600,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Scott Hend (9155988),Scott Hend,9155988,6600,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Ryan Moore (9155989),Ryan Moore,9155989,6600,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Jimmy Walker (9155990),Jimmy Walker,9155990,6500,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Harold Varner (9155991),Harold Varner,9155991,6500,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Hideto Tanihara (9155992),Hideto Tanihara,9155992,6500,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Andres Romero (9155993),Andres Romero,9155993,6400,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Wesley Bryan (9155994),Wesley Bryan,9155994,6400,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Adam Hadwin (9155995),Adam Hadwin,9155995,6400,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Mackenzie Hughes (9155996),Mackenzie Hughes,9155996,6300,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Thongchai Jaidee (9155997),Thongchai Jaidee,9155997,6300,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Hudson Swafford (9155998),Hudson Swafford,9155998,6300,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Danny Willett (9155999),Danny Willett,9155999,6200,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Si Woo Kim (9156000),Si Woo Kim,9156000,6200,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Russell Knox (9156001),Russell Knox,9156001,6200,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Pat Perez (9156002),Pat Perez,9156002,6100,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Rod Pampling (9156003),Rod Pampling,9156003,6100,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Jeunghun Wang (9156004),Jeunghun Wang,9156004,6100,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Fabrizio Zanotti (9156005),Fabrizio Zanotti,9156005,6100,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Sam Brazel (9156006),Sam Brazel,9156006,6000,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Satoshi Kodaira (9156007),Satoshi Kodaira,9156007,6000,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Paul Lawrie (9156008),Paul Lawrie,9156008,6000,World Golf Championships-Bridgestone Invitational,Golf
+,,,,,,,G,Shaun Norris (9156009),Shaun Norris,9156009,6000,World Golf Championships-Bridgestone Invitational,Golf
