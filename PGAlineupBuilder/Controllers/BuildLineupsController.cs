@@ -150,22 +150,32 @@ namespace PGAlineupBuilder.Controllers
                             //keep chosing random golfers from ExposureGolfers list until one is found that is not in the DuplicateList
                             while (DuplicateList.Contains(chosenGolfer) || ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
                             {
-                                var rando = new Random();
-                                chosenGolfer = NewExposureSorted[rando.Next(NewExposureSorted.Count)];
-
-                                if (chosenGolfer.Exposure <= 0)
+                                //if (attemptCounter >= 999)
+                                //{
+                                    //ViewBag.Attempts = "Please Adjust your settings(select more Golfer Exposures) and try to Build again.";
+                                   // return View(model);
+                               // }
+                                //else
+                               try
                                 {
+                                    var rando = new Random();
                                     chosenGolfer = NewExposureSorted[rando.Next(NewExposureSorted.Count)];
+
+                                    if (chosenGolfer.Exposure <= 0)
+                                    {
+                                        chosenGolfer = NewExposureSorted[rando.Next(NewExposureSorted.Count)];
+                                    }
+
+                                     break;
                                 }
-
-                                attemptCounter += 1;
-
-                                if (attemptCounter >= 999)
+                                catch(Exception)
                                 {
                                     ViewBag.Attempts = "Please Adjust your settings(select more Golfer Exposures) and try to Build again.";
                                     return View(model);
                                 }
-
+                                    //attemptCounter += 1;
+                                
+                               
                             }
 
                             if (newLineup.LineupGolfers.Count() == 2 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 19500)))
