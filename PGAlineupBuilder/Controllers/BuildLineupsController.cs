@@ -129,99 +129,100 @@ namespace PGAlineupBuilder.Controllers
                 //try
                // {
                     //begin building lineups according to # from numbaLineups
-                    for (var l = 0; l < numbaLineups; l++)
+                for (var l = 0; l < numbaLineups; l++)
+                {
+
+                    DKlineup newLineup = new DKlineup
                     {
+                        LineupID = lineupcounter,
+                    };
 
-                        DKlineup newLineup = new DKlineup
-                        {
-                            LineupID = lineupcounter,
-                        };
+                    int attemptCounter = 0;
 
-
-                        List<Golfer> DuplicateList = new List<Golfer>();
+                    List<Golfer> DuplicateList = new List<Golfer>();
 
                         //try to create 6 man Lineup while falling into specified Salary Usage Range
-                        while (newLineup.LineupGolfers.Count() < 6)
-                        {
-                            int attemptCounter = 0;
+                    while (newLineup.LineupGolfers.Count() < 6)
+                    {
+                            
 
-                            Golfer chosenGolfer = NewExposureSorted.First(s => s.Exposure > 0);
+                       Golfer chosenGolfer = NewExposureSorted.First(s => s.Exposure > 0);
 
-                            //keep chosing random golfers from ExposureGolfers list until one is found that is not in the DuplicateList
-                            while (DuplicateList.Contains(chosenGolfer) || ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
-                            {
-                                //if (attemptCounter >= 999)
-                                //{
-                                    //ViewBag.Attempts = "Please Adjust your settings(select more Golfer Exposures) and try to Build again.";
-                                   // return View(model);
-                               // }
-                                //else
-                               try
-                                {
-                                    var rando = new Random();
-                                    chosenGolfer = NewExposureSorted[rando.Next(NewExposureSorted.Count)];
+                       //keep chosing random golfers from ExposureGolfers list until one is found that is not in the DuplicateList
+                       while ((DuplicateList.Contains(chosenGolfer)) || ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
+                       {
+                           if (attemptCounter == 9999)
+                           {
+                               break;
 
-                                    if (chosenGolfer.Exposure <= 0)
-                                    {
-                                        chosenGolfer = NewExposureSorted[rando.Next(NewExposureSorted.Count)];
-                                    }
+                                 
+                           }
+                                
+                           var rando = new Random();
+                           chosenGolfer = NewExposureSorted[rando.Next(NewExposureSorted.Count)];
 
-                                     break;
-                                }
-                                catch(Exception)
-                                {
-                                    ViewBag.Attempts = "Please Adjust your settings(select more Golfer Exposures) and try to Build again.";
-                                    return View(model);
-                                }
-                                    //attemptCounter += 1;
+                           if (chosenGolfer.Exposure <= 0)
+                           {
+                              chosenGolfer = NewExposureSorted[rando.Next(NewExposureSorted.Count)];
+                           }
+
+                               
+                           attemptCounter ++;
                                 
                                
-                            }
+                       }
 
-                            if (newLineup.LineupGolfers.Count() == 2 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 19500)))
-                            {
-                                //Increase the Exposure for each Golfer in the LineupGolfers since we're putting it back into selection pool
-                                foreach(Golfer golfa in newLineup.LineupGolfers)
-                                {
-                                    golfa.Exposure++;
-                                }
-                                newLineup.LineupGolfers.Clear();
-                                newLineup.LineupSalary = 0;
-                                newLineup.amount_golfers = 0;
-                                newLineup.Lineup.Clear();
-                                DuplicateList.Clear();
-                            }
+                       if(attemptCounter == 9999)
+                       {
+                            ViewBag.Attempts = "Please Adjust your settings(select more Golfer Exposures) and try to Build again.";
+                            return View(model);
+                             
+                       }   
 
-                            if (newLineup.LineupGolfers.Count() == 3 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 13000)))
-                            {
-                                //Increase the Exposure for each Golfer in the LineupGolfers since we're putting it back into selection pool
-                                foreach (Golfer golfa in newLineup.LineupGolfers)
-                                 {
-                                     golfa.Exposure++;
-                                 }
-                                newLineup.LineupGolfers.Clear();
-                                newLineup.LineupSalary = 0;
-                                newLineup.amount_golfers = 0;
-                                newLineup.Lineup.Clear();
-                                DuplicateList.Clear();
-                            }
+                       if (newLineup.LineupGolfers.Count() == 2 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 19500)))
+                       {
+                           //Increase the Exposure for each Golfer in the LineupGolfers since we're putting it back into selection pool
+                           foreach(Golfer golfa in newLineup.LineupGolfers)
+                           {
+                               golfa.Exposure++;
+                           }
+                           newLineup.LineupGolfers.Clear();
+                           newLineup.LineupSalary = 0;
+                           newLineup.amount_golfers = 0;
+                           newLineup.Lineup.Clear();
+                           DuplicateList.Clear();
+                       }
 
-                            if (newLineup.LineupGolfers.Count() == 4 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 6500)))
-                            {
-                                //Increase the Exposure for each Golfer in the LineupGolfers since we're putting it back into selection pool
-                                foreach (Golfer golfa in newLineup.LineupGolfers)
-                                {
-                                    golfa.Exposure++;
-                                }   
-                                newLineup.LineupGolfers.Clear();
-                                newLineup.LineupSalary = 0;
-                                newLineup.amount_golfers = 0;
-                                newLineup.Lineup.Clear();
-                                DuplicateList.Clear();
-                            }
+                       if (newLineup.LineupGolfers.Count() == 3 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 13000)))
+                       {
+                           //Increase the Exposure for each Golfer in the LineupGolfers since we're putting it back into selection pool
+                           foreach (Golfer golfa in newLineup.LineupGolfers)
+                           {
+                                golfa.Exposure++;
+                           }
+                           newLineup.LineupGolfers.Clear();
+                           newLineup.LineupSalary = 0;
+                           newLineup.amount_golfers = 0;
+                           newLineup.Lineup.Clear();
+                           DuplicateList.Clear();
+                       }
+
+                       if (newLineup.LineupGolfers.Count() == 4 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 6500)))
+                       {
+                           //Increase the Exposure for each Golfer in the LineupGolfers since we're putting it back into selection pool
+                           foreach (Golfer golfa in newLineup.LineupGolfers)
+                           {
+                                golfa.Exposure++;
+                           }   
+                           newLineup.LineupGolfers.Clear();
+                           newLineup.LineupSalary = 0;
+                           newLineup.amount_golfers = 0;
+                           newLineup.Lineup.Clear();
+                           DuplicateList.Clear();
+                       }
 
                           
-                            newLineup.LineupGolfers.Add(chosenGolfer);
+                       newLineup.LineupGolfers.Add(chosenGolfer);
 
                             //keep re-selecting a golfer until one fits within the Max Salary range
                             // while ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS)
@@ -234,38 +235,38 @@ namespace PGAlineupBuilder.Controllers
 
 
                             //Remove Golfer if Golfer is 6th Golfer in the Lineup and minSalary hasn't been met and start WHILE LOOP over
-                            if (newLineup.LineupGolfers.Count() == 6 && ((newLineup.LineupSalary + chosenGolfer.Salary) < minS))
-                            {
-                                newLineup.LineupGolfers.Remove(chosenGolfer);
-                            }
-                            else if (newLineup.Lineup.Count() == 6 && ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
-                            {
-                                newLineup.LineupGolfers.Remove(chosenGolfer);
-                            }
-                            else
-                            {
-                                //add golfer to Lineup and Increase runningSalary amount and newLineup.amount
-                                newLineup.Lineup.Add(chosenGolfer.Playerid);
-                                newLineup.LineupSalary += chosenGolfer.Salary;
-                                chosenGolfer.Exposure--;
-                                newLineup.amount_golfers++;
-                                DuplicateList.Add(chosenGolfer);
-                            }
+                      if (newLineup.LineupGolfers.Count() == 6 && ((newLineup.LineupSalary + chosenGolfer.Salary) < minS))
+                      {
+                          newLineup.LineupGolfers.Remove(chosenGolfer);
+                      }
+                      else if (newLineup.Lineup.Count() == 6 && ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
+                      {
+                          newLineup.LineupGolfers.Remove(chosenGolfer);
+                      }
+                      else
+                      {
+                        //add golfer to Lineup and Increase runningSalary amount and newLineup.amount
+                         newLineup.Lineup.Add(chosenGolfer.Playerid);
+                         newLineup.LineupSalary += chosenGolfer.Salary;
+                         chosenGolfer.Exposure--;
+                         newLineup.amount_golfers++;
+                         DuplicateList.Add(chosenGolfer);
+                      }
 
-
-                        }
-                       
-                        //add Newly created Lineup to list of lineups and increment the lineup count
-                        if(generatedLineups.Contains(newLineup))
-                        {
-                            ViewBag.Duplicates = "Sorry, your Build contained Duplicate Lineups...try again";
-                            return View(model);
-                        }
-
-                        generatedLineups.Add(newLineup);
-                        lineupcounter++;
 
                     }
+                       
+                    //add Newly created Lineup to list of lineups and increment the lineup count
+                    if(generatedLineups.Contains(newLineup))
+                    {
+                       ViewBag.Duplicates = "Sorry, your Build contained Duplicate Lineups...try again";
+                       return View(model);
+                    }
+
+                    generatedLineups.Add(newLineup);
+                    lineupcounter++;
+
+                }
 
                 BuiltDKLineupsViewModel yourCreatedLineups = new BuiltDKLineupsViewModel(dkTourneyName, generatedLineups)
                 {
