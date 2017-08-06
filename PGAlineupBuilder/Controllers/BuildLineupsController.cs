@@ -151,25 +151,28 @@ namespace PGAlineupBuilder.Controllers
                        //keep chosing random golfers from ExposureGolfers list until one is found that is not in the DuplicateList
                        while ((DuplicateList.Contains(chosenGolfer)) || ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
                        {
-                           if (attemptCounter == 9999)
-                           {
-                               break;
 
-                                 
-                           }
-                                
+                           attemptCounter++;
+
                            var rando = new Random();
                            chosenGolfer = NewExposureSorted[rando.Next(NewExposureSorted.Count)];
+
+                           
 
                            if (chosenGolfer.Exposure <= 0)
                            {
                               chosenGolfer = NewExposureSorted[rando.Next(NewExposureSorted.Count)];
                            }
 
-                               
-                           attemptCounter ++;
-                                
-                               
+                           if (attemptCounter == 9999)
+                           {
+                                break;
+
+
+                           }
+
+                            System.Threading.Thread.Sleep(5);
+                             
                        }
 
                        if(attemptCounter == 9999)

@@ -7,15 +7,21 @@
 
 <h1>Search Our Database</h1>
 
-<form method="post" asp-controller="Goflers" asp-action="Search">
-  
+<form method="post" asp-controller="Golfers" asp-action="SearchD">
+
     <div class="form-group">
         <span>
-            <label for="ByGolfer">Search By Golfer</label>
-            <input type="radio" name="SearchMethod" id="ByGolfer" value="Search By Golfer" checked="checked" />
-            <label for="ByTournament">Search By Tournament</label>
-            <input type="radio" name="SearchMethod" id="ByTournament" value="Search By Tournament" />
+            <label for="SearchMethod">Search By Golfer</label>
+            <input type="radio" name="SearchMethod" id="SearchMethod"value="ByGolfer" checked="checked" />
         </span>
+        <br />
+        <span>
+            <label for="SearchMethod">Search By Tournament</label>
+            <input type="radio" name="SearchMethod" id="SearchMethod" value="ByTournament" />
+        </span>
+        <br />
+        <span>@ViewBag.BlankTerm</span>
+        <span>@ViewBag.None</span>
 
         <!--<span class="form-control">
             
