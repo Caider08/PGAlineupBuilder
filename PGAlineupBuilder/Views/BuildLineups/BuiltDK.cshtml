@@ -10,23 +10,29 @@
 <form method="post" asp-action="ExportLineupsCSV" asp-controller="BuildLineups">
     <div class="form-group">
         <label asp-for="BuiltDK"></label>
-        <input class="form-control" asp-for="BuiltDK" type="hidden" />
+        <input class="form-control" asp-for="@Model.BuiltDK.Name" type="hidden" />
     </div>
 
     <div class="form-group">
         <table>
-
-            
-            @foreach (DKlineup lineUP in Model.listDKlineups)
-            {
-                <tr>
-                @foreach (int playaID in lineUP.Lineup)
+               
+                @foreach (DKlineup lineup in Model.listDKlineups)
                 {
-                    <td>@playaID</td>
+                  <tr>
+                  
+                        @foreach (int playaID in lineup.Lineup)
+                        {
+                            <td>
+                                @playaID
+                        </td>
+                        }
 
+
+                    </tr>
                 }
-                </tr>
-            }
+
+           
+           
         </table>
     </div>
 
@@ -35,7 +41,26 @@
     <div class="form-group">
         <table>
          
-            @foreach (DKlineup lineup in Model.listDKlineups)
+            @for(int i = 0; i <Model.listDKlineups.Count(); i++)
+
+            {
+                    <tr>
+                @for (int j = 0; j < Model.listDKlineups[i].LineupGolfers.Count(); j++)
+                {
+                    
+                        <td>@Model.listDKlineups[i].LineupGolfers[j].Name</td>
+                        <td>@Model.listDKlineups[i].LineupGolfers[j].Salary</td>
+                        <td><input type="hidden" asp-for="@Model.listDKlineups[i].LineupGolfers[j].Name" /></td>
+                        <td><input type="hidden" asp-for="@Model.listDKlineups[i].LineupGolfers[j].Playerid" /></td>
+                        <td><input type="hidden" asp-for="@Model.listDKlineups[i].LineupGolfers[j].Salary" /></td>
+
+                 }
+                        <td>@Model.listDKlineups[i].LineupSalary</td>
+                        <td><input type="hidden" asp-for="@Model.listDKlineups[i].LineupSalary"/></td>
+                    </tr>
+             }
+
+      @*    @foreach (DKlineup lineup in Model.listDKlineups)
             {
                 <tr>
                 @foreach(Golfer golfer in lineup.LineupGolfers)
@@ -47,9 +72,9 @@
                 }
                 <td>$@lineup.LineupSalary</td>
                 </tr>
-            }
+            }*@
           
-          </table>
+         </table>
  
     </div>
 

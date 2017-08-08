@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Net;
 using System.IO;
 
+
 namespace PGAlineupBuilder.Controllers
 {
     
@@ -323,45 +324,48 @@ namespace PGAlineupBuilder.Controllers
 
 
         }
-           
+        [HttpPost]
+        public FileStreamResult ExportLineupsCSV(BuiltDKLineupsViewModel yourCreatedLineups)
+        {
+            MemoryStream memoryS = new MemoryStream();
+            StreamWriter streamW = new StreamWriter(memoryS);
 
-            
 
-        
-           // string dkTourneyName = golfers.First().GameInfo;
-
-            //if (Rosters < 1 || Rosters > 150)
-            //{
-           //     ViewBag.SelectedDKT = dkTourneyName;
-           //     ViewBag.RosterError = "Please build between 1-150 lineups";
-            //    return View("DisplayDK", golfers);
-           // }
-            
-
-           
-            //var tourney = model.Name;
-            //string dkselected = tourney.Name;
+            var namer = yourCreatedLineups.BuiltDK.Name;
+            var lineups = yourCreatedLineups.listDKlineups.ToList();
           
-           // IEnumerable<Golfer> displaysGolfers = incomingDisplay.Participants.ToList();
-           // DkTourney displaysTourney = incomingDisplay.Name;
-
-            //if (ModelState.IsValid)
-           // {
-               // int numbaLineups = model.NumberOfRosters;
-               // int maxS = model.MaxSalary;
-                //int minS = model.MaxSalary;
 
 
 
-                //return View("BuildDK");
-            //}
+            foreach (DKlineup lineup in lineups)
+            {
+                foreach (Golfer golferr in lineup.LineupGolfers)
+                {
+                    streamW.Write(String.Format("{0},", golferr.Playerid));
+                    
+                }
+                streamW.WriteLine();
+            }
 
-            // DisplayTourneySalariesViewModel anotherDisplayDKT = new DisplayTourneySalariesViewModel(displaysTourney, displaysGolfers)
-            // {
+            streamW.Flush();
 
-            //  };
-        
-            //return RedirectToAction("getDK", "BuildLineups", new { id = dkselected });
-        
+            return new FileStreamResult(memoryS, "text/csv") { FileDownloadName = "yourDKlineups.csv" };
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
+
+    
 }

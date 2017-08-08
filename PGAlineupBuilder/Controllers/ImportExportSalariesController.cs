@@ -160,7 +160,6 @@ namespace PGAlineupBuilder.Controllers
 
         }
 
-        //Where the 502.3 ERROR is currently happening (first appeared in another Method of another Controller before I wiped the Database)
         //Method takes a string and uses the string to reference the file in DKuploads to pull a DkTourney and its golfers from...Then creates them and pushes to Database.
         public IActionResult DKcreate(string Uname)
         {
