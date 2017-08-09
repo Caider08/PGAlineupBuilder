@@ -89,16 +89,9 @@ namespace PGAlineupBuilder.Controllers
                     if (!string.IsNullOrEmpty(uploadName))
                     {
                         var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                        //string filename = file.FileName;
-                        //string experimentPath = @"C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\DKuploads";
-                        //filename = _environment.WebRootPath + $@"\{filename}";
-                        // var DKuploads = _environment.ContentRootPath + Path.DirectorySeparatorChar.ToString() + "DKuploads" + Path.DirectorySeparatorChar.ToString() + $@"\{filename}";
-                        // var DKuploads = _environment.WebRootPath + Path.DirectorySeparatorChar.ToString() + "DKuploads" + Path.DirectorySeparatorChar.ToString() + $@"{filename}";
-                        // var DKuploads = System.IO.Path.Combine(_environment.ContentRootPath, "DKuploads", filename);
+                       
                         var DKuploads = System.IO.Path.Combine(_environment.ContentRootPath, "DKuploads");
-                        // Name = file.FileName,
-
-                        // };
+                       
                         string UPLOADname = uploadName;
 
 
@@ -109,37 +102,11 @@ namespace PGAlineupBuilder.Controllers
 
                             fstream.Flush();
                         }
-                        //using (MemoryStream memoryStream = new MemoryStream())
-                        // {
-                        // await file.CopyToAsync(memoryStream);
-                        // byte[] uploadByteArray = memoryStream.ToArray();
-                        //string uploadString = uploadByteArray.ToString();
-
-                        // System.IO.File.WriteAllBytes(DKuploads, uploadByteArray);
-
-
-
-                        //dkU.csvUpload = memoryStream.ToArray();
-
-                        // }
-
-                        // context.DKS.Add(dkU);
-                        // context.SaveChanges();
-
+                        
                         size += file.Length;
-                        //TempData["fileUpload"] = UPLOADname;
-                        // ViewBag.Message = $"{DKfiles.Count} file(s) / {file.FileName}, {size} bytes uploaded sucessfully!";
-                        // return View("UploadDKcsv");
-                        // ViewBag.FileName = UPLOADname;
-                        // return View("UploadDKcsv");
-
-
-                        //pass UPLOADname to DKcreate to create/push new DkTourney and its Golfers to the Database
+                                           
                         return RedirectToAction("DKcreate", "ImportExportSalaries", new { Uname = $"{UPLOADname}" });
-
-                        // using (var fileStream = new FileStream(Path.Combine(DKuploads, file.FileName), FileMode.Create))
-                        // {
-                        //;
+                    
                     }
                     else
                     {
@@ -163,12 +130,7 @@ namespace PGAlineupBuilder.Controllers
         //Method takes a string and uses the string to reference the file in DKuploads to pull a DkTourney and its golfers from...Then creates them and pushes to Database.
         public IActionResult DKcreate(string Uname)
         {
-            // string uploadName;
-
-            //uploadName = TempData["fileUpload"] as string;
-
-            try
-            {
+          
                 if (!string.IsNullOrWhiteSpace(Uname))
                 {
                     List<Golfer> theseGolfers = new List<Golfer>();
@@ -213,24 +175,11 @@ namespace PGAlineupBuilder.Controllers
                 ViewBag.Message = "Upload a file please";
                 return View("UploadDKcsv");
 
-            }
-            catch (WebException e)
-            {
-                if (e.Status == WebExceptionStatus.ProtocolError)
-                {
-                    WebResponse resp = e.Response;
-                    using (StreamReader sr = new StreamReader(resp.GetResponseStream()))
-                    {
-                        Response.WriteAsync(sr.ReadToEnd());
-                    }
-                }
-
-                return View("ImportError");
-
-            }
-
 
         }
+
+
+        
     }
 }
   

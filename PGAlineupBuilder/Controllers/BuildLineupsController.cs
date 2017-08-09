@@ -348,8 +348,9 @@ namespace PGAlineupBuilder.Controllers
             }
 
             streamW.Flush();
+            streamW.BaseStream.Seek(0, SeekOrigin.Begin);
 
-            return new FileStreamResult(memoryS, "text/csv") { FileDownloadName = "yourDKlineups.csv" };
+            return new FileStreamResult(streamW.BaseStream, "text/csv") { FileDownloadName = $"{namer}.csv" };
 
         }
 
