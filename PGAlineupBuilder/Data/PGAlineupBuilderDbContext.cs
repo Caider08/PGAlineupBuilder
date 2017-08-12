@@ -14,6 +14,10 @@ namespace PGAlineupBuilder.Data
 
         public DbSet<Golfer> GOLFER { get; set; }
 
+        public DbSet<FDtourney> FDT { get; set; }
+
+        public DbSet<FDgolfer> FDGOLFER { get; set; }
+
 
         public PGAlineupBuilderDbContext(DbContextOptions<PGAlineupBuilderDbContext> options)
             : base(options)

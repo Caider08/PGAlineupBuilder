@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model PGAlineupBuilder.ViewModels.BuiltFDLineupsViewModel
+
+<h1>Generated Lineups for @Model.BuiltFD.Name</h1>
+
+<form method="post" asp-action="ExportLineupsCSV" asp-controller="BuildLineups">
+    <div class="form-group">
+        <label asp-for="BuiltFD"></label>
+        <input class="form-control" asp-for="@Model.BuiltFD.Name" type="hidden" />
+    </div>
+
+    <div class="form-group">
+        <table>
+
+            @foreach (FDlineup lineup in Model.listFDlineups)
+            {
+                <tr>
+
+                    @foreach (string playaID in lineup.Lineup)
+                    {
+                        <td>
+                            @playaID
+                        </td>
+                    }
+
+
+                </tr>
+            }
+
+
+
+        </table>
+    </div>
+
+    <input type="submit" value="Export Your lineups as CSV" />
+
+    <div class="form-group">
+        <table>
+
+            @for (int i = 0; i < Model.listFDlineups.Count(); i++)
+
+            {
+                <tr>
+                    @for (int j = 0; j < Model.listFDlineups[i].LineupGolfers.Count(); j++)
+                    {
+
+                        <td>@Model.listFDlineups[i].LineupGolfers[j].Name</td>
+                        <td>@Model.listFDlineups[i].LineupGolfers[j].Salary</td>
+                        <td><input type="hidden" asp-for="@Model.listFDlineups[i].LineupGolfers[j].Name" /></td>
+                        <td><input type="hidden" asp-for="@Model.listFDlineups[i].LineupGolfers[j].Playerid" /></td>
+                        <td><input type="hidden" asp-for="@Model.listFDlineups[i].LineupGolfers[j].Salary" /></td>
+
+                    }
+                    <td>@Model.listFDlineups[i].LineupSalary</td>
+                    <td><input type="hidden" asp-for="@Model.listFDlineups[i].LineupSalary" /></td>
+                </tr>
+            }
+
+  
+
+        </table>
+
+    </div>
+
+</form>

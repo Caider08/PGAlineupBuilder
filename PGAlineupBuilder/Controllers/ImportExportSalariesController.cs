@@ -25,7 +25,7 @@ namespace PGAlineupBuilder.Controllers
 
         private readonly IHostingEnvironment _environment;
 
-        
+
         public ImportExportSalariesController(IHostingEnvironment environment, PGAlineupBuilderDbContext dbContext)
         {
             _environment = environment;
@@ -46,39 +46,17 @@ namespace PGAlineupBuilder.Controllers
 
         }
 
-        // [HttpPost]
-        // public async Task<IActionResult> DKimport(UploadDKcsvViewModel uploadDKcsvViewModel)
-        //{
-        //if (ModelState.IsValid)
-        // {
-        // var salary = new DKsalarys
-        //   {
-        //  Name = uploadDKcsvViewModel.Name
+        public IActionResult UploadFDcsv()
+        {
+            return View("UploadFANDUELcsv");
 
-        // };
-        //  using (var memoryStream = new MemoryStream())
-        // {
-        // await uploadDKcsvViewModel.csvUpload.CopyToAsync(memoryStream);
-        //  salary.csvUpload = memoryStream.ToArray();
-        // }
+        }
 
-        //context.DKS.Add(salary);
-        // context.SaveChanges();
-        // return Redirect("/Index");
-
-        //}
-
-        //return View("/UploadDKcsv");
-
-        //}
 
         //Takes files from UploadDKcsv file and writes them to DKuploads Directory and passes string "UploadName" to DKcreate Method
         [HttpPost]
         public async Task<IActionResult> DKimport(ICollection<IFormFile> DKfiles, string uploadName)
         {
-            // Path.Combine(_environment.WebRootPath, "DKuploads");
-
-            // var DKuploads = Path.GetTempFileName();
 
             long size = 0;
 
@@ -89,9 +67,9 @@ namespace PGAlineupBuilder.Controllers
                     if (!string.IsNullOrEmpty(uploadName))
                     {
                         var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                       
+
                         var DKuploads = System.IO.Path.Combine(_environment.ContentRootPath, "DKuploads");
-                       
+
                         string UPLOADname = uploadName;
 
 
@@ -102,11 +80,11 @@ namespace PGAlineupBuilder.Controllers
 
                             fstream.Flush();
                         }
-                        
+
                         size += file.Length;
-                                           
+
                         return RedirectToAction("DKcreate", "ImportExportSalaries", new { Uname = $"{UPLOADname}" });
-                    
+
                     }
                     else
                     {
@@ -130,57 +108,156 @@ namespace PGAlineupBuilder.Controllers
         //Method takes a string and uses the string to reference the file in DKuploads to pull a DkTourney and its golfers from...Then creates them and pushes to Database.
         public IActionResult DKcreate(string Uname)
         {
-          
-                if (!string.IsNullOrWhiteSpace(Uname))
+
+            if (!string.IsNullOrWhiteSpace(Uname))
+            {
+                List<Golfer> theseGolfers = new List<Golfer>();
+
+                theseGolfers = PGAuploads.WeeksFDGolfers(Uname);
+
+                string GameInfo = PGAuploads.WeeksGameInfo(Uname);
+
+                //check to see if this Tournament has already been pushed to the Database.
+                var isDuplicate = context.DKT.Any(a => a.Name == GameInfo);
+
+                if (isDuplicate)
                 {
-                    List<Golfer> theseGolfers = new List<Golfer>();
-
-                    theseGolfers = PGAuploads.WeeksGolfers(Uname);
-
-                    string GameInfo = PGAuploads.WeeksGameInfo(Uname);
-
-                    //check to see if this Tournament has already been pushed to the Database.
-                    var isDuplicate = context.DKT.Any(a => a.Name == GameInfo);
-
-                    if (isDuplicate)
+                    ViewBag.Message = "You've already uploaded this tournament";
+                    return View("UploadDKcsv");
+                }
+                else
+                {   //PUSH created Golfers and DkTourney to the Database
+                    foreach (Golfer golfer in theseGolfers)
                     {
-                        ViewBag.Message = "You've already uploaded this tournament";
-                        return View("UploadDKcsv");
-                    }
-                    else
-                    {   //PUSH created Golfers and DkTourney to the Database
-                        foreach (Golfer golfer in theseGolfers)
-                        {
-                            context.GOLFER.Add(golfer);
+                        context.GOLFER.Add(golfer);
 
+                    }
+
+                    DkTourney DKtourney = new DkTourney(theseGolfers)
+                    {
+                        Name = GameInfo,
+
+                    };
+
+                    context.DKT.Add(DKtourney);
+                    context.SaveChanges();
+
+                    ViewBag.Game = GameInfo;
+                    ViewBag.Golfers = theseGolfers;
+                    return View("SalariesCreated");
+                }
+
+
+            }
+
+            ViewBag.Message = "Upload a file please";
+            return View("UploadDKcsv");
+
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> FDimport(ICollection<IFormFile> FDfiles, string uploadName)
+        {
+
+            long size = 0;
+
+            foreach (var file in FDfiles)
+            {
+                if (file.Length > 0)
+                {
+                    if (!string.IsNullOrEmpty(uploadName))
+                    {
+                        var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+
+                        var FDuploads = System.IO.Path.Combine(_environment.ContentRootPath, "FDuploads");
+
+                        string UPLOADname = uploadName;
+
+
+                        using (FileStream fstream = new FileStream(Path.Combine(FDuploads, UPLOADname), FileMode.Create))
+                        {
+
+                            await file.CopyToAsync(fstream);
+
+                            fstream.Flush();
                         }
 
-                        DkTourney DKtourney = new DkTourney(theseGolfers)
-                        {
-                            Name = GameInfo,
+                        size += file.Length;
 
-                        };
+                        return RedirectToAction("FDcreate", "ImportExportSalaries", new { Uname = $"{UPLOADname}" });
 
-                        context.DKT.Add(DKtourney);
-                        context.SaveChanges();
-
-                        ViewBag.Game = GameInfo;
-                        ViewBag.Golfers = theseGolfers;
-                        return View("SalariesCreated");
                     }
-
+                    else
+                    {
+                        ViewBag.Message = "Name your file please";
+                        return View("UploadFANDUELcsv");
+                    }
 
                 }
 
-                ViewBag.Message = "Upload a file please";
-                return View("UploadDKcsv");
+
+            }
+
+            ViewBag.Message = "Select a file please";
+            return View("UploadFANDUELcsv");
+
+
 
 
         }
 
+        public IActionResult FDcreate(string Uname)
+        {
 
-        
+            if (!string.IsNullOrWhiteSpace(Uname))
+            {
+                List<FDgolfer> theseGolfers = new List<FDgolfer>();
+
+                theseGolfers = PGAuploads.WeeksFDgolfers(Uname);
+
+                int year = int.Parse(DateTime.Now.ToString("yyyy"));
+
+                string GameInfo = Uname + $" {year}";
+
+                //check to see if this Tournament has already been pushed to the Database.
+                var isDuplicate = context.FDT.Any(a => a.Name == GameInfo);
+
+                if (isDuplicate)
+                {
+                    ViewBag.Message = "You've already uploaded this tournament";
+                    return View("UploadFANDUELcsv");
+                }
+                else
+                {   //PUSH created Golfers and DkTourney to the Database
+                    foreach (FDgolfer golfer in theseGolfers)
+                    {
+                        context.FDGOLFER.Add(golfer);
+
+                    }
+
+                    FDtourney fdTourney = new FDtourney(theseGolfers)
+                    {
+                        Name = GameInfo,
+
+                    };
+
+                    context.FDT.Add(fdTourney);
+                    context.SaveChanges();
+
+                    ViewBag.Game = GameInfo;
+                    ViewBag.Golfers = theseGolfers;
+                    return View("FDSalariesCreated");
+                }
+
+
+            }
+
+            ViewBag.Message = "Upload a file please";
+            return View("UploadDKcsv");
+        }
     }
+
+
 }
   
 

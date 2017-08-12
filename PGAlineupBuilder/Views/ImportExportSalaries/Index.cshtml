@@ -4,15 +4,11 @@
 @{
 }
 
- @*@foreach(var salary in ViewBag.dksalaries)
-{
-    <div>@salary.Name</div>
-    <div>@salary.ID</div>
-    <div>@salary.csvUpload.ToString()</div>
-}*@
 
 <h2>Upload DK Salaries</h2>
 
 <p><a asp-controller="ImportExportSalaries" asp-action="UploadDKcsv">Upload DK Salaries</a></p>
 
 <h2>Upload FanDuel Salaries</h2>
+
+<p><a asp-controller="ImportExportSalaries" asp-action="UploadFDcsv">Upload FanDuel Salaries</a></p>

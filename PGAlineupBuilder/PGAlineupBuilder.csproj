@@ -46,6 +46,9 @@
     <Folder Include="DKuploads\" />
     <Folder Include="DKuploads\" />
     <Folder Include="DKuploads\" />
+    <Folder Include="FDuploads\" />
+    <Folder Include="FDuploads\" />
+    <Folder Include="FDuploads\" />
   
   </ItemGroup>
 

@@ -10,14 +10,13 @@
         <th>Name</th>
         <th>Salary</th>
     </tr>
-    
-    @foreach (Golfer golfer in ViewBag.Golfers)
-    {  <tr>
-            <td>@golfer.Playerid</td>
-            <td>@golfer.Name</td>
-            <td>@golfer.Salary</td>
-        </tr>
+
+    @foreach (FDgolfer golfer in ViewBag.Golfers)
+    {
+    <tr>
+        <td>@golfer.Playerid</td>
+        <td>@golfer.Name</td>
+        <td>@golfer.Salary</td>
+    </tr>
     }
 </table>
-
-

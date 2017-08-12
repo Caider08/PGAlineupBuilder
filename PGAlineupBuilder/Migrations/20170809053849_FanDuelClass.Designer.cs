@@ -8,9 +8,10 @@ using PGAlineupBuilder.Data;
 namespace PGAlineupBuilder.Migrations
 {
     [DbContext(typeof(PGAlineupBuilderDbContext))]
-    partial class PGAlineupBuilderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170809053849_FanDuelClass")]
+    partial class FanDuelClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -41,7 +42,7 @@ namespace PGAlineupBuilder.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("Playerid");
+                    b.Property<int>("Playerid");
 
                     b.Property<int>("Salary");
 
