@@ -597,19 +597,51 @@ namespace PGAlineupBuilder.Controllers
                 return View(model);
 
             }
+        }
+
+
+        [HttpPost]
+        public FileStreamResult ExportFDLineupsCSV(BuiltFDLineupsViewModel yourCreatedLineups)
+        {
+            MemoryStream memoryS = new MemoryStream();
+            StreamWriter streamW = new StreamWriter(memoryS);
+
+
+            var namer = yourCreatedLineups.BuiltFD.Name;
+            var lineups = yourCreatedLineups.listFDlineups.ToList();
 
 
 
 
+            foreach (FDlineup lineup in lineups)
+            {
+                foreach (FDgolfer golferr in lineup.LineupGolfers)
+                {
+                    streamW.Write(String.Format("{0},", golferr.Playerid));
 
+                }
+                streamW.WriteLine();
+            }
 
+            streamW.Flush();
+            streamW.BaseStream.Seek(0, SeekOrigin.Begin);
 
-
-
-
-
+            return new FileStreamResult(streamW.BaseStream, "text/csv") { FileDownloadName = $"{namer}.csv" };
 
         }
 
+
+
+
+
+
+
+
+
+
+
+
     }
+
 }
+
