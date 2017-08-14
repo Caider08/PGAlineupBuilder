@@ -15,7 +15,7 @@ namespace PGAlineupBuilder.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Website and Database built and managed by cbDev";
 
             return View();
         }
