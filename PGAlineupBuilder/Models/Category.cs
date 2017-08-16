@@ -16,7 +16,7 @@ namespace PGAlineupBuilder.Models
 
         public virtual string Description { get; set; }
 
-        public virtual IList<BlogPost> Posts { get; set; }
+        public virtual IList<BlogPost> BPosts { get; set; }
 
     }
 }
