@@ -21,5 +21,36 @@ namespace PGAlineupBuilder.Controllers
         {
             return View();
         }
+
+        public IActionResult Last5Blogs()
+        {
+           // IList < BlogPost > = context.BP.Where(b => b.name == "").ToList<BlogPost>();
+
+            return View("BlogView");
+        }
+
+        public IActionResult SearchBlogs(string sTerm)
+        {
+            if(!string.IsNullOrWhiteSpace(sTerm))
+            {
+               // IList<BlogPost> searchPost = context.BP.Where(b => b.name.contains(sTerm)).ToList<BlogPost>();
+
+               // if(searchPost.Count() = 0)
+             //   {
+              //      ViewBag.Nothing = $"Sorry, no Blogs with {sTerm} in the title were found";
+               //     return View("Index");
+              //  }
+               // else
+              //  {
+                    return View("SearchResults");
+              //  }
+                
+            }
+            else
+            {
+                
+                return View("Index");
+            }
+        }
     }
 }
