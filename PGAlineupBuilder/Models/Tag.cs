@@ -17,5 +17,10 @@ namespace PGAlineupBuilder.Models
 
         public virtual IList<BlogPost> BPosts { get; set; }
 
+        public Tag()
+        {
+            List<BlogPost> BPosts = new List<BlogPost> ();
+        }
+
     }
 }

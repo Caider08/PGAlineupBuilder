@@ -18,6 +18,12 @@ namespace PGAlineupBuilder.Data
 
         public DbSet<FDgolfer> FDGOLFER { get; set; }
 
+        public DbSet<BlogPost> BP { get; set; }
+
+        public DbSet<Category> BPCAT { get; set; }
+
+        public DbSet <Tag> BPTag { get; set; }
+
 
         public PGAlineupBuilderDbContext(DbContextOptions<PGAlineupBuilderDbContext> options)
             : base(options)

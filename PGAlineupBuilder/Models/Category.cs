@@ -18,5 +18,20 @@ namespace PGAlineupBuilder.Models
 
         public virtual IList<BlogPost> BPosts { get; set; }
 
+        public Category()
+        {
+            List<BlogPost> BPosts = new List<BlogPost>();
+        }
+
+        public Category(IEnumerable<BlogPost> posts)
+        {
+            List<BlogPost> BPosts = new List<BlogPost>();
+
+            foreach(BlogPost post in posts)
+            {
+                BPosts.Add(post);
+            }
+
+        }
     }
 }

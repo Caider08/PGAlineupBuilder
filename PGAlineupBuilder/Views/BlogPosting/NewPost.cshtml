@@ -5,9 +5,27 @@
 }
 @model PGAlineupBuilder.ViewModels.NewBlogPostViewModel
 
-<form method="post">
+<form method="post" asp-controller="BlogPosting" asp-action="PublishPost">
+
+
 
 
 
     <input type="button" value="Publish your Post" />
+</form>
+
+<form method="get" asp-controller="BlogPosting" action="Last5Blogs">
+    <input class="form-control" type="submit" value="Get Last 5 BlogPosts" />
+</form>
+
+<form method="post" asp-controller="BlogPosting" action="SearchBlogs">
+
+    <label asp-for="sTerm" class="form-control">Search for Past Blog Posts</label>
+    <input type="text" class="form-control" name="sTerm" id="sTerm" />
+    <input class="form-control" type="submit" value="Search for Blog Posts" />
+
+</form>
+
+<form method="post" asp-controller="BlogPosting" action="NewPost">
+    <input class="form-control" type="submit" value="Make a New Blog Post" />
 </form>
