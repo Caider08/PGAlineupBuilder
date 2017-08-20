@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using PGAlineupBuilder.Models;
 using Microsoft.AspNetCore.Mvc;
 using PGAlineupBuilder.Data;
+using PGAlineupBuilder.ViewModels;
+
 
 namespace PGAlineupBuilder.Controllers
 {
@@ -18,6 +20,20 @@ namespace PGAlineupBuilder.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult NewPost()
+        {
+            //Query the Database for existing Tags and Categories to pass to the View Model
+
+            NewBlogPostViewModel createBlog = new NewBlogPostViewModel();
+            return View("NewPost",createBlog);
+        }
+
+        [HttpPost]
+        public IActionResult PublishPost()
         {
             return View();
         }

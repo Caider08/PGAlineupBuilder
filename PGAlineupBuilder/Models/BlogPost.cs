@@ -28,7 +28,13 @@ namespace PGAlineupBuilder.Models
 
         public virtual IList<Comment> Comments { get; set; }
 
+        public BlogPost()
+        {
+            List<Tag> Tags = new List<Tag>();
 
+            List<Comment> Comments = new List<Comment>();
+
+        }
 
 
     }
