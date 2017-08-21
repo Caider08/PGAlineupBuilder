@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post" asp-action="CreateTag" asp-controller="BlogPosting">
+    <div class="form-group">
+
+    <label for="name">Name your new Tag</label>
+    <input class="form-control" type="text" name="name" id="name" />
+
+    <label for="description">Describe your new Tag</label>
+    <input class="form-control" type="text" name="description" id="description" />
+
+    <label for="urlSLUG">URLslug for your New Tag</label>
+    <input class="form-control" type="text" name="urlSLUG" id="urlSLUG" />
+
+
+    </div>
+
+    <input type="submit" value="Create your Tag" />
+</form>

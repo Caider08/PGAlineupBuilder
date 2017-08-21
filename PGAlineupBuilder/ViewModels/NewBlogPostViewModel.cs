@@ -10,7 +10,7 @@ namespace PGAlineupBuilder.ViewModels
 {
     public class NewBlogPostViewModel
     {
-        [Required(ErrorMessage ="Please Name your Post")]
+        [Required(ErrorMessage ="Please Title your Post")]
         [Display(Name="Title of Post")]
         public string Name { get; set; }
 
@@ -24,17 +24,22 @@ namespace PGAlineupBuilder.ViewModels
         [Display(Name="Enter urlSlug")]
         public string urlSlug { get; set; }
 
-        [Display(Name="Enter a Category for your Post")]
-        public string categoryName { get; set; }
+        [Display(Name="Select a Category for your post from the dropdown or follow link to create a new one.")]
+        public int CategoryID { get; set; }
 
-        [Display(Name="Describe the Category")]
-        public string categoryDesc { get; set; }
+       // [Display(Name="Enter a Category for your Post(or Select from the dropdown Below)")]
+       // public string categoryName { get; set; }
 
-        [Display(Name="Name a tag to further categorize your post")]
-        public string tagName { get; set; }
+       // [Display(Name="Describe the Category")]
+       // public string categoryDesc { get; set; }
 
-        [Display(Name="Describe your chosen Tag")]
-        public string tagDesc { get; set; }
+        [Display(Name="Select a Tag for your post from the dropdown or follow link to create a new one.")]
+        public int TagID { get; set; }
+       // [Display(Name="Name a tag to further categorize your Post(or Select from the dropdown Below")]
+       // public string tagName { get; set; }
+
+        //[Display(Name="Describe your chosen Tag")]
+       // public string tagDesc { get; set; }
 
         public List<SelectListItem> Categories { get; set; }
 
@@ -44,17 +49,17 @@ namespace PGAlineupBuilder.ViewModels
         {
         }
 
-        public NewBlogPostViewModel(IEnumerable<Tag> tagz, IEnumerable<Category> catz)
+        public NewBlogPostViewModel(IEnumerable<BlogPostTag> tagz, IEnumerable<Category> catz)
         {
             Categories = new List<SelectListItem>();
             Tags = new List<SelectListItem>();
 
-            foreach(Tag tag in tagz)
+            foreach(BlogPostTag tag in tagz)
             {
                 Tags.Add(new SelectListItem
                 {
-                    Value = ((int)tag.ID).ToString(),
-                    Text = tag.Name
+                    Value = ((int)tag.TagID).ToString(),
+                    Text = tag.Tag.Name,
                 });
             }
 

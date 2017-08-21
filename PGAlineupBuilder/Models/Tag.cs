@@ -15,11 +15,11 @@ namespace PGAlineupBuilder.Models
 
         public virtual string URLslug { get; set; }
 
-        public virtual IList<BlogPost> BPosts { get; set; }
+        public virtual IList<BlogPostTag> BlogPostTags { get; set; }
 
         public Tag()
         {
-            List<BlogPost> BPosts = new List<BlogPost> ();
+            List<BlogPostTag> BlogPostTags = new List<BlogPostTag>();
         }
 
     }

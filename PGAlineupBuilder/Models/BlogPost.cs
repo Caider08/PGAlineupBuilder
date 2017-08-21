@@ -24,13 +24,15 @@ namespace PGAlineupBuilder.Models
 
         public virtual Category Category { get; set; }
 
-        public virtual IList<Tag> Tags { get; set; }
+        public virtual Tag Tag { get; set; }
+
+        public virtual IList<BlogPostTag> BlogPostTags { get; set; }
 
         public virtual IList<Comment> Comments { get; set; }
 
         public BlogPost()
         {
-            List<Tag> Tags = new List<Tag>();
+            List<BlogPostTag> BlogPostTags = new List<BlogPostTag>();
 
             List<Comment> Comments = new List<Comment>();
 

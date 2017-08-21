@@ -24,6 +24,8 @@ namespace PGAlineupBuilder.Data
 
         public DbSet <Tag> BPTag { get; set; }
 
+        public DbSet<BlogPostTag> BPostTag { get; set; }
+
 
         public PGAlineupBuilderDbContext(DbContextOptions<PGAlineupBuilderDbContext> options)
             : base(options)
@@ -31,6 +33,21 @@ namespace PGAlineupBuilder.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<BlogPostTag>()
+                .HasKey(bpt => new { bpt.BlogPostID, bpt.TagID });
+
+            builder.Entity<BlogPostTag>()
+                .HasOne(bpt => bpt.BlogPost)
+                .WithMany(bp => bp.BlogPostTags)
+                .HasForeignKey(bpt => bpt.BlogPostID);
+
+            builder.Entity<BlogPostTag>()
+                .HasOne(bpt => bpt.Tag)
+                .WithMany(t => t.BlogPostTags)
+                .HasForeignKey(bpt => bpt.TagID);
+
+
+
             base.OnModelCreating(builder);
 
         }

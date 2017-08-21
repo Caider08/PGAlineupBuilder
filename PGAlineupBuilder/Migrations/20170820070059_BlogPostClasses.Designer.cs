@@ -8,9 +8,10 @@ using PGAlineupBuilder.Data;
 namespace PGAlineupBuilder.Migrations
 {
     [DbContext(typeof(PGAlineupBuilderDbContext))]
-    partial class PGAlineupBuilderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170820070059_BlogPostClasses")]
+    partial class BlogPostClasses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -33,15 +34,11 @@ namespace PGAlineupBuilder.Migrations
 
                     b.Property<DateTime>("PublishedDate");
 
-                    b.Property<int?>("TagID");
-
                     b.Property<string>("URLslug");
 
                     b.HasKey("ID");
 
                     b.HasIndex("CategoryID");
-
-                    b.HasIndex("TagID");
 
                     b.ToTable("BP");
                 });
@@ -56,7 +53,7 @@ namespace PGAlineupBuilder.Migrations
 
                     b.HasIndex("TagID");
 
-                    b.ToTable("BPostTag");
+                    b.ToTable("BlogPostTag");
                 });
 
             modelBuilder.Entity("PGAlineupBuilder.Models.Category", b =>
@@ -200,10 +197,6 @@ namespace PGAlineupBuilder.Migrations
                     b.HasOne("PGAlineupBuilder.Models.Category", "Category")
                         .WithMany("BPosts")
                         .HasForeignKey("CategoryID");
-
-                    b.HasOne("PGAlineupBuilder.Models.Tag", "Tag")
-                        .WithMany()
-                        .HasForeignKey("TagID");
                 });
 
             modelBuilder.Entity("PGAlineupBuilder.Models.BlogPostTag", b =>

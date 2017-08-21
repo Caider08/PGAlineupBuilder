@@ -29,7 +29,7 @@ namespace PGAlineupBuilder.Controllers
         {
             //Query the Database for existing Tags and Categories to pass to the View Model
             IList<Category> cats = context.BPCAT.ToList<Category>();
-            IList<Tag> tags = context.BPTag.ToList<Tag>();
+            IList<BlogPostTag> tags = context.BPostTag.ToList<BlogPostTag>();
 
             NewBlogPostViewModel createBlog = new NewBlogPostViewModel(tags, cats);
             return View("NewPost",createBlog);
@@ -38,8 +38,79 @@ namespace PGAlineupBuilder.Controllers
         [HttpPost]
         public IActionResult PublishPost(NewBlogPostViewModel createBlog)
         {
+            if (ModelState.IsValid)
+            {
+                Category newBlogCategory = context.BPCAT.Single(c => c.ID == createBlog.CategoryID);
 
-           return View();
+                Tag newBlogTag = context.BPTag.Single(c => c.ID == createBlog.TagID);
+
+                BlogPost bpost = new BlogPost()
+                {
+                    Name = createBlog.Name,
+                    Content = createBlog.content,
+                    PublishedDate = DateTime.Now,
+                    Meta = createBlog.meta,
+                    URLslug = createBlog.urlSlug,
+
+                    Category = newBlogCategory,
+                    Tag = newBlogTag,
+
+                };
+
+                context.BP.Add(bpost);
+                context.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
+                
+            }
+
+            return View();
+           
+        }
+
+        [HttpGet]
+        public IActionResult NewCategory()
+        {
+            return View("AddCategory");
+        }
+        
+        [HttpPost]
+        public IActionResult CreateCategory(string name, string description, string urlSLUG)
+        {
+            Category newCat = new Category()
+            {
+                Name = name,
+                Description = description,
+                URLslug = urlSLUG,
+
+            };
+
+            context.BPCAT.Add(newCat);
+            context.SaveChanges();
+
+            return RedirectToAction("NewPost");
+        }
+
+        [HttpGet]
+        public IActionResult NewTag()
+        {
+            return View("AddTag");
+        }
+
+        [HttpPost]
+        public IActionResult CreateTag(string name, string description, string urlSLUG)
+        {
+            Tag newTag = new Tag()
+            {
+                Name = name,
+                Description = description,
+                URLslug = urlSLUG,
+            };
+
+            context.BPTag.Add(newTag);
+            context.SaveChanges();
+
+            return RedirectToAction("NewPost");
         }
 
         public IActionResult Last5Blogs()
