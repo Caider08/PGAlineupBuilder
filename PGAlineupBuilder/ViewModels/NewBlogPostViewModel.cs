@@ -49,19 +49,20 @@ namespace PGAlineupBuilder.ViewModels
         {
         }
 
-        public NewBlogPostViewModel(IEnumerable<BlogPostTag> tagz, IEnumerable<Category> catz)
+        public NewBlogPostViewModel(IEnumerable<Tag> tagz, IEnumerable<Category> catz)
         {
             Categories = new List<SelectListItem>();
             Tags = new List<SelectListItem>();
 
-            foreach(BlogPostTag tag in tagz)
+            foreach (Tag tag in tagz)
             {
                 Tags.Add(new SelectListItem
                 {
-                    Value = ((int)tag.TagID).ToString(),
-                    Text = tag.Tag.Name,
+                    Value = tag.ID.ToString(),
+                    Text = tag.Name,
                 });
             }
+
 
             foreach(Category cat in catz)
             {

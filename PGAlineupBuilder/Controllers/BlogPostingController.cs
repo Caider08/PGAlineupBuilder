@@ -29,7 +29,7 @@ namespace PGAlineupBuilder.Controllers
         {
             //Query the Database for existing Tags and Categories to pass to the View Model
             IList<Category> cats = context.BPCAT.ToList<Category>();
-            IList<BlogPostTag> tags = context.BPostTag.ToList<BlogPostTag>();
+            IList<Tag> tags = context.BPTag.ToList<Tag>();
 
             NewBlogPostViewModel createBlog = new NewBlogPostViewModel(tags, cats);
             return View("NewPost",createBlog);
@@ -40,9 +40,17 @@ namespace PGAlineupBuilder.Controllers
         {
             if (ModelState.IsValid)
             {
-                Category newBlogCategory = context.BPCAT.Single(c => c.ID == createBlog.CategoryID);
 
-                Tag newBlogTag = context.BPTag.Single(c => c.ID == createBlog.TagID);
+                Category BlogCategory = context.BPCAT.Single(c => c.ID == createBlog.CategoryID);
+
+                Tag BlogTag = context.BPTag.Single(c => c.ID == createBlog.TagID);
+
+                Category newBlogCategory = new Category();
+                Tag newBlogTag = new Tag();
+
+                newBlogCategory = BlogCategory;
+                newBlogTag = BlogTag;
+
 
                 BlogPost bpost = new BlogPost()
                 {
@@ -52,20 +60,36 @@ namespace PGAlineupBuilder.Controllers
                     Meta = createBlog.meta,
                     URLslug = createBlog.urlSlug,
 
-                    Category = newBlogCategory,
-                    Tag = newBlogTag,
+
+                   
 
                 };
 
-                context.BP.Add(bpost);
-                context.SaveChanges();
+                if(context.BP.Where(bp => bp.Name == bpost.Name).ToList<BlogPost>().Count() > 0)
+                {
+                    return RedirectToAction("NewPost");
+                }
+                else
+                {
+                    context.BP.Add(bpost);
+                    context.SaveChanges();
 
-                return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
+                }
+                
                 
             }
 
             return View();
            
+        }
+
+        [HttpGet]
+        public IActionResult BlogPost(string blogName)
+        {
+            BlogPost grabbedBlog = context.BP.Single(bp => bp.Name == blogName);
+
+            return View("BlogPost", grabbedBlog);
         }
 
         [HttpGet]
