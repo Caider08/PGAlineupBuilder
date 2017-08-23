@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using PGAlineupBuilder.Data;
 using PGAlineupBuilder.ViewModels;
 using System.Collections;
+using Microsoft.EntityFrameworkCore;
 
 namespace PGAlineupBuilder.Controllers
 {
@@ -60,6 +61,8 @@ namespace PGAlineupBuilder.Controllers
                     Meta = createBlog.meta,
                     URLslug = createBlog.urlSlug,
 
+                    Category = BlogCategory,
+                    Tag = BlogTag,
 
                    
 
@@ -85,11 +88,31 @@ namespace PGAlineupBuilder.Controllers
         }
 
         [HttpGet]
-        public IActionResult BlogPost(string blogName)
+        public IActionResult GetBlogPost(int ID)
         {
-            BlogPost grabbedBlog = context.BP.Single(bp => bp.Name == blogName);
+            BlogPost grabbedBlog = context.BP.Include(x => x.Category).Include(x => x.Tag).FirstOrDefault(bp => bp.ID == ID);
 
             return View("BlogPost", grabbedBlog);
+        }
+
+        [HttpGet]
+        public IActionResult CategoryBlogs(int ID)
+        {
+            IList<BlogPost> grabbedBlogs = context.BP.Include(x => x.Category).Include(x => x.Tag).Where(bp => bp.Category.ID == ID).Take(10).ToList<BlogPost>();
+            Category exampleCategory = context.BPCAT.FirstOrDefault(c => c.ID == ID);
+
+            ViewBag.header = exampleCategory;
+            return View("ListBlogs", grabbedBlogs);
+        }
+
+        [HttpGet]
+        public IActionResult TagBlogs(int ID)
+        {
+            IList<BlogPost> grabbedBlogs = context.BP.Include(x => x.Category).Include(x => x.Tag).Where(bp => bp.Tag.ID == ID).Take(10).ToList<BlogPost>();
+            Tag exampleTag = context.BPTag.FirstOrDefault(t => t.ID == ID);
+
+            ViewBag.header = exampleTag;
+            return View("ListBlogs", grabbedBlogs);
         }
 
         [HttpGet]

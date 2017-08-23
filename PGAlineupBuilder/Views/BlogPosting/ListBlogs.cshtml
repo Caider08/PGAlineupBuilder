@@ -5,12 +5,12 @@
 }
 @model IList<PGAlineupBuilder.Models.BlogPost>
 
-<h1>Daily Fantasy Golf</h1>
+<h1>@ViewBag.header.Name Posts</h1>
 
 @foreach (BlogPost bp in Model)
 {
     <div>
-       <h3><a asp-action="GetBlogPost" asp-controller="BlogPosting" asp-route-id="@bp.ID">@bp.Name</a></h3>
+        <h3><a asp-action="GetBlogPost" asp-controller="BlogPosting" asp-route-id="@bp.ID">@bp.Name</a></h3>
         <span><a asp-action="CategoryBlogs" asp-controller="BlogPosting" asp-route-id="@bp.Category.ID">@bp.Category.Name</a>&nbsp;<a asp-action="TagBlogs" asp-controller="BlogPosting" asp-route-id="@bp.Tag.ID">@bp.Tag.Name</a></span>-->
     </div>
 

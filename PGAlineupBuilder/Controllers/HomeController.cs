@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PGAlineupBuilder.Models;
 using PGAlineupBuilder.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace PGAlineupBuilder.Controllers
 {
@@ -19,7 +20,7 @@ namespace PGAlineupBuilder.Controllers
 
         public IActionResult Index()
         {
-            IList<BlogPost> recentPosts = context.BP.OrderByDescending(bp => bp.PublishedDate).Take(5).ToList<BlogPost>();
+            IList<BlogPost> recentPosts = context.BP.Include(bp => bp.Tag).Include(bp => bp.Category).OrderByDescending(bp => bp.PublishedDate).Take(5).ToList<BlogPost>();
            // foreach(BlogPost post in recentPosts)
           //  {
           //      post.Tag = context.BPTag.Single(p => p.ID == post.Tag.ID);
