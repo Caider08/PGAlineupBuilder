@@ -7,7 +7,7 @@
 
 <div>
     <h1>@Model.Name</h1>
-    <span>@Model.Category.Name&nbsp;@Model.Tag.Name</span>
+    <span><a asp-action="CategoryBlogs" asp-controller="BlogPosting" asp-route-id="@Model.Category.ID">@Model.Category.Name</a>&nbsp;<a asp-action="TagBlogs" asp-controller="BlogPosting" asp-route-id="@Model.Tag.ID">@Model.Tag.Name</a></span>
 </div>
 
 <div>
@@ -16,4 +16,5 @@
 
 <div>
     <p>@Model.Content</p>
+    <p>Published:@Model.PublishedDate</p>
 </div>

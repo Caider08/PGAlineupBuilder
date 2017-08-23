@@ -4,18 +4,16 @@
 @{
 }
 
-<h1>Blog</h1>
+<h1>Golf Articles</h1>
 
-<form method="get" asp-controller="BlogPosting" asp-action="Last5Blogs">
+<form method="get" asp-controller="BlogPosting" asp-action="AllBlogs">
    
-    <input class="form-control" type="submit" value="Get Last 5 BlogPosts" />
+    <input class="form-control" type="submit" value="Get all Golf Posts" />
 </form>
 <br />
 
-<form method="post" asp-controller="BlogPosting" asp-action="SearchBlogs">
+<form method="get" asp-controller="BlogPosting" asp-action="SearchBlogs">
 
-    <label for="sTerm">Search for Past Blog Posts</label>
-    <input type="text" class="form-control" name="sTerm" id="sTerm" />
     <input class="form-control" type="submit" value="Search for Blog Posts" />
 
 </form>

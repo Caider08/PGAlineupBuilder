@@ -160,35 +160,52 @@ namespace PGAlineupBuilder.Controllers
             return RedirectToAction("NewPost");
         }
 
-        public IActionResult Last5Blogs()
+        public IActionResult AllBlogs()
         {
-            IList<BlogPost> blogs = context.BP.ToList<BlogPost>();
+            IList<BlogPost> blogs = context.BP.OrderByDescending(p => p.PublishedDate).ToList<BlogPost>();
 
             return View("BlogView",blogs);
         }
 
-        public IActionResult SearchBlogs(string sTerm)
+        public IActionResult byTerm(string sTerm, string SearchMethod)
         {
             if(!string.IsNullOrWhiteSpace(sTerm))
             {
-                IList<BlogPost> searchPost = context.BP.Where(b => b.Name == sTerm).ToList<BlogPost>();
+                IList<BlogPost> searchPosts = new List<BlogPost>();
 
-                if(searchPost.Count() == 0)
+                if(SearchMethod == "ByTitle")
+                {
+                     searchPosts = context.BP.Include(p => p.Category).Include(p => p.Tag).Where(b => b.Name.Contains(sTerm)).Take(5).ToList<BlogPost>();
+
+                }
+                if(SearchMethod == "ByKeyword")
+                {
+                    searchPosts = context.BP.Include(p => p.Category).Include(p => p.Tag).Where(b => b.Content.Contains(sTerm)).Take(5).ToList<BlogPost>();
+                }
+                if(searchPosts.Count() == 0)
                 {
                     ViewBag.Nothing = $"Sorry, no Blogs with {sTerm} in the title were found";
-                   return View("Index");
+                   return View("SearchBlogs");
                 }
                 else
                 {
-                    return View("SearchResults");
+                    BlogPost exampleBlog = searchPosts.FirstOrDefault();
+                    
+                    return View("ListBlogs", searchPosts);
                 }
                 
             }
             else
             {
-                
-                return View("Index");
+                ViewBag.BlankTerm = "Please enter a search Term";
+                return View("SearchBlogs");
             }
+        }
+
+        [HttpGet]
+        public IActionResult SearchBlogs()
+        {
+            return View();
         }
     }
 }
