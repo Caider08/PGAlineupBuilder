@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{ 
+    ViewData["Title"] = $"{Model.Name}";
+}
+@section MetaData
+{
+    <meta name="description" content="@Model.Meta" />
+    <meta name="keywords" content="@Model.Category.Name, @Model.Category.Description, @Model.Tag.Name, @Model.Tag.Description" />
+}
+@model PGAlineupBuilder.Models.BlogPost
+
+<div>
+    <h1>@Model.Name</h1>
+    <span><a asp-action="CategoryBlogs" asp-controller="GolfArticles" asp-route-id="@Model.Category.ID">@Model.Category.Name</a>&nbsp;<a asp-action="TagBlogs" asp-controller="GolfArticles" asp-route-id="@Model.Tag.ID">@Model.Tag.Name</a></span>
+</div>
+
+<div>
+    <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
+</div>
+
+<div>
+    <p>@Model.Content</p>
+    <p>Published:@Model.PublishedDate</p>
+</div>

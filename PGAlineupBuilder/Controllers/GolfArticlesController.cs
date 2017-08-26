@@ -8,14 +8,15 @@ using PGAlineupBuilder.Data;
 using PGAlineupBuilder.ViewModels;
 using System.Collections;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace PGAlineupBuilder.Controllers
 {
-    public class BlogPostingController : Controller
+    public class GolfArticlesController : Controller
     {
         private PGAlineupBuilderDbContext context;
 
-        public BlogPostingController(PGAlineupBuilderDbContext dbcontext)
+        public GolfArticlesController(PGAlineupBuilderDbContext dbcontext)
         {
             context = dbcontext;
         }
@@ -46,11 +47,10 @@ namespace PGAlineupBuilder.Controllers
 
                 Tag BlogTag = context.BPTag.Single(c => c.ID == createBlog.TagID);
 
-                Category newBlogCategory = new Category();
-                Tag newBlogTag = new Tag();
+                string descriptionMeta = createBlog.content.Take(150).ToString();
 
-                newBlogCategory = BlogCategory;
-                newBlogTag = BlogTag;
+                string cleanSlug = createBlog.Name.ToLower().Replace(" ", "-");
+                cleanSlug = Regex.Replace(cleanSlug, @"[^a-zA-Z0-9\/_|+ -]", "");
 
 
                 BlogPost bpost = new BlogPost()
@@ -58,8 +58,8 @@ namespace PGAlineupBuilder.Controllers
                     Name = createBlog.Name,
                     Content = createBlog.content,
                     PublishedDate = DateTime.Now,
-                    Meta = createBlog.meta,
-                    URLslug = createBlog.urlSlug,
+                    Meta = descriptionMeta,
+                    URLslug = cleanSlug,
 
                     Category = BlogCategory,
                     Tag = BlogTag,
@@ -86,13 +86,21 @@ namespace PGAlineupBuilder.Controllers
             return View();
            
         }
-
+        
         [HttpGet]
         public IActionResult GetBlogPost(int ID)
         {
             BlogPost grabbedBlog = context.BP.Include(x => x.Category).Include(x => x.Tag).FirstOrDefault(bp => bp.ID == ID);
+            string PostName = grabbedBlog.Name;
+            return RedirectToAction("GetGolfArticle", new { PostName = $"{PostName}" });
+            //return View("BlogPost", grabbedBlog);
+        }
 
-            return View("BlogPost", grabbedBlog);
+        [HttpGet]
+        public IActionResult GetGolfArticle(string PostName)
+        {
+            BlogPost viewArticle = context.BP.Include(a => a.Category).Include(a => a.Tag).FirstOrDefault(bp => bp.Name == PostName);
+            return View("BlogPost", viewArticle);
         }
 
         [HttpGet]
@@ -167,6 +175,31 @@ namespace PGAlineupBuilder.Controllers
             return View("BlogView",blogs);
         }
 
+        [HttpGet]
+        public IActionResult ArticleSearch(string Aterm)
+        {
+            if(!string.IsNullOrWhiteSpace(Aterm))
+            {
+                IList<BlogPost> searchArticles = context.BP.Include(a => a.Category).Include(a => a.Tag).Where(bp => bp.Name.Contains(Aterm)).Take(10).ToList<BlogPost>();
+               
+
+                if (searchArticles.Count() > 0)
+                {
+                    ViewBag.header = searchArticles.FirstOrDefault();
+                    return View("ListBlogs", searchArticles);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+           
+        }
         public IActionResult byTerm(string sTerm, string SearchMethod)
         {
             if(!string.IsNullOrWhiteSpace(sTerm))

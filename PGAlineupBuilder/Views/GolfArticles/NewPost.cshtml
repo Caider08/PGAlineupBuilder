@@ -5,7 +5,7 @@
 }
 @model PGAlineupBuilder.ViewModels.NewBlogPostViewModel
 
-<form method="post" asp-controller="BlogPosting" asp-action="PublishPost">
+<form method="post" asp-controller="GolfArticles" asp-action="PublishPost">
 
 <div class="form-group">
     <label asp-for="Name"></label>
@@ -36,7 +36,7 @@
     <label asp-for="CategoryID"></label>
     <select asp-for="CategoryID" asp-items="@Model.Categories"></select>
 
-    <a class="form-control" asp-controller="BlogPosting" asp-action="NewCategory">Create a new Category</a>
+    <a class="form-control" asp-controller="GolfArticles" asp-action="NewCategory">Create a new Category</a>
 
 </div>
 
@@ -46,7 +46,7 @@
     <label asp-for="TagID"></label>
     <select class="form-control" asp-for="TagID" asp-items="@Model.Tags"></select>
 
-    <a class="form-control" asp-controller="BlogPosting" asp-action="NewTag">Create a new Tag</a>
+    <a class="form-control" asp-controller="GolfArticles" asp-action="NewTag">Create a new Tag</a>
 
 </div>
 

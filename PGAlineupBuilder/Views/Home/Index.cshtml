@@ -1,24 +1,40 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
+@{ 
+    ViewData["Title"] = "Daily Fantasy Golf Articles";
+}
+@section MetaData
+{
+    <meta name="description" content="Daily Fantasy Golf advanced analysis and helpful tools including a LineupBuilder for Draft Kings, FanDuel, and FantasyDraft." />
+    <meta name="keywords" content="DraftKings lineup builder, Fantasy Sports, Daily Fantasy Golf, PGA Golf, Draft Kings Daily Fantasy Golf, FanDuel Daily Fantasy Golf, Draft Kings projected ownership, fantasy golf analysis, fantasy pga," />
 }
 @model IList<PGAlineupBuilder.Models.BlogPost>
+<div class="body-content">
+    <h1>Daily Fantasy Golf</h1>
 
-<h1>Daily Fantasy Golf</h1>
+    @*<div class="tools-right">
+        @Html.Partial("_SearchArticles")
+    </div>*@
 
-@foreach (BlogPost bp in Model)
-{
-    <div>
-       <h3><a asp-action="GetBlogPost" asp-controller="BlogPosting" asp-route-id="@bp.ID">@bp.Name</a></h3>
-        <span><a asp-action="CategoryBlogs" asp-controller="BlogPosting" asp-route-id="@bp.Category.ID">@bp.Category.Name</a>&nbsp;<a asp-action="TagBlogs" asp-controller="BlogPosting" asp-route-id="@bp.Tag.ID">@bp.Tag.Name</a></span>-->
+    @if (Model.Count() > 0)
+    {
+        foreach (BlogPost bp in Model)
+        {
+         
+            @Html.Partial("_BlogPostTemplate", bp)
+
+        }
+
+    }
+    else
+    {
+        <p>No Articles found!</p>
+
+    }
+
+    <div class="tools-left">
+
     </div>
 
-    <div>
-        <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-    </div>
-
-    <div>
-        <p>@bp.Content</p>
-    </div>
-}
+</div>

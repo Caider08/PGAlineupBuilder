@@ -8,7 +8,7 @@
 <div>
     @foreach(BlogPost post in Model)
     {
-        <span><a asp-controler="BlogPosting" asp-action="GetBlogPost" asp-route-id="@post.ID">@post.Name</a></span>
+        <span><a asp-controler="GolfArticles" asp-action="GetBlogPost" asp-route-id="@post.ID">@post.Name</a></span>
     }
 
 </div>

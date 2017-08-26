@@ -3,6 +3,21 @@
     padding-bottom: 20px;
 }
 
+.tools-right {
+    float: right;
+    display: inline-block;
+    position: relative;
+    margin-left: 10px;
+    margin-top: 25px;
+   
+    width: 10%;
+    font-size: .90em;
+}
+
+.tools-left {
+    float: left;
+    width: 10%;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {

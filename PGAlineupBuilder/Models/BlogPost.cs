@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PGAlineupBuilder.Models;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.AspNetCore.Mvc;
+
 
 namespace PGAlineupBuilder.Models
 {
@@ -11,7 +14,7 @@ namespace PGAlineupBuilder.Models
         public virtual int ID { get; set; }
 
         public virtual string Name { get; set; }
-
+       
         public virtual string Content { get; set; }
 
         public virtual DateTime PublishedDate { get; set; }

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PGAlineupBuilder</title>
-
+    @RenderSection("MetaData", false)
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -47,6 +47,10 @@
         </div>
     </nav>
     <div class="container body-content">
+        <div class="tools-right">
+            @Html.Partial("_SearchArticles")    
+        </div>
+   
         @RenderBody()
         <hr />
         <footer>

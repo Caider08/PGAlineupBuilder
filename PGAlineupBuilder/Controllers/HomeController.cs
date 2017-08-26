@@ -21,12 +21,7 @@ namespace PGAlineupBuilder.Controllers
         public IActionResult Index()
         {
             IList<BlogPost> recentPosts = context.BP.Include(bp => bp.Tag).Include(bp => bp.Category).OrderByDescending(bp => bp.PublishedDate).Take(5).ToList<BlogPost>();
-           // foreach(BlogPost post in recentPosts)
-          //  {
-          //      post.Tag = context.BPTag.Single(p => p.ID == post.Tag.ID);
-          //      post.Category = context.BPCAT.Single(c => c.ID == post.Category.ID);
-
-          //  }
+           
             return View(recentPosts);
         }
 
