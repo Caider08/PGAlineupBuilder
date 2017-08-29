@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PGAlineupBuilder.Models;
+using Newtonsoft.Json;
 
 namespace PGAlineupBuilder.Models
 {
@@ -16,6 +17,7 @@ namespace PGAlineupBuilder.Models
 
         public virtual string Description { get; set; }
 
+        [JsonIgnore]
         public virtual IList<BlogPost> BPosts { get; set; }
 
         public Category()

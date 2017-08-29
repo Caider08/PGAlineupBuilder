@@ -4,7 +4,7 @@ C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\bin\Deb
 C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\bin\Debug\netcoreapp1.1\PGAlineupBuilder.dll
 C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\bin\Debug\netcoreapp1.1\PGAlineupBuilder.pdb
 C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Debug\netcoreapp1.1\PGAlineupBuilder.csprojResolveAssemblyReference.cache
-C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
 C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Debug\netcoreapp1.1\PGAlineupBuilder.AssemblyInfo.cs
 C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Debug\netcoreapp1.1\PGAlineupBuilder.dll
 C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Debug\netcoreapp1.1\PGAlineupBuilder.pdb
+C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs

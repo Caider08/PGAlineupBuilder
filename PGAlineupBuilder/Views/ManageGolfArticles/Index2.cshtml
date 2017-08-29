@@ -1,0 +1,71 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width-device-width, initial-scale-1.0" />
+        <title>@ViewData["Title"] - PGAlineupBuilder</title>
+   
+        <!--JQuery Library-->
+        <script src="http://code.jquery.com/jquery-2.2.0.js"></script>
+
+        <!--Find a JQuery Theme you Like-->
+        <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+        <link href="@Url.Content("~/lib/jquery/Themes/jquery-ui.theme.min.css")", rel="stylesheet" />
+
+        <!--jqGrid-->
+        <link href="@Url.Content("~/lib/jquery/Themes/ui.jqgrid.css")" rel="stylesheet" />
+        <script type="text/javascript" src="@Url.Content("~/lib/jquery/Themes/jquery.jqGrid.min.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/lib/jquery/Themes/grid.locale-en.js")"></script>
+
+        <!--TinyMCE for editing blogPosts-->
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+        <script>tinymce.init({ selector: 'textarea' });</script>
+
+        <!--Manage Articles JavaScript-->
+        <script type="text/javascript" src="@Url.Content("~/lib/jquery/Themes/ManageArticles.js")"></script>"
+
+    </head>
+    <body>
+        <h2>Manage Posts, Categories and Tags</h2>
+
+        <!-- tab control -->
+       <div id="tabs">
+            <ul>
+                <li><a href="#tab-posts">Posts</a></li>
+                <li><a href="#tab-cats">Categories</a></li>
+                <li><a href="#tab-tags">Tags</a></li>
+            </ul>
+
+            <div id="tab-posts" class="tab">
+                <table id="tablePosts" class="grid"></table>
+                <div id="pagerPosts" class="pager">
+                </div>
+            </div>
+
+            <div id="tab-cats" class="tab">
+                <table id="tableCats" class="grid"></table>
+                <div id="pagerCats" class="pager">
+                </div>
+            </div>
+
+            <div id="tab-tags" class="tab">
+                <table id="tableTags" class="grid"></table>
+                <div id="pagerTags" class="pager">
+                </div>
+            </div>
+        </div>
+
+    </body>
+      
+    </html>
+
+
+
+ 
