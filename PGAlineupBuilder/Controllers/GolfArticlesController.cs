@@ -21,7 +21,7 @@ namespace PGAlineupBuilder.Controllers
             context = dbcontext;
         }
 
-       
+
         public IActionResult Index()
         {
             return View();
@@ -34,14 +34,16 @@ namespace PGAlineupBuilder.Controllers
             IList<Tag> tags = context.BPTag.ToList<Tag>();
 
             NewBlogPostViewModel createBlog = new NewBlogPostViewModel(tags, cats);
-            return View("NewPost",createBlog);
+            return View("NewPost", createBlog);
         }
 
+        
         [HttpPost]
         public IActionResult PublishPost(NewBlogPostViewModel createBlog)
         {
-            if (ModelState.IsValid)
-            {
+
+            //if (ModelState.IsValid)
+          //  {
 
                 Category BlogCategory = context.BPCAT.Single(c => c.ID == createBlog.CategoryID);
 
@@ -81,9 +83,9 @@ namespace PGAlineupBuilder.Controllers
                 }
                 
                 
-            }
+            //}
 
-            return View();
+          //  return RedirectToAction("Index");
            
         }
         
@@ -123,6 +125,23 @@ namespace PGAlineupBuilder.Controllers
             return View("ListBlogs", grabbedBlogs);
         }
 
+        [HttpGet]
+        public IActionResult DeletePost()
+        {
+            IList<BlogPost> allArticles = context.BP.Include(x => x.Category).Include(x => x.Tag).ToList<BlogPost>();
+            return View("AllGolfArticles", allArticles);
+        }
+
+        public IActionResult DeleteArticle(int ID)
+        {
+            BlogPost articleDelete = context.BP.Include(x => x.Category).Include(x => x.Tag).SingleOrDefault(a => a.ID == ID);
+
+            context.BP.Remove(articleDelete);
+            context.SaveChanges();
+
+            return View("Index");
+
+        }
         [HttpGet]
         public IActionResult NewCategory()
         {

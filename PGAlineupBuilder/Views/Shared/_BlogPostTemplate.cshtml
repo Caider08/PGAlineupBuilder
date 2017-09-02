@@ -4,7 +4,7 @@
         <div class="row">
 
             <div>
-                <h2><a asp-action="GetBlogPost" asp-controller="GolfArticles" asp-route-id="@Model.ID">@Model.Name</a></h2>
+                <h2><a asp-action="GetBlogPost" asp-controller="GolfArticles" asp-route-id="@Model.ID">@Html.Raw(Model.Name)</a></h2>
             </div>
 
         </div>
@@ -21,13 +21,13 @@
 
     <div>
         <div>
-            <p>@Model.Content</p>
+           @Html.Raw(Model.Content)
         </div>
     </div>
 
     <div>
         <div>
-            <p>@Model.PublishedDate</p>
+           <p> @Model.PublishedDate</p>
         </div>
 
     </div>

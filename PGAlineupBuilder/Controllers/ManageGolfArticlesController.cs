@@ -10,6 +10,7 @@ using PGAlineupBuilder.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PGAlineupBuilder.Controllers
 {
@@ -28,6 +29,7 @@ namespace PGAlineupBuilder.Controllers
         }
     }
 
+    
     public class ManageGolfArticlesController : Controller
     {
         private PGAlineupBuilderDbContext context;
@@ -56,7 +58,7 @@ namespace PGAlineupBuilder.Controllers
                 content = article.Content,
                 meta = article.Meta,
                 urlSlug = article.URLslug,
-
+                id = ID,
 
             };
 
@@ -64,16 +66,17 @@ namespace PGAlineupBuilder.Controllers
             return View(model);
         }
 
+        [HttpPost]
         public IActionResult ArticleChanges(NewBlogPostViewModel model)
         {
-            BlogPost articleToAdjust = context.BP.Include(x => x.Category).Include(x => x.Tag).SingleOrDefault(p => p.Meta == model.meta);
+            BlogPost articleToAdjust = context.BP.Include(x => x.Category).Include(x => x.Tag).Single(p => p.ID == model.id);
 
             Category BlogCategory = context.BPCAT.Single(c => c.ID == model.CategoryID);
 
             Tag BlogTag = context.BPTag.Single(c => c.ID == model.TagID);
 
             //Begin tracking changes to our Article
-            context.Update(articleToAdjust);
+            context.BP.Update(articleToAdjust);
 
             articleToAdjust.Name = model.Name;
             articleToAdjust.Content = model.content;
@@ -83,7 +86,8 @@ namespace PGAlineupBuilder.Controllers
             articleToAdjust.Category = BlogCategory;
             
             context.SaveChanges();
-            return RedirectToAction("GetGolfArticle", "GolfArticles", new { PostName = $"{articleToAdjust.Name}" });
+            return RedirectToAction("Index", "Home");
+           // return RedirectToAction("GetGolfArticle", "GolfArticles", new { PostName = $"{articleToAdjust.Name}" });
         }
 
         public ContentResult Posts(JqGridInViewModel JqParams)

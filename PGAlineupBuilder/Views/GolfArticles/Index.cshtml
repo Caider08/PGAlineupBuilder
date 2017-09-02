@@ -19,5 +19,13 @@
 </form>
 <br />
 <form method="post" asp-controller="GolfArticles" asp-action="NewPost">
-    <input class="form-control" type="submit" value="Make a New Blog Post" />
+    <input class="form-control" type="submit" value="Make a New Golf Article" />
+</form>
+<br />
+<form method="get" asp-controller="GolfArticles" asp-action="DeletePost">
+    <input class="form-control" type="submit" value="Delete a Golf Article" />
+</form>
+<br />
+<form method="get" asp-controller="ManageGolfArticles" asp-action="Index">
+    <input class="form-control" type="submit" value="Edit a Golf Article" />
 </form>

@@ -18,7 +18,6 @@
     <script>
         tinymce.init({
             selector: 'textarea',
-            height: 300,
             theme: 'modern',
             plugins: 'lists advlist image imagetools'
 
@@ -31,15 +30,16 @@
 
     <h3>Edit Article Title, Content, URLslug (please do not adjust Meta)</h3>
 
-    <form method="post" asp-controller="GolfArticles" asp-action="PublishPost">
+    <form method="post" asp-controller="ManageGolfArticles" asp-action="ArticleChanges">
+        <input asp-for="id" type="hidden" />
 
         <div class="form-group">
             <label asp-for="Name"></label>
-            <textarea asp-for="Name" class="form-control">Bloop</textarea>
+            <textarea style="height: 25px" asp-for="Name" class="form-control"></textarea>
             <span asp-valation-for="Name"></span>
 
             <label asp-for="content"></label>
-            <textarea asp-for="content" class="form-control" value></textarea>
+            <textarea style="height: 400px" asp-for="content" class="form-control" value></textarea>
             <span asp-valation-for="content"></span>
 
         </div>
@@ -47,11 +47,11 @@
 
         <div class="form-group">
             <label asp-for="meta"></label>
-            <textarea asp-for="meta" class="form-control" ></textarea>
+            <textarea style="height: 25px" asp-for="meta" class="form-control" ></textarea>
             <span asp-valation-for="meta"></span>
 
             <label asp-for="urlSlug"></label>
-            <textarea asp-for="urlSlug" class="form-control" ></textarea>
+            <textarea style="height: 25px" asp-for="urlSlug" class="form-control" ></textarea>
             <span asp-valation-for="urlSlug"></span>
 
         </div>
@@ -73,11 +73,15 @@
             <select class="form-control" asp-for="TagID" asp-items="@Model.Tags"></select>
 
             <a class="form-control" asp-controller="GolfArticles" asp-action="NewTag">Create a new Tag</a>
-
         </div>
 
-        <input type="submit" value="Edit your Post" />
+        <div class="form-group">
+            <input type="submit" value="Edit your Post" />
+        </div>
     </form>
+        <div class="form-group">
+            <a asp-action="Index" asp-controller="ManageGolfArticles">Return To List</a>
+        </div>
 
     
 </body>

@@ -10,10 +10,13 @@ namespace PGAlineupBuilder.ViewModels
 {
     public class NewBlogPostViewModel
     {
+        public int id { get; set; }
+
         [Required(ErrorMessage ="Please Title your Post")]
         [Display(Name="Title of Post")]
         public string Name { get; set; }
 
+        
         [Required(ErrorMessage = "Plesae input the Body of your Post")]
         [Display(Name = "Post Content")]
         public string content { get; set; }

@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using PGAlineupBuilder.Models;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Html;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace PGAlineupBuilder.Models
 {
@@ -14,7 +16,8 @@ namespace PGAlineupBuilder.Models
         public virtual int ID { get; set; }
 
         public virtual string Name { get; set; }
-       
+        
+
         public virtual string Content { get; set; }
 
         public virtual DateTime PublishedDate { get; set; }

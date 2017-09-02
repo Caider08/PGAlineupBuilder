@@ -58,6 +58,22 @@ namespace PGAlineupBuilder
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
             //services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
+            services.Configure<IdentityOptions>(options =>
+            {
+                //password settings
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+
+                //Lockout settings
+                options.Lockout.MaxFailedAccessAttempts = 10;
+
+                //user settings
+                options.User.RequireUniqueEmail = true;
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

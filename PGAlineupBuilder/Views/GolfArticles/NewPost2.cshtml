@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model PGAlineupBuilder.ViewModels.NewBlogPostViewModel
+
+<form method="post" asp-controller="GolfArticles" asp-action="PublishPost">
+
+<div class="form-group">
+    <label asp-for="Name"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-valation-for="Name"></span>
+
+    <label asp-for="content"></label>
+    <input asp-for="content" class="form-control" />
+    <span asp-valation-for="content"></span>
+
+</div>
+
+
+ <div class="form-group">
+        <label asp-for="meta"></label>
+        <input asp-for="meta" class="form-control" />
+        <span asp-valation-for="meta"></span>
+
+        <label asp-for="urlSlug"></label>
+        <input asp-for="urlSlug" class="form-control" />
+        <span asp-valation-for="urlSlug"></span>
+
+ </div>
+
+
+<div class="form-group">
+   
+    <label asp-for="CategoryID"></label>
+    <select asp-for="CategoryID" asp-items="@Model.Categories"></select>
+
+    <a class="form-control" asp-controller="GolfArticles" asp-action="NewCategory">Create a new Category</a>
+
+</div>
+
+
+<div class="form-gorup">
+ 
+    <label asp-for="TagID"></label>
+    <select class="form-control" asp-for="TagID" asp-items="@Model.Tags"></select>
+
+    <a class="form-control" asp-controller="GolfArticles" asp-action="NewTag">Create a new Tag</a>
+
+</div>
+
+    <input type="submit" value="Publish your Post" />
+</form>
+

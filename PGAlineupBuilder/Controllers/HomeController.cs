@@ -6,11 +6,15 @@ using Microsoft.AspNetCore.Mvc;
 using PGAlineupBuilder.Models;
 using PGAlineupBuilder.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PGAlineupBuilder.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
+      
         private PGAlineupBuilderDbContext context;
 
         public HomeController(PGAlineupBuilderDbContext dbcontext)

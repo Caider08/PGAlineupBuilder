@@ -1,0 +1,104 @@
+G,G,G,G,G,G,,Instructions,,,,,,
+,,,,,,,1. Locate the player you want to select in the list below ,,,,,,
+,,,,,,,2. Copy the ID of your player (you can use the Name + ID column or the ID column) ,,,,,,
+,,,,,,,3. Paste the ID into the roster position desired ,,,,,,
+,,,,,,,4. You must include an ID for each player; you cannot use just the player's name ,,,,,,
+,,,,,,,5. You can create up to 500 lineups per file ,,,,,,
+ ,,,,,,,,,,,,,
+,,,,,,,Position,Name + ID,Name,ID,Salary,GameInfo,TeamAbbrev 
+,,,,,,,G,Jordan Spieth (9346845),Jordan Spieth,9346845,12100,Dell Technologies Championship,Golf
+,,,,,,,G,Dustin Johnson (9346846),Dustin Johnson,9346846,12000,Dell Technologies Championship,Golf
+,,,,,,,G,Jon Rahm (9346847),Jon Rahm,9346847,10600,Dell Technologies Championship,Golf
+,,,,,,,G,Justin Thomas (9346848),Justin Thomas,9346848,10300,Dell Technologies Championship,Golf
+,,,,,,,G,Hideki Matsuyama (9346849),Hideki Matsuyama,9346849,10100,Dell Technologies Championship,Golf
+,,,,,,,G,Rory McIlroy (9346850),Rory McIlroy,9346850,9800,Dell Technologies Championship,Golf
+,,,,,,,G,Rickie Fowler (9346851),Rickie Fowler,9346851,9700,Dell Technologies Championship,Golf
+,,,,,,,G,Jason Day (9346852),Jason Day,9346852,9500,Dell Technologies Championship,Golf
+,,,,,,,G,Louis Oosthuizen (9346853),Louis Oosthuizen,9346853,9100,Dell Technologies Championship,Golf
+,,,,,,,G,Paul Casey (9346854),Paul Casey,9346854,8900,Dell Technologies Championship,Golf
+,,,,,,,G,Matt Kuchar (9346855),Matt Kuchar,9346855,8800,Dell Technologies Championship,Golf
+,,,,,,,G,Brooks Koepka (9346856),Brooks Koepka,9346856,8700,Dell Technologies Championship,Golf
+,,,,,,,G,Kevin Chappell (9346857),Kevin Chappell,9346857,8600,Dell Technologies Championship,Golf
+,,,,,,,G,Patrick Reed (9346858),Patrick Reed,9346858,8500,Dell Technologies Championship,Golf
+,,,,,,,G,Sergio Garcia (9346859),Sergio Garcia,9346859,8400,Dell Technologies Championship,Golf
+,,,,,,,G,Charley Hoffman (9346860),Charley Hoffman,9346860,8300,Dell Technologies Championship,Golf
+,,,,,,,G,Webb Simpson (9346861),Webb Simpson,9346861,8200,Dell Technologies Championship,Golf
+,,,,,,,G,Justin Rose (9346862),Justin Rose,9346862,8100,Dell Technologies Championship,Golf
+,,,,,,,G,Gary Woodland (9346863),Gary Woodland,9346863,8000,Dell Technologies Championship,Golf
+,,,,,,,G,Adam Scott (9346864),Adam Scott,9346864,7900,Dell Technologies Championship,Golf
+,,,,,,,G,Branden Grace (9346865),Branden Grace,9346865,7800,Dell Technologies Championship,Golf
+,,,,,,,G,Jason Dufner (9346866),Jason Dufner,9346866,7800,Dell Technologies Championship,Golf
+,,,,,,,G,Pat Perez (9346867),Pat Perez,9346867,7700,Dell Technologies Championship,Golf
+,,,,,,,G,Kevin Kisner (9346868),Kevin Kisner,9346868,7700,Dell Technologies Championship,Golf
+,,,,,,,G,Ryan Moore (9346869),Ryan Moore,9346869,7700,Dell Technologies Championship,Golf
+,,,,,,,G,Keegan Bradley (9346870),Keegan Bradley,9346870,7600,Dell Technologies Championship,Golf
+,,,,,,,G,Russell Henley (9346871),Russell Henley,9346871,7600,Dell Technologies Championship,Golf
+,,,,,,,G,Chez Reavie (9346872),Chez Reavie,9346872,7600,Dell Technologies Championship,Golf
+,,,,,,,G,Daniel Berger (9346873),Daniel Berger,9346873,7600,Dell Technologies Championship,Golf
+,,,,,,,G,Lucas Glover (9346874),Lucas Glover,9346874,7500,Dell Technologies Championship,Golf
+,,,,,,,G,Phil Mickelson (9346875),Phil Mickelson,9346875,7500,Dell Technologies Championship,Golf
+,,,,,,,G,Grayson Murray (9346876),Grayson Murray,9346876,7500,Dell Technologies Championship,Golf
+,,,,,,,G,Bubba Watson (9346877),Bubba Watson,9346877,7500,Dell Technologies Championship,Golf
+,,,,,,,G,Charl Schwartzel (9346878),Charl Schwartzel,9346878,7500,Dell Technologies Championship,Golf
+,,,,,,,G,Sean O'Hair (9346879),Sean O'Hair,9346879,7500,Dell Technologies Championship,Golf
+,,,,,,,G,Wesley Bryan (9346880),Wesley Bryan,9346880,7400,Dell Technologies Championship,Golf
+,,,,,,,G,Patrick Rodgers (9346881),Patrick Rodgers,9346881,7400,Dell Technologies Championship,Golf
+,,,,,,,G,Brian Harman (9346882),Brian Harman,9346882,7400,Dell Technologies Championship,Golf
+,,,,,,,G,Jason Kokrak (9346883),Jason Kokrak,9346883,7400,Dell Technologies Championship,Golf
+,,,,,,,G,Graham DeLaet (9346884),Graham DeLaet,9346884,7300,Dell Technologies Championship,Golf
+,,,,,,,G,Ollie Schniederjans (9346885),Ollie Schniederjans,9346885,7300,Dell Technologies Championship,Golf
+,,,,,,,G,Scott Brown (9346886),Scott Brown,9346886,7300,Dell Technologies Championship,Golf
+,,,,,,,G,Anirban Lahiri (9346887),Anirban Lahiri,9346887,7300,Dell Technologies Championship,Golf
+,,,,,,,G,Patrick Cantlay (9346888),Patrick Cantlay,9346888,7200,Dell Technologies Championship,Golf
+,,,,,,,G,Rafael Cabrera-Bello (9346889),Rafael Cabrera-Bello,9346889,7200,Dell Technologies Championship,Golf
+,,,,,,,G,Bud Cauley (9346890),Bud Cauley,9346890,7200,Dell Technologies Championship,Golf
+,,,,,,,G,Kevin Streelman (9346891),Kevin Streelman,9346891,7200,Dell Technologies Championship,Golf
+,,,,,,,G,Chris Stroud (9346892),Chris Stroud,9346892,7200,Dell Technologies Championship,Golf
+,,,,,,,G,Danny Lee (9346893),Danny Lee,9346893,7100,Dell Technologies Championship,Golf
+,,,,,,,G,Michael Kim (9346894),Michael Kim,9346894,7100,Dell Technologies Championship,Golf
+,,,,,,,G,Tony Finau (9346895),Tony Finau,9346895,7100,Dell Technologies Championship,Golf
+,,,,,,,G,Jamie Lovemark (9346896),Jamie Lovemark,9346896,7100,Dell Technologies Championship,Golf
+,,,,,,,G,Russell Knox (9346897),Russell Knox,9346897,7100,Dell Technologies Championship,Golf
+,,,,,,,G,Adam Hadwin (9346898),Adam Hadwin,9346898,7100,Dell Technologies Championship,Golf
+,,,,,,,G,Cameron Smith (9346899),Cameron Smith,9346899,7100,Dell Technologies Championship,Golf
+,,,,,,,G,Stewart Cink (9346900),Stewart Cink,9346900,7000,Dell Technologies Championship,Golf
+,,,,,,,G,Jhonattan Vegas (9346901),Jhonattan Vegas,9346901,7000,Dell Technologies Championship,Golf
+,,,,,,,G,Zach Johnson (9346902),Zach Johnson,9346902,7000,Dell Technologies Championship,Golf
+,,,,,,,G,Robert Streb (9346903),Robert Streb,9346903,7000,Dell Technologies Championship,Golf
+,,,,,,,G,Bill Haas (9346904),Bill Haas,9346904,7000,Dell Technologies Championship,Golf
+,,,,,,,G,Cheng-Tsung Pan (9346905),Cheng-Tsung Pan,9346905,7000,Dell Technologies Championship,Golf
+,,,,,,,G,Cody Gribble (9346906),Cody Gribble,9346906,7000,Dell Technologies Championship,Golf
+,,,,,,,G,Camilo Villegas (9346907),Camilo Villegas,9346907,7000,Dell Technologies Championship,Golf
+,,,,,,,G,Kelly Kraft (9346908),Kelly Kraft,9346908,6900,Dell Technologies Championship,Golf
+,,,,,,,G,Marc Leishman (9346909),Marc Leishman,9346909,6900,Dell Technologies Championship,Golf
+,,,,,,,G,Kyle Stanley (9346910),Kyle Stanley,9346910,6900,Dell Technologies Championship,Golf
+,,,,,,,G,Emiliano Grillo (9346911),Emiliano Grillo,9346911,6900,Dell Technologies Championship,Golf
+,,,,,,,G,Luke List (9346912),Luke List,9346912,6900,Dell Technologies Championship,Golf
+,,,,,,,G,Mackenzie Hughes (9346913),Mackenzie Hughes,9346913,6900,Dell Technologies Championship,Golf
+,,,,,,,G,Francesco Molinari (9346914),Francesco Molinari,9346914,6900,Dell Technologies Championship,Golf
+,,,,,,,G,Xander Schauffele (9346915),Xander Schauffele,9346915,6900,Dell Technologies Championship,Golf
+,,,,,,,G,Brendan Steele (9346916),Brendan Steele,9346916,6900,Dell Technologies Championship,Golf
+,,,,,,,G,Whee Kim (9346917),Whee Kim,9346917,6900,Dell Technologies Championship,Golf
+,,,,,,,G,Ian Poulter (9346918),Ian Poulter,9346918,6900,Dell Technologies Championship,Golf
+,,,,,,,G,Martin Laird (9346919),Martin Laird,9346919,6800,Dell Technologies Championship,Golf
+,,,,,,,G,Kevin Tway (9346920),Kevin Tway,9346920,6800,Dell Technologies Championship,Golf
+,,,,,,,G,Sung Kang (9346921),Sung Kang,9346921,6800,Dell Technologies Championship,Golf
+,,,,,,,G,Patton Kizzire (9346922),Patton Kizzire,9346922,6800,Dell Technologies Championship,Golf
+,,,,,,,G,Bryson DeChambeau (9346923),Bryson DeChambeau,9346923,6800,Dell Technologies Championship,Golf
+,,,,,,,G,Hudson Swafford (9346924),Hudson Swafford,9346924,6800,Dell Technologies Championship,Golf
+,,,,,,,G,William McGirt (9346925),William McGirt,9346925,6800,Dell Technologies Championship,Golf
+,,,,,,,G,Kevin Na (9346926),Kevin Na,9346926,6800,Dell Technologies Championship,Golf
+,,,,,,,G,Harold Varner (9346927),Harold Varner,9346927,6800,Dell Technologies Championship,Golf
+,,,,,,,G,Billy Horschel (9346928),Billy Horschel,9346928,6800,Dell Technologies Championship,Golf
+,,,,,,,G,Chris Kirk (9346929),Chris Kirk,9346929,6800,Dell Technologies Championship,Golf
+,,,,,,,G,Rod Pampling (9346930),Rod Pampling,9346930,6700,Dell Technologies Championship,Golf
+,,,,,,,G,Charles Howell (9346931),Charles Howell,9346931,6700,Dell Technologies Championship,Golf
+,,,,,,,G,J.J. Spaun (9346932),J.J. Spaun,9346932,6700,Dell Technologies Championship,Golf
+,,,,,,,G,Jonas Blixt (9346933),Jonas Blixt,9346933,6700,Dell Technologies Championship,Golf
+,,,,,,,G,James Hahn (9346934),James Hahn,9346934,6700,Dell Technologies Championship,Golf
+,,,,,,,G,David Lingmerth (9346935),David Lingmerth,9346935,6700,Dell Technologies Championship,Golf
+,,,,,,,G,Chad Campbell (9346936),Chad Campbell,9346936,6700,Dell Technologies Championship,Golf
+,,,,,,,G,Morgan Hoffmann (9346937),Morgan Hoffmann,9346937,6700,Dell Technologies Championship,Golf
+,,,,,,,G,Nick Taylor (9346938),Nick Taylor,9346938,6700,Dell Technologies Championship,Golf
+,,,,,,,G,Jim Herman (9346939),Jim Herman,9346939,6700,Dell Technologies Championship,Golf
+,,,,,,,G,Si Woo Kim (9346940),Si Woo Kim,9346940,6700,Dell Technologies Championship,Golf
