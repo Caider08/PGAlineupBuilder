@@ -29,7 +29,7 @@ namespace PGAlineupBuilder.Controllers
         }
     }
 
-    
+    [Authorize(Roles ="PGAguru")]
     public class ManageGolfArticlesController : Controller
     {
         private PGAlineupBuilderDbContext context;

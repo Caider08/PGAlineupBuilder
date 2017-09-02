@@ -1,4 +1,6 @@
 ﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+@inject IAuthorizationService AuthorizationService
+@using Microsoft.AspNetCore.Authorization
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,25 +48,29 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="GolfArticles" asp-action="Index">Golf Articles</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="" asp-controller="Golfers" asp-action="Index">Search</a></li>
+                    <li><a asp-area="" asp-controller="Golfers" asp-action="Index">Search Golfers</a></li>
                     <li><a asp-area="" asp-controller="BuildLineups" asp-action="Index">Build Lineups</a></li>
-                    <li><a asp-area="" asp-controller="ImportExportSalaries" asp-action="Index">Upload Salaries</a></li>
-                    <li><a asp-area="" asp-controller="GolfArticles" asp-action="Index">Blog</a></li>
+                    @if (User.IsInRole("PGAguru"))
+                    {
                     <li><a asp-area="" asp-controller="ManageGolfArticles" asp-action="Index">Manage Articles</a></li>
+                    <li><a asp-area="" asp-controller="ImportExportSalaries" asp-action="Index">Upload Salaries</a></li>
+                    }
+                   
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </nav>
     <div class="container body-content">
+      <main>
         <div class="tools-right">
             @Html.Partial("_SearchArticles")    
         </div>
    
         @RenderBody()
+      </main>
         <hr />
         <footer>
             <p>&copy; cbDev - 2017 - PGAlineupBuilder</p>

@@ -11,6 +11,7 @@ using PGAlineupBuilder.Models;
 using PGAlineupBuilder.Data;
 using Microsoft.Net.Http.Headers;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -19,13 +20,14 @@ using System.Net;
 
 namespace PGAlineupBuilder.Controllers
 {
+    [Authorize(Roles = "PGAguru")]
     public class ImportExportSalariesController : Controller
     {
         private PGAlineupBuilderDbContext context;
 
         private readonly IHostingEnvironment _environment;
 
-
+       
         public ImportExportSalariesController(IHostingEnvironment environment, PGAlineupBuilderDbContext dbContext)
         {
             _environment = environment;

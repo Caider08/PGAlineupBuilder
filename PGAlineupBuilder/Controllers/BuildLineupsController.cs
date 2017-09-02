@@ -10,11 +10,11 @@ using PGAlineupBuilder.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
 using System.IO;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace PGAlineupBuilder.Controllers
 {
-
+    [Authorize(Roles="PGAguru, Member")]
     public class BuildLineupsController : Controller
     {
         private PGAlineupBuilderDbContext context;

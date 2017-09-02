@@ -6,9 +6,20 @@
 @model IList<PGAlineupBuilder.Models.BlogPost>
 
 <div class="body-content">
+    @if (ViewBag.header == null)
+    {
+        <div class="row">
+        <h2>All of our Golf Articles</h2>
+        </div>
 
-    <h1>@ViewBag.header.Name Posts</h1>
-
+    }
+    else
+    {
+       <div class="row">
+       <h2>@ViewBag.header Articles</h2>
+       </div>
+    }
+    
     @*<div class="tools-right">
         @Html.Partial("_SearchArticles")
     </div>*@

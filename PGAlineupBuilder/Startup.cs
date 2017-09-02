@@ -13,6 +13,7 @@ using PGAlineupBuilder.Data;
 using PGAlineupBuilder.Models;
 using PGAlineupBuilder.Services;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.Identity;
 
 namespace PGAlineupBuilder
 {
@@ -77,7 +78,7 @@ namespace PGAlineupBuilder
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -105,6 +106,53 @@ namespace PGAlineupBuilder
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            CreateAdminAndRoles(serviceProvider);
+
+           
+        }
+
+        private static void CreateAdminAndRoles(IServiceProvider serviceProvider)
+        {
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            Task<IdentityResult> roleResult;
+            string adminEmail = "cbdev08@gmail.com";
+            string[] appRoles = { "PGAguru", "Member", "LimitedAdmin" };
+
+            foreach (var roleName in appRoles)
+            {
+                Task<bool> roleExist = roleManager.RoleExistsAsync(roleName);
+                roleExist.Wait();
+
+                if (!roleExist.Result)
+                {
+                    roleResult = roleManager.CreateAsync(new IdentityRole(roleName));
+                    roleResult.Wait();
+
+                }
+            }
+
+            Task<ApplicationUser> userFind = userManager.FindByEmailAsync(adminEmail);
+            userFind.Wait();
+
+            if (userFind.Result == null)
+            {
+                ApplicationUser mainUser = new ApplicationUser();
+                mainUser.Email = adminEmail;
+                mainUser.UserName = adminEmail;
+
+                Task<IdentityResult> newUser = userManager.CreateAsync(mainUser, "PGAguru08");
+                newUser.Wait();
+
+                if (newUser.Result.Succeeded)
+                {
+                    Task<IdentityResult> newUserRole = userManager.AddToRoleAsync(mainUser, "PGAguru");
+                    newUserRole.Wait();
+                }
+            }
+
+
         }
     }
 }

@@ -189,9 +189,9 @@ namespace PGAlineupBuilder.Controllers
 
         public IActionResult AllBlogs()
         {
-            IList<BlogPost> blogs = context.BP.OrderByDescending(p => p.PublishedDate).ToList<BlogPost>();
-
-            return View("BlogView",blogs);
+            IList<BlogPost> blogs = context.BP.Include(x => x.Category).Include(x => x.Tag).OrderByDescending(p => p.PublishedDate).ToList<BlogPost>();
+            ViewBag.Header = null;
+            return View("ListBlogs",blogs);
         }
 
         [HttpGet]
@@ -204,7 +204,7 @@ namespace PGAlineupBuilder.Controllers
 
                 if (searchArticles.Count() > 0)
                 {
-                    ViewBag.header = searchArticles.FirstOrDefault();
+                    ViewBag.header = Aterm;
                     return View("ListBlogs", searchArticles);
                 }
                 else
