@@ -26,6 +26,8 @@ namespace PGAlineupBuilder.Data
 
         public DbSet<BlogPostTag> BPostTag { get; set; }
 
+        public DbSet<SEOsignUP> SEO { get; set; }
+
 
         public PGAlineupBuilderDbContext(DbContextOptions<PGAlineupBuilderDbContext> options)
             : base(options)

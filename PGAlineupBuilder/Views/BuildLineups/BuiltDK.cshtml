@@ -3,6 +3,39 @@
 *@
 @{
 }
+@section OverrideStyles
+{
+    <style>
+        table {
+            border: 1px;
+            width: 80%;
+            height: 100%;
+        }
+
+        th {
+            text-align: center;
+            background-color: #e68a00;
+            color: azure;
+        }
+
+        table caption {
+            font-size: 200%;
+        }
+
+        tr:hover {
+            background-color: #FFB273;
+        }
+
+        tr:nth-of-type(odd) {
+            background-color: #ffebcc;
+        }
+
+        tr:nth-of-type(even) {
+            background-color: #ffd699;
+        }
+    </style>
+}
+
 @model PGAlineupBuilder.ViewModels.BuiltDKLineupsViewModel
 
 <h1>Generated Lineups for @Model.BuiltDK.Name</h1>

@@ -2,8 +2,11 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-
-<div>
+@{
+    
+}
+    
+<div style="margin-top: 25px; text-align: center">
     <form asp-controller="GolfArticles" asp-action="ArticleSearch" method="get">
         <p>
             <input type="text" name="Aterm" id="Aterm" />
@@ -13,6 +16,6 @@
         </p>
 
     </form>
+    <div style="font-size: 1.25em; margin-top: 25px;"><a asp-controller="BuildLineups" asp-action="Index">Build Lineups for Daily Fantasy Golf</a></div>
 </div>
 
-<div style="font-size: 1.25em; margin-top: 25px;"><a asp-controller="BuildLineups" asp-action="Index">Build Lineups for Daily Fantasy Golf</a></div>

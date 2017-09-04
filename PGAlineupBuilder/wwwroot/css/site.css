@@ -1,8 +1,22 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    color: #686764;
 }
 
+a {
+    color: #e68a00;
+}
+
+a h1, h2, h3 {
+
+    color: #e68a00;
+
+}
+h3 a {
+
+    color: #e68a00;
+}
 .tools-right {
     float: right;
     
@@ -23,7 +37,7 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
- 
+    color: #686764;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -60,13 +74,16 @@ tr:hover {
 }
 
 tr:nth-of-type(odd) {
-    background-color: #33CCCC;
+    background-color: #ffebcc;
 }
 
 tr:nth-of-type(even) {
     background-color: #5CCCCC;
 }
 
+h1, h2, h3, h4 {
+    color: #686764;
+}
 
 
 /* buttons and links extension to use brackets: [ click me ] */

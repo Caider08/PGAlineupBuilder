@@ -12,16 +12,19 @@
 }
 @model PGAlineupBuilder.Models.BlogPost
 
-<div>
-    <h1>@Model.Name</h1>
-    <span><a asp-action="CategoryBlogs" asp-controller="GolfArticles" asp-route-id="@Model.Category.ID">@Model.Category.Name</a>&nbsp;<a asp-action="TagBlogs" asp-controller="GolfArticles" asp-route-id="@Model.Tag.ID">@Model.Tag.Name</a></span>
+<div class="body-content">
+    @Html.Partial("_PartialBlogPostTemplate", Model)
+</div>
+<!--<div>
+    <h1>Model.Name</h1>
+    <span><a asp-action="CategoryBlogs" asp-controller="GolfArticles" asp-route-id="Model.Category.ID">Model.Category.Name</a>&nbsp;<a asp-action="TagBlogs" asp-controller="GolfArticles" asp-route-id="@Model.Tag.ID">@Model.Tag.Name</a></span>
 </div>
 
-<div>
+<!--<div>
     <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
 </div>
 
 <div>
-    <p>@Model.Content</p>
-    <p>Published:@Model.PublishedDate</p>
-</div>
+    <p>Model.Content</p>
+    <p>Published:Model.PublishedDate</p>
+</div>-->

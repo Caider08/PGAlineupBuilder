@@ -227,12 +227,12 @@ namespace PGAlineupBuilder.Controllers
 
                 if(SearchMethod == "ByTitle")
                 {
-                     searchPosts = context.BP.Include(p => p.Category).Include(p => p.Tag).Where(b => b.Name.Contains(sTerm)).Take(5).ToList<BlogPost>();
+                     searchPosts = context.BP.Include(p => p.Category).Include(p => p.Tag).Where(b => b.Name.Contains(sTerm)).Take(10).ToList<BlogPost>();
 
                 }
                 if(SearchMethod == "ByKeyword")
                 {
-                    searchPosts = context.BP.Include(p => p.Category).Include(p => p.Tag).Where(b => b.Content.Contains(sTerm)).Take(5).ToList<BlogPost>();
+                    searchPosts = context.BP.Include(p => p.Category).Include(p => p.Tag).Where(b => b.Content.Contains(sTerm)).Take(10).ToList<BlogPost>();
                 }
                 if(searchPosts.Count() == 0)
                 {
