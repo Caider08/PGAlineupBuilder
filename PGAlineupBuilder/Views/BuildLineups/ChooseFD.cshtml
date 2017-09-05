@@ -4,7 +4,7 @@
 @{
 }
 @model List<PGAlineupBuilder.Models.FDtourney>
-
+<div style="margin-top: 25px">
 <form method="post" asp-action="getFD" asp-controller="BuildLineups">
     <select name="FDselected">
         @foreach (var tourney in Model)
@@ -19,3 +19,4 @@
 {
     <p>No FanDuel Tournaments uploaded yet!</p>
 }
+</div>

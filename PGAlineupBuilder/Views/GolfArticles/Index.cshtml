@@ -4,33 +4,24 @@
 @{
 }
 
-<h1>Golf Articles</h1>
 
-<form method="get" asp-controller="GolfArticles" asp-action="AllBlogs">
-   
-    <input class="form-control" type="submit" value="Get all Golf Posts" />
-</form>
-<br />
+<div style="margin-top: 25px">
 
-<form method="get" asp-controller="GolfArticles" asp-action="SearchBlogs">
-
-    <input class="form-control" type="submit" value="Search for Blog Posts" />
-
-</form>
-
-<br />
-
-@if (User.IsInRole("PGAguru"))
-{
-    <form method="post" asp-controller="GolfArticles" asp-action="NewPost">
-        <input class="form-control" type="submit" value="Make a New Golf Article" />
-    </form>
+   <a style="margin-top: 10px; font-size: 2em" asp-action="AllBlogs" asp-controller="GolfArticles">Get all Golf Articles</a>
     <br />
-    <form method="get" asp-controller="GolfArticles" asp-action="DeletePost">
-        <input class="form-control" type="submit" value="Delete a Golf Article" />
-    </form>
+   <a style="margin-top: 10px; font-size: 2em"asp-action="SearchBlogs" asp-controller="GolfArticles">Search for Golf Articles</a>
     <br />
-    <form method="get" asp-controller="ManageGolfArticles" asp-action="Index">
-        <input class="form-control" type="submit" value="Edit a Golf Article" />
-    </form>
-}
+
+    @if (User.IsInRole("PGAguru"))
+    {
+     
+        <a style="margin-top: 10px; font-size: 2em" asp-action="NewPost" asp-controller="GolfArticles">Write a New Golf Article</a>
+        <br />
+        <a style="margin-top: 10px; font-size: 2em" asp-action="DeletePost" asp-controller="GolfArticles">Delete a Golf Article</a>
+        <br />
+        <a style="margin-top: 10px; font-size: 2em" asp-action="Index" asp-controller="ManageGolfArticles">Edit a Golf Article</a>
+        <br />
+        <a style="margin-top: 10px; font-size: 2em" asp-action="Index" asp-controller="SEOmarketing">Manage SEO</a>
+
+    }
+</div>

@@ -132,6 +132,57 @@ namespace PGAlineupBuilder.Controllers
         }
 
         [HttpPost]
+        public IActionResult SearchFDraft(string searchTermFDraft, string SearchMethodFDraft)
+        {
+            if (string.IsNullOrWhiteSpace(searchTermFDraft))
+            {
+                ViewBag.BlankTermFDraft = "Please enter a search word";
+                return View("Index");
+            }
+            else
+            {
+                if (SearchMethodFDraft == "ByGolfer")
+                {
+                    List<FDraftGolfer> returnedGolfer = context.FDraftG.Where(g => g.Name.Contains(searchTermFDraft)).ToList();
+                    if (returnedGolfer.Count() < 1)
+                    {
+                        ViewBag.NoneFDraft = "Your Search didn't return any results";
+                        return View("Index");
+                    }
+
+                    FDraftGolfer golferExample = returnedGolfer.First();
+                    var tourneysearch = context.FDraftT.Single(t => t.Name.Contains(golferExample.GameInfo));
+                    ViewBag.Tourney = tourneysearch;
+                    ViewBag.GolferResults = returnedGolfer;
+                    return View("SearchResultsFDraft");
+                }
+                else if (SearchMethodFDraft == "ByTournament")
+                {
+                    var tourneySearch = context.FDT.Where(t => t.Name.Contains(searchTermFDraft)).FirstOrDefault();
+                    if (tourneySearch == null)
+                    {
+                        ViewBag.NoneFDraft = "Your Search didn't return any results";
+                        return View("Index");
+                    }
+
+                    List<FDraftGolfer> returnedGolfer = context.FDraftG.Where(g => g.GameInfo.Contains(tourneySearch.Name)).ToList<FDraftGolfer>();
+                    //List<Golfer> returnedGolfer = tourneySearch.Participants.ToList<Golfer>();
+                    ViewBag.Tourney = tourneySearch;
+                    ViewBag.GolferResults = returnedGolfer;
+                    return View("SearchResultsFDraft");
+                }
+                else
+                {
+                    ViewBag.NoneFDraft = "Your Search didn't return any results";
+                    return View("Index");
+                }
+
+
+
+            }
+        }
+
+        [HttpPost]
         public IActionResult DraftKings()
         {
             //return Redirect("DraftKingsRoster");

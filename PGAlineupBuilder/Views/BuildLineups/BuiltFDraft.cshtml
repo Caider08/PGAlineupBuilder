@@ -1,0 +1,102 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model PGAlineupBuilder.ViewModels.BuiltFDraftLineupsViewModel
+@section OverrideStyles
+{
+    <style>
+        table {
+            border: 1px;
+            width: 80%;
+            height: 100%;
+        }
+
+        th {
+            text-align: center;
+            background-color: #e68a00;
+            color: azure;
+        }
+
+        table caption {
+            font-size: 200%;
+        }
+
+        tr:hover {
+            background-color: #FFB273;
+        }
+
+        tr:nth-of-type(odd) {
+            background-color: #ffebcc;
+        }
+
+        tr:nth-of-type(even) {
+            background-color: #ffd699;
+        }
+    </style>
+}
+
+
+<h1>Generated Lineups for @Model.BuiltFDraft.Name</h1>
+
+<form method="post" asp-action="ExportFDraftLineupsCSV" asp-controller="BuildLineups">
+    <div class="form-group">
+        <label asp-for="BuiltFDraft"></label>
+        <input class="form-control" asp-for="@Model.BuiltFDraft.Name" type="hidden" />
+    </div>
+
+    <div class="form-group">
+        <table>
+
+            @foreach (FDraftLineup lineup in Model.listFDraftLineups)
+            {
+                <tr>
+
+                    @foreach (string playaID in lineup.Lineup)
+                    {
+                        <td>
+                            @playaID
+                        </td>
+                    }
+
+
+                </tr>
+            }
+
+
+
+        </table>
+    </div>
+
+    <input type="submit" value="Export Your lineups as CSV" />
+
+    <div class="form-group">
+        <table>
+
+            @for (int i = 0; i < Model.listFDraftLineups.Count(); i++)
+
+            {
+                <tr>
+                    @for (int j = 0; j < Model.listFDraftLineups[i].LineupGolfers.Count(); j++)
+                    {
+
+                        <td>@Model.listFDraftLineups[i].LineupGolfers[j].Name</td>
+                        <td>@Model.listFDraftLineups[i].LineupGolfers[j].Salary</td>
+                        <td><input type="hidden" asp-for="@Model.listFDraftLineups[i].LineupGolfers[j].Name" /></td>
+                        <td><input type="hidden" asp-for="@Model.listFDraftLineups[i].LineupGolfers[j].Playerid" /></td>
+                        <td><input type="hidden" asp-for="@Model.listFDraftLineups[i].LineupGolfers[j].Salary" /></td>
+
+                    }
+                    <td>@Model.listFDraftLineups[i].LineupSalary</td>
+                    <td><input type="hidden" asp-for="@Model.listFDraftLineups[i].LineupSalary" /></td>
+                </tr>
+            }
+
+
+
+        </table>
+
+    </div>
+
+</form>

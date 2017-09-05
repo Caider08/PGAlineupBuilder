@@ -18,6 +18,10 @@ namespace PGAlineupBuilder.Data
 
         public DbSet<FDgolfer> FDGOLFER { get; set; }
 
+        public DbSet<FDraftTourney> FDraftT { get; set; }
+
+        public DbSet<FDraftGolfer> FDraftG { get; set; }
+
         public DbSet<BlogPost> BP { get; set; }
 
         public DbSet<Category> BPCAT { get; set; }

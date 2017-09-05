@@ -42,22 +42,15 @@ namespace PGAlineupBuilder.Controllers
         public IActionResult ChooseFD()
         {
             var fdTourneys = context.FDT.ToList();
-            // List<Golfer> testGolfers = new List<Golfer>();
-
-            //string testGolf = "The Greenbrier Classic 2017";
-
-            //var tourney = context.DKT.Single(s => s.Name == testGolf);
-
-            // int Tid = tourney.ID;
-
-            //var testGolfers = context.GOLFER.Where(c => c.DkTourneyID == Tid).ToList<Golfer>();
-
-
-
-            //ViewBag.TestTourney = tourney;
-            // ViewBag.ListTest = testGolfers;
 
             return View(fdTourneys);
+        }
+
+        public IActionResult ChooseFDraft()
+        {
+            var fDraftTourneys = context.FDraftT.ToList();
+
+            return View(fDraftTourneys);
         }
 
         //Take selected DkTourney and return a newly created DisplayTourneySalariesViewModel
@@ -104,6 +97,23 @@ namespace PGAlineupBuilder.Controllers
 
         }
 
+        public IActionResult getFDraft(string FDraftSelected)
+        {
+            var fdraftSelection = context.FDraftT.Single(s => s.Name == FDraftSelected);
+
+            int fdID = fdraftSelection.ID;
+
+            List<FDraftGolfer> selectedFDraftGolfers = context.FDraftG.Where(i => i.FDraftTourneyID == fdID).ToList<FDraftGolfer>();
+
+            DisplayFDraftTourneySalariesViewModel model = new DisplayFDraftTourneySalariesViewModel(fdraftSelection, selectedFDraftGolfers)
+            {
+
+            };
+
+            return View("DisplayFDraft", model);
+
+
+        }
 
         public IActionResult DisplayDK(DisplayTourneySalariesViewModel model)
         {
@@ -166,7 +176,12 @@ namespace PGAlineupBuilder.Controllers
                     {
 
 
-                        Golfer chosenGolfer = NewExposureSorted.First(s => s.Exposure > 0);
+                        Golfer chosenGolfer = NewExposureSorted.FirstOrDefault(s => s.Exposure > 0);
+                        if (chosenGolfer == null)
+                        {
+                            ViewBag.Attempts = "Please Adjust your settings(select more Golfer Exposures) and try to Build again.";
+                            return View(model);
+                        }
 
                         //keep chosing random golfers from ExposureGolfers list until one is found that is not in the DuplicateList
                         while ((DuplicateList.Contains(chosenGolfer)) || ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
@@ -314,26 +329,7 @@ namespace PGAlineupBuilder.Controllers
             }
             else
             {
-                //if (model.NumberOfRosters < 1 || model.NumberOfRosters > 150)
-                // {
-                //     ViewBag.RosterError = "Please Build between 1-150 lineups";
-                //     return View(model);
-                // }
-                // else if (model.MinSalary < 38500 || model.MinSalary > 50000)
-                // {
-                // ViewBag.MinError = "Please choose between 38,500 and 50,000 for Salary Floor";
-                // return View(model);
-                // }
-                // else if (model.MaxSalary < 38500 || model.MaxSalary > 50000)
-                // {
-                //ViewBag.MaxError = "Please choose between 38,500 and 50,000 for Salary Max";
-                // return View(model);
-                //}
-                //else if (model.MinSalary > model.MaxSalary)
-                // {
-                //     ViewBag.SalaryError = "Max Salary must be greater than Salary Floor";
-                //     return View(model);
-                // }
+               
 
                 return View(model);
 
@@ -434,7 +430,13 @@ namespace PGAlineupBuilder.Controllers
                     {
 
 
-                        FDgolfer chosenGolfer = NewExposureSorted.First(s => s.Exposure > 0);
+                        FDgolfer chosenGolfer = NewExposureSorted.FirstOrDefault(s => s.Exposure > 0);
+                        if (chosenGolfer == null)
+                        {
+                            ViewBag.Attempts = "Please Adjust your settings(select more Golfer Exposures) and try to Build again.";
+                            return View(model);
+                        }
+
 
                         //keep chosing random golfers from ExposureGolfers list until one is found that is not in the DuplicateList
                         while ((DuplicateList.Contains(chosenGolfer)) || ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
@@ -554,8 +556,7 @@ namespace PGAlineupBuilder.Controllers
                 {
 
                 };
-                //ViewBag.Success = generatedLineups;
-                //ViewBag.tourneyname = dkTourneyName;
+              
                 return View("BuiltFD", yourCreatedLineups);
 
                 // }
@@ -573,26 +574,6 @@ namespace PGAlineupBuilder.Controllers
             }
             else
             {
-                //if (model.NumberOfRosters < 1 || model.NumberOfRosters > 150)
-                // {
-                //     ViewBag.RosterError = "Please Build between 1-150 lineups";
-                //     return View(model);
-                // }
-                // else if (model.MinSalary < 38500 || model.MinSalary > 50000)
-                // {
-                // ViewBag.MinError = "Please choose between 38,500 and 50,000 for Salary Floor";
-                // return View(model);
-                // }
-                // else if (model.MaxSalary < 38500 || model.MaxSalary > 50000)
-                // {
-                //ViewBag.MaxError = "Please choose between 38,500 and 50,000 for Salary Max";
-                // return View(model);
-                //}
-                //else if (model.MinSalary > model.MaxSalary)
-                // {
-                //     ViewBag.SalaryError = "Max Salary must be greater than Salary Floor";
-                //     return View(model);
-                // }
 
                 return View(model);
 
@@ -616,6 +597,237 @@ namespace PGAlineupBuilder.Controllers
             foreach (FDlineup lineup in lineups)
             {
                 foreach (FDgolfer golferr in lineup.LineupGolfers)
+                {
+                    streamW.Write(String.Format("{0},", golferr.Playerid));
+
+                }
+                streamW.WriteLine();
+            }
+
+            streamW.Flush();
+            streamW.BaseStream.Seek(0, SeekOrigin.Begin);
+
+            return new FileStreamResult(streamW.BaseStream, "text/csv") { FileDownloadName = $"{namer}.csv" };
+
+        }
+
+        public IActionResult DisplayFDraft(DisplayFDraftTourneySalariesViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var fdraftTourneyName = context.FDraftT.Single(s => s.Name == model.FDraftName.Name);
+                string TourneyBuildName = fdraftTourneyName.Name;
+                IList<FDraftGolfer> currentGolfers = model.TourneyParticipants;
+
+                //Get a list of Golfers with > 0 Exposure
+                IList<FDraftGolfer> ExposureGolfers = currentGolfers.Where(s => s.Exposure > 0).ToList();
+
+                if (ExposureGolfers.Count() < 12)
+                {
+                    ViewBag.TenNeeded = "Please select Exposure to at least 12 Golfers";
+                    return View(model);
+                }
+
+
+                int numbaLineups = model.NumberOfRosters;
+                int maxS = model.MaxSalary;
+                int minS = model.MinSalary;
+
+                //adjust Exposure %s for each Golfer specified from the View if Lineup amount > 5
+                if (numbaLineups > 5)
+                {
+                    foreach (var golfer in ExposureGolfers)
+                    {
+                        double GolferPercentage = (golfer.Exposure / 100);
+                        golfer.Exposure = Math.Round((GolferPercentage * numbaLineups), MidpointRounding.AwayFromZero);
+
+                    }
+
+                }
+
+                List<FDraftGolfer> NewExposureSorted = ExposureGolfers.OrderByDescending(g => g.Exposure).ToList();
+
+
+
+                List<FDraftLineup> generatedLineups = new List<FDraftLineup>();
+
+                int lineupcounter = 0;
+                //try
+                // {
+                //begin building lineups according to # from numbaLineups
+                for (var l = 0; l < numbaLineups; l++)
+                {
+
+                    FDraftLineup newLineup = new FDraftLineup
+                    {
+                        LineupID = lineupcounter,
+                    };
+
+                    int attemptCounter = 0;
+
+                    List<FDraftGolfer> DuplicateList = new List<FDraftGolfer>();
+
+                    //try to create 6 man Lineup while falling into specified Salary Usage Range
+                    while (newLineup.LineupGolfers.Count() < 7)
+                    {
+
+
+                        FDraftGolfer chosenGolfer = NewExposureSorted.FirstOrDefault(s => s.Exposure > 0);
+                        if (chosenGolfer == null)
+                        {
+                            ViewBag.Attempts = "Please Adjust your settings(select more Golfer Exposures) and try to Build again.";
+                            return View(model);
+                        }
+
+
+                        //keep chosing random golfers from ExposureGolfers list until one is found that is not in the DuplicateList
+                        while ((DuplicateList.Contains(chosenGolfer)) || ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
+                        {
+
+                            attemptCounter++;
+
+                            var rando = new Random();
+                            chosenGolfer = NewExposureSorted[rando.Next(NewExposureSorted.Count)];
+
+
+
+                            if (chosenGolfer.Exposure <= 0)
+                            {
+                                chosenGolfer = NewExposureSorted[rando.Next(NewExposureSorted.Count)];
+                            }
+
+                            if (attemptCounter == 99999)
+                            {
+                                break;
+
+
+                            }
+
+                            System.Threading.Thread.Sleep(5);
+
+                        }
+
+                        if (attemptCounter == 9999)
+                        {
+                            ViewBag.Attempts = "Please Adjust your settings(select more Golfer Exposures) and try to Build again.";
+                            return View(model);
+
+                        }
+
+                        if (newLineup.LineupGolfers.Count() == 4 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 23500)))
+                        {
+                            //Increase the Exposure for each Golfer in the LineupGolfers since we're putting it back into selection pool
+                            foreach (FDraftGolfer golfa in newLineup.LineupGolfers)
+                            {
+                                golfa.Exposure++;
+                            }
+                            newLineup.LineupGolfers.Clear();
+                            newLineup.LineupSalary = 0;
+                            newLineup.amount_golfers = 0;
+                            newLineup.Lineup.Clear();
+                            DuplicateList.Clear();
+                        }
+
+                        if (newLineup.LineupGolfers.Count() == 5 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 10800)))
+                        {
+                            //Increase the Exposure for each Golfer in the LineupGolfers since we're putting it back into selection pool
+                            foreach (FDraftGolfer golfa in newLineup.LineupGolfers)
+                            {
+                                golfa.Exposure++;
+                            }
+                            newLineup.LineupGolfers.Clear();
+                            newLineup.LineupSalary = 0;
+                            newLineup.amount_golfers = 0;
+                            newLineup.Lineup.Clear();
+                            DuplicateList.Clear();
+                        }
+                        else if (newLineup.LineupGolfers.Count() == 5 && ((newLineup.LineupSalary + chosenGolfer.Salary) < (minS - 17000)))
+                        {
+                            //Increase the Exposure for each Golfer in the LineupGolfers since we're putting it back into selection pool
+                            foreach (FDraftGolfer golfa in newLineup.LineupGolfers)
+                            {
+                                golfa.Exposure++;
+                            }
+                            newLineup.LineupGolfers.Clear();
+                            newLineup.LineupSalary = 0;
+                            newLineup.amount_golfers = 0;
+                            newLineup.Lineup.Clear();
+                            DuplicateList.Clear();
+                        }
+                        else
+                        {
+                            newLineup.LineupGolfers.Add(chosenGolfer);
+                        }
+                        
+
+
+                        //Remove Golfer if Golfer is 7th Golfer in the Lineup and minSalary hasn't been met and start WHILE LOOP over
+                        if (newLineup.LineupGolfers.Count() == 7 && ((newLineup.LineupSalary + chosenGolfer.Salary) < minS))
+                        {
+                            newLineup.LineupGolfers.Remove(chosenGolfer);
+                        }
+                        else if (newLineup.Lineup.Count() == 7 && ((newLineup.LineupSalary + chosenGolfer.Salary) > maxS))
+                        {
+                            newLineup.LineupGolfers.Remove(chosenGolfer);
+                        }
+                        else
+                        {
+                            //add golfer to Lineup and Increase runningSalary amount and newLineup.amount
+                            newLineup.Lineup.Add(chosenGolfer.Playerid);
+                            newLineup.LineupSalary += chosenGolfer.Salary;
+                            chosenGolfer.Exposure--;
+                            newLineup.amount_golfers++;
+                            DuplicateList.Add(chosenGolfer);
+                        }
+
+
+                    }
+
+                    //add Newly created Lineup to list of lineups and increment the lineup count
+                    if (generatedLineups.Contains(newLineup))
+                    {
+                        ViewBag.Duplicates = "Sorry, your Build contained Duplicate Lineups...try again";
+                        return View(model);
+                    }
+
+                    generatedLineups.Add(newLineup);
+                    lineupcounter++;
+
+                }
+
+                BuiltFDraftLineupsViewModel yourCreatedLineups = new BuiltFDraftLineupsViewModel(fdraftTourneyName, generatedLineups)
+                {
+
+                };
+             
+                return View("BuiltFDraft", yourCreatedLineups);
+
+            
+            }
+            else
+            {
+
+                return View(model);
+
+            }
+        }
+
+        [HttpPost]
+        public FileStreamResult ExportFDraftLineupsCSV(BuiltFDraftLineupsViewModel yourCreatedLineups)
+        {
+            MemoryStream memoryS = new MemoryStream();
+            StreamWriter streamW = new StreamWriter(memoryS);
+
+
+            var namer = yourCreatedLineups.BuiltFDraft.Name;
+            var lineups = yourCreatedLineups.listFDraftLineups.ToList();
+
+
+
+
+            foreach (FDraftLineup lineup in lineups)
+            {
+                foreach (FDraftGolfer golferr in lineup.LineupGolfers)
                 {
                     streamW.Write(String.Format("{0},", golferr.Playerid));
 

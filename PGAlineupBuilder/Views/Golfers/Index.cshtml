@@ -68,20 +68,32 @@
 
     <input type="submit" value="Search our FanDuel Database" />
 </form>
-@*<h2>This Week's Fields</h2>
 
-<input type="button" value="Get DK Salaries" onclick="@("window.location.href='" + @Url.Action("DraftKings", "GolfersController") + "'");" style= font-size: 1.2em/> 
+<h1>Search Our FantasyDraft Database</h1>
 
-<form method="post" asp-controller="Golfers" asp-action="DraftKings">
+<form method="post" asp-controller="Golfers" asp-action="SearchFDraft">
+
     <div class="form-group">
-        <input type="submit" value="Get DraftKings' Golfers" />
+        <span>
+            <label for="SearchMethodFDraft">Search By Golfer</label>
+            <input type="radio" name="SearchMethodFDraft" id="SearchMethodFDraft" value="ByGolfer" checked="checked" />
+        </span>
+        <br />
+        <span>
+            <label for="SearchMethodFDraft">Search By Tournament</label>
+            <input type="radio" name="SearchMethodFDraft" id="SearchMethodFD" value="ByTournament" />
+        </span>
+        <br />
+        <span>@ViewBag.BlankTermFDraft</span>
+        <span>@ViewBag.NoneFDraft</span>
+
     </div>
+
+    <div class="form-group">
+        <span>
+            <input type="text" name="searchTermFDraft" id="searchTermFDraft" />
+        </span>
+    </div>
+
+    <input type="submit" value="Search our FantasyDraft Database" />
 </form>
-
-
-<form method="post" asp-controller="Golfers" asp-action="FanDuel">
-    <div class="form-group">
-        <input type="submit" value="Get FanDuel's Golfers" />
-    </div>
-</form>*@
-

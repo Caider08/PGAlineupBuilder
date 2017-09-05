@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using PGAlineupBuilder.Models;
 using PGAlineupBuilder.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace PGAlineupBuilder.Controllers
@@ -34,6 +35,13 @@ namespace PGAlineupBuilder.Controllers
             context.SEO.Add(signUP);
             context.SaveChanges();
             return View("EmailSuccess", signUP);
+        }
+
+        [HttpGet]
+        public IActionResult GetEmails()
+        {
+            IList<SEOsignUP> emails = context.SEO.ToList<SEOsignUP>();
+            return View("ManageEmails", emails);
         }
     }
 }

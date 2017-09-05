@@ -3,3 +3,18 @@
 *@
 @{
 }
+<div style="margin-top: 25px">
+
+@if (User.IsInRole("PGAguru"))
+{
+
+    <a style="margin-top: 10px; font-size: 2em" asp-action="GetEmails" asp-controller="SEOmarketing">Get SignUp Emails</a>
+    <br />
+  
+    <a style="margin-top: 10px; font-size: 2em" asp-action="NewPost" asp-controller="GolfArticles">Write a New Golf Article</a>
+    <br />
+    <a style="margin-top: 10px; font-size: 2em" asp-action="DeletePost" asp-controller="GolfArticles">Delete a Golf Article</a>
+    <br />
+    <a style="margin-top: 10px; font-size: 2em" asp-action="Index" asp-controller="ManageGolfArticles">Edit a Golf Article</a>
+}
+</div>

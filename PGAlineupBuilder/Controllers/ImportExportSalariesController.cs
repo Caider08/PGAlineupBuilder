@@ -54,6 +54,11 @@ namespace PGAlineupBuilder.Controllers
 
         }
 
+        public IActionResult UploadFDraftCSV()
+        {
+            return View("UploadFDraftCSV");
+        }
+
 
         //Takes files from UploadDKcsv file and writes them to DKuploads Directory and passes string "UploadName" to DKcreate Method
         [HttpPost]
@@ -115,7 +120,7 @@ namespace PGAlineupBuilder.Controllers
             {
                 List<Golfer> theseGolfers = new List<Golfer>();
 
-                theseGolfers = PGAuploads.WeeksFDGolfers(Uname);
+                theseGolfers = PGAuploads.WeeksDKGolfers(Uname);
 
                 string GameInfo = PGAuploads.WeeksGameInfo(Uname);
 
@@ -215,7 +220,7 @@ namespace PGAlineupBuilder.Controllers
             {
                 List<FDgolfer> theseGolfers = new List<FDgolfer>();
 
-                theseGolfers = PGAuploads.WeeksFDgolfers(Uname);
+                theseGolfers = PGAuploads.WeeksFDgolfers(Uname);         
 
                 int year = int.Parse(DateTime.Now.ToString("yyyy"));
 
@@ -256,6 +261,103 @@ namespace PGAlineupBuilder.Controllers
 
             ViewBag.Message = "Upload a file please";
             return View("UploadDKcsv");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> FDraftImport(ICollection<IFormFile> FDraftFiles, string uploadName)
+        {
+
+            long size = 0;
+
+            foreach (var file in FDraftFiles)
+            {
+                if (file.Length > 0)
+                {
+                    if (!string.IsNullOrEmpty(uploadName))
+                    {
+                        var filename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+
+                        var FDraftUploads = System.IO.Path.Combine(_environment.ContentRootPath, "FDraftUploads");
+
+                        string UPLOADname = uploadName;
+
+
+                        using (FileStream fstream = new FileStream(Path.Combine(FDraftUploads, UPLOADname), FileMode.Create))
+                        {
+
+                            await file.CopyToAsync(fstream);
+
+                            fstream.Flush();
+                        }
+
+                        size += file.Length;
+
+                        return RedirectToAction("FDraftCreate", "ImportExportSalaries", new { Uname = $"{UPLOADname}" });
+
+                    }
+                    else
+                    {
+                        ViewBag.Message = "Name your file please";
+                        return View("UploadFDraftCSV");
+                    }
+
+                }
+
+
+            }
+
+            ViewBag.Message = "Select a file please";
+            return View("UploadFDraftCSV");
+        }
+
+        public IActionResult FDraftCreate(string Uname)
+        {
+
+            if (!string.IsNullOrWhiteSpace(Uname))
+            {
+                List<FDraftGolfer> theseGolfers = new List<FDraftGolfer>();
+
+                theseGolfers = PGAuploads.WeeksFDraftGolfers(Uname);
+
+                int year = int.Parse(DateTime.Now.ToString("yyyy"));
+
+                string GameInfo = Uname + $" {year}";
+
+                //check to see if this Tournament has already been pushed to the Database.
+                var isDuplicate = context.FDraftT.Any(a => a.Name == GameInfo);
+
+                if (isDuplicate)
+                {
+                    ViewBag.Message = "You've already uploaded this tournament";
+                    return View("UploadFDraftCSV");
+                }
+                else
+                {   //PUSH created Golfers and DkTourney to the Database
+                    foreach (FDraftGolfer golfer in theseGolfers)
+                    {
+                        context.FDraftG.Add(golfer);
+
+                    }
+
+                    FDraftTourney fDraftTourney = new FDraftTourney(theseGolfers)
+                    {
+                        Name = GameInfo,
+
+                    };
+
+                    context.FDraftT.Add(fDraftTourney);
+                    context.SaveChanges();
+
+                    ViewBag.Game = GameInfo;
+                    ViewBag.Golfers = theseGolfers;
+                    return View("FDraftSalariesCreated");
+                }
+
+
+            }
+
+            ViewBag.Message = "Upload a file please";
+            return View("FDraftUploadCSV");
         }
     }
 

@@ -8,9 +8,10 @@ using PGAlineupBuilder.Data;
 namespace PGAlineupBuilder.Migrations
 {
     [DbContext(typeof(PGAlineupBuilderDbContext))]
-    partial class PGAlineupBuilderDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170904050236_SEO")]
+    partial class SEO
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -139,46 +140,6 @@ namespace PGAlineupBuilder.Migrations
                     b.ToTable("FDGOLFER");
                 });
 
-            modelBuilder.Entity("PGAlineupBuilder.Models.FDraftGolfer", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<double>("Exposure");
-
-                    b.Property<int>("FDraftTourneyID");
-
-                    b.Property<string>("GameInfo");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Playerid");
-
-                    b.Property<int>("Salary");
-
-                    b.Property<string>("Website");
-
-                    b.Property<int>("YearCreated");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("FDraftTourneyID");
-
-                    b.ToTable("FDraftG");
-                });
-
-            modelBuilder.Entity("PGAlineupBuilder.Models.FDraftTourney", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("FDraftT");
-                });
-
             modelBuilder.Entity("PGAlineupBuilder.Models.FDtourney", b =>
                 {
                     b.Property<int>("ID")
@@ -288,14 +249,6 @@ namespace PGAlineupBuilder.Migrations
                     b.HasOne("PGAlineupBuilder.Models.FDtourney")
                         .WithMany("Participants")
                         .HasForeignKey("FDtourneyID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("PGAlineupBuilder.Models.FDraftGolfer", b =>
-                {
-                    b.HasOne("PGAlineupBuilder.Models.FDraftTourney")
-                        .WithMany("Participants")
-                        .HasForeignKey("FDraftTourneyID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

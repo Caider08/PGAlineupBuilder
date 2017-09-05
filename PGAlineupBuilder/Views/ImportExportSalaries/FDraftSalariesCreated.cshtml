@@ -35,7 +35,6 @@
         }
     </style>
 }
-
 <h1>@ViewBag.Game</h1>
 <table>
     <tr>
@@ -44,12 +43,12 @@
         <th>Salary</th>
     </tr>
 
-    @foreach (FDgolfer golfer in ViewBag.Golfers)
+    @foreach (FDraftGolfer golfer in ViewBag.Golfers)
     {
-    <tr>
-        <td>@golfer.Playerid</td>
-        <td>@golfer.Name</td>
-        <td>@golfer.Salary</td>
-    </tr>
+        <tr>
+            <td>@golfer.Playerid</td>
+            <td>@golfer.Name</td>
+            <td>@golfer.Salary</td>
+        </tr>
     }
 </table>

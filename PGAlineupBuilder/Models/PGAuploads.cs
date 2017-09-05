@@ -30,7 +30,7 @@ namespace PGAlineupBuilder.Models
         }
 
         //creates List of Golfers from specified file (tourneyName) from DKuploads Directory
-        public static List<Golfer> WeeksFDGolfers(string tourneyName)
+        public static List<Golfer> WeeksDKGolfers(string tourneyName)
         {
             List<Golfer> Golfers = new List<Golfer>();
 
@@ -212,6 +212,68 @@ namespace PGAlineupBuilder.Models
             IsWeekLoaded = true;
 
         }
+        public static List<FDraftGolfer> WeeksFDraftGolfers(string tourneyName)
+        {
+            List<FDraftGolfer> fDraftGolfers = new List<FDraftGolfer>();
+
+            FDraftLoadWeek(tourneyName);
+
+            int year = int.Parse(DateTime.Now.ToString("yyyy"));
+
+            foreach (string[] row in rows)
+            {
+                FDraftGolfer newGolfer = new FDraftGolfer()
+                {
+                    Name = row[9],
+                    Playerid = (row[10]),
+                    Salary = int.Parse(row[15]),
+                    GameInfo = $"{tourneyName} {year}",
+                    Website = "FantasyDraft",
+                    YearCreated = year,
+
+                };
+
+                fDraftGolfers.Add(newGolfer);
+            }
+
+
+            return fDraftGolfers;
+
+        }
+
+        private static void FDraftLoadWeek(string nameOfTourney)
+        {
+
+            if (IsWeekLoaded)
+            {
+                return;
+            }
+
+
+
+            using (StreamReader reader = File.OpenText($"FDraftUploads/{nameOfTourney}"))
+            {
+                while (reader.Peek() >= 0)
+                {
+                    string line = reader.ReadLine();
+                    string[] rowArrray = CSVRowToStringArray(line);
+                    if (rowArrray.Length > 0)
+                    {
+                        rows.Add(rowArrray);
+                    }
+                }
+            }
+
+            //remove Directions and other fluff from top of csv file 
+
+            rows.RemoveRange(0, 1);
+
+
+
+            IsWeekLoaded = true;
+
+        }
+
     }
 
 }

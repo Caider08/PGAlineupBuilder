@@ -5,16 +5,27 @@
 }
 
 
-<h2>Upload DK Salaries</h2>
 
+<div style="text-align: left">
 <form method="post" asp-action="DKimport" asp-controller="ImportExportSalaries" enctype="multipart/form-data">
-    <input type="file" name="DKfiles" multiple />
-    <input type="text" name="uploadName" />
-    <input type="submit" value="Upload DK Salaries" />
+    <h2>Upload DK Salaries</h2>
+    <div class="form-group">
+           
+            <input type="file" name="DKfiles" multiple />
+    </div>
+
+    <div class="form-group">
+        <span>
+            <input type="text" name="uploadName" />
+        </span>
+    </div>
+    
+         <input type="submit" value="Upload DK Salaries" />
+        
 </form> 
 
 <div>@ViewBag.Message</div>
-
+</div>
 
 
 

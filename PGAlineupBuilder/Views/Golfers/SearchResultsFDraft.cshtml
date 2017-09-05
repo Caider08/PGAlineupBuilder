@@ -36,20 +36,25 @@
     </style>
 }
 
-<h1>@ViewBag.Game</h1>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Salary</th>
-    </tr>
+<h1>Your Search Results</h1>
 
-    @foreach (FDgolfer golfer in ViewBag.Golfers)
-    {
-    <tr>
-        <td>@golfer.Playerid</td>
-        <td>@golfer.Name</td>
-        <td>@golfer.Salary</td>
-    </tr>
-    }
-</table>
+<h2>@ViewBag.Tourney.Name</h2>
+
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Tournament</th>
+        </tr>
+        @foreach (FDraftGolfer golfa in ViewBag.GolferResults)
+        {
+            <tr>
+                <td>@golfa.Name</td>
+                <td>@golfa.Salary</td>
+                <td>@golfa.GameInfo</td>
+            </tr>
+
+        }
+    </table>
+</div>

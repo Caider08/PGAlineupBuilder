@@ -41,6 +41,7 @@
   <ItemGroup>
     <Folder Include="DKuploads\" />
     <Folder Include="FDuploads\" />
+    <Folder Include="FDraftUploads\" />
     <Folder Include="wwwroot\lib\jquery\Themes\" />
   
   </ItemGroup>

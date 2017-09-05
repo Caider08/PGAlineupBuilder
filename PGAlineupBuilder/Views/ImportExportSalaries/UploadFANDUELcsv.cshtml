@@ -3,12 +3,14 @@
 *@
 @{
 }
-<h2>Upload FanDuel Salaries</h2>
 
+<div style="text-align: left">
 <form method="post" asp-action="FDimport" asp-controller="ImportExportSalaries" enctype="multipart/form-data">
+    <h2>Upload FanDuel Salaries</h2>
     <input type="file" name="FDfiles" multiple />
     <input type="text" name="uploadName" />
     <input type="submit" value="Upload FanDuel Salaries" />
 </form>
 
 <div>@ViewBag.Message</div>
+</div>

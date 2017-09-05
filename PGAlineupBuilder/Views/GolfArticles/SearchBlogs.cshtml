@@ -5,7 +5,7 @@
 }
 <h1>Search our Database for PGA Golf and Daily Fantasy Golf articles</h1>
 
-<form method="post" asp-controller="BlogPosting" asp-action="byTerm">
+<form method="post" asp-controller="GolfArticles" asp-action="byTerm">
 
     <h2>Search by Article title or keywords</h2>
 
@@ -26,10 +26,11 @@
 
     </div>
 
-
-    <label for="sTerm">Search for Past Blog Posts</label>
-    <input type="text" class="form-control" name="sTerm" id="sTerm" />
-
-    <input type="submit" value="Search Past Golf Articles" />
-
+    <div class="form-group">
+        <span>
+            <label for="sTerm">Search for Past Blog Posts</label>
+            <input type="text" name="sTerm" id="sTerm" />
+        </span>
+        <input type="submit" value="Search Past Golf Articles" />
+    </div>
 </form>
