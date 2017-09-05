@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using PGAlineupBuilder.Models;
 using PGAlineupBuilder.Data;
 using System.Net;
+using System.Text.RegularExpressions;
 
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -37,8 +38,14 @@ namespace PGAlineupBuilder.Controllers
             }
             else
             {
-               if (SearchMethod == "ByGolfer")
-               {
+                if (!Regex.IsMatch(searchTerm, @"^[a-zA-Z'0-9\s.-]{1,80}$"))
+                {
+                    ViewBag.None = "Invalid Characters in Search";
+                    return View("Index");
+                }
+
+                if (SearchMethod == "ByGolfer")
+                {
                     List<Golfer> returnedGolfer = context.GOLFER.Where(g => g.Name.Contains(searchTerm)).ToList();
                     if (returnedGolfer.Count() < 1)
                     {
@@ -51,9 +58,9 @@ namespace PGAlineupBuilder.Controllers
                     ViewBag.Tourney = tourneysearch;
                     ViewBag.GolferResults = returnedGolfer;
                     return View("SearchResults");
-               }
-               else if(SearchMethod == "ByTournament")
-               {
+                }
+                else if(SearchMethod == "ByTournament")
+                {
                     var tourneySearch = context.DKT.Where(t => t.Name.Contains(searchTerm)).FirstOrDefault();
                     if (tourneySearch == null)
                     {
@@ -66,8 +73,8 @@ namespace PGAlineupBuilder.Controllers
                     ViewBag.Tourney = tourneySearch;
                     ViewBag.GolferResults = returnedGolfer;
                     return View("SearchResults");
-               }
-               else
+                }
+                else
                 {
                     ViewBag.None = "Your Search didn't return any results";
                     return View("Index");
@@ -89,6 +96,12 @@ namespace PGAlineupBuilder.Controllers
             }
             else
             {
+                if (!Regex.IsMatch(searchTermFD, @"^[a-zA-Z'0-9\s.-]{1,80}$"))
+                {
+                    ViewBag.None = "Invalid Characters in Search";
+                    return View("Index");
+                }
+
                 if (SearchMethodFD == "ByGolfer")
                 {
                     List<FDgolfer> returnedGolfer = context.FDGOLFER.Where(g => g.Name.Contains(searchTermFD)).ToList();
@@ -141,6 +154,12 @@ namespace PGAlineupBuilder.Controllers
             }
             else
             {
+                if (!Regex.IsMatch(searchTermFDraft, @"^[a-zA-Z'0-9\s.-]{1,80}$"))
+                {
+                    ViewBag.NoneFDraft = "Invalid Characters in Search";
+                    return View("Index");
+                }
+
                 if (SearchMethodFDraft == "ByGolfer")
                 {
                     List<FDraftGolfer> returnedGolfer = context.FDraftG.Where(g => g.Name.Contains(searchTermFDraft)).ToList();

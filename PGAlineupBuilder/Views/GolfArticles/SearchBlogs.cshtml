@@ -3,7 +3,7 @@
 *@
 @{
 }
-<h1>Search our Database for PGA Golf and Daily Fantasy Golf articles</h1>
+<h1>Search our Database for PGA, European Tour, and Daily Fantasy Golf articles</h1>
 
 <form method="post" asp-controller="GolfArticles" asp-action="byTerm">
 
@@ -22,13 +22,13 @@
         </span>
         <br />
         <span>@ViewBag.BlankTerm</span>
-        <span>@ViewBag.None</span>
+        <span>@ViewBag.Nothing</span>
 
     </div>
 
     <div class="form-group">
         <span>
-            <label for="sTerm">Search for Past Blog Posts</label>
+            <label for="sTerm">Search for Past Articles</label>
             <input type="text" name="sTerm" id="sTerm" />
         </span>
         <input type="submit" value="Search Past Golf Articles" />

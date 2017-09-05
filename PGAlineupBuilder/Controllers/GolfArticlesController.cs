@@ -199,6 +199,11 @@ namespace PGAlineupBuilder.Controllers
         {
             if(!string.IsNullOrWhiteSpace(Aterm))
             {
+                if (!Regex.IsMatch(Aterm, @"^[a-zA-Z'0-9\s.-]{1,80}$"))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
                 IList<BlogPost> searchArticles = context.BP.Include(a => a.Category).Include(a => a.Tag).Where(bp => bp.Name.Contains(Aterm)).Take(10).ToList<BlogPost>();
                
 
@@ -219,10 +224,17 @@ namespace PGAlineupBuilder.Controllers
             }
            
         }
+
         public IActionResult byTerm(string sTerm, string SearchMethod)
         {
             if(!string.IsNullOrWhiteSpace(sTerm))
             {
+                if (!Regex.IsMatch(sTerm, @"^[a-zA-Z0-9\s.'-]{1,80}$"))
+                {
+                    ViewBag.Nothing = "Bad Characters";
+                    return View("SearchBlogs");
+                }
+                
                 IList<BlogPost> searchPosts = new List<BlogPost>();
 
                 if(SearchMethod == "ByTitle")
@@ -236,13 +248,13 @@ namespace PGAlineupBuilder.Controllers
                 }
                 if(searchPosts.Count() == 0)
                 {
-                    ViewBag.Nothing = $"Sorry, no Blogs with {sTerm} in the title were found";
+                    ViewBag.Nothing = $"Sorry, no Blogs with {sTerm}  were found";
                    return View("SearchBlogs");
                 }
                 else
                 {
                     BlogPost exampleBlog = searchPosts.FirstOrDefault();
-                    
+                    ViewBag.header = exampleBlog.Name;
                     return View("ListBlogs", searchPosts);
                 }
                 

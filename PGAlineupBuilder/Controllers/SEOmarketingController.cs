@@ -6,7 +6,7 @@ using PGAlineupBuilder.Models;
 using PGAlineupBuilder.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using System.Text.RegularExpressions;
 
 namespace PGAlineupBuilder.Controllers
 {
@@ -23,10 +23,15 @@ namespace PGAlineupBuilder.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
         public IActionResult SignUp(string email)
         {
+            if(!Regex.IsMatch(email, @"^[a-zA-z@0-9._-]{1,80}$"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             SEOsignUP signUP = new SEOsignUP()
             {
                 Email = email,
