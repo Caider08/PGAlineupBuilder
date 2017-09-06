@@ -43,7 +43,8 @@ template {
   display: none;
 }
 a {
-  background-color: transparent;
+    background-color: transparent;
+    color: #e68a00
 }
 a:active,
 a:hover {

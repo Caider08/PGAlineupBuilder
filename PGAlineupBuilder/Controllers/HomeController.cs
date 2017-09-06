@@ -31,6 +31,7 @@ namespace PGAlineupBuilder.Controllers
 
         public IActionResult About()
         {
+            ViewData["Title"] = "Fantasy Golf Masters";
             ViewData["Message"] = "Website and Database built and managed by cbDev";
 
             return View();
