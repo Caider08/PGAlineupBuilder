@@ -13,6 +13,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\images\bitcoin-225080_960_720.png" />
+    <Content Include="wwwroot\images\DK_GIG_bottomAlign_dark.png" />
+    <Content Include="wwwroot\images\DraftKings-logo-font.png" />
+    <Content Include="wwwroot\images\fanduel_monogram_detail.png" />
+    <Content Include="wwwroot\images\fantasy_draftLOGO.png" />
+    <Content Include="wwwroot\images\fantasy_draftLOGOEDIT.jpg" />
     <Content Include="wwwroot\web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -187,6 +187,13 @@ namespace PGAlineupBuilder.Controllers
             return RedirectToAction("NewPost");
         }
 
+        public IActionResult LatestBlogs()
+        {
+            IList<BlogPost> blogs = context.BP.Include(x => x.Category).Include(x => x.Tag).OrderByDescending(p => p.PublishedDate).Take(6).ToList<BlogPost>();
+            ViewBag.Header = null;
+            return View("ListBlogs", blogs);
+        }
+
         public IActionResult AllBlogs()
         {
             IList<BlogPost> blogs = context.BP.Include(x => x.Category).Include(x => x.Tag).OrderByDescending(p => p.PublishedDate).ToList<BlogPost>();
@@ -254,7 +261,7 @@ namespace PGAlineupBuilder.Controllers
                 else
                 {
                     BlogPost exampleBlog = searchPosts.FirstOrDefault();
-                    ViewBag.header = exampleBlog.Name;
+                    ViewBag.header = sTerm;
                     return View("ListBlogs", searchPosts);
                 }
                 

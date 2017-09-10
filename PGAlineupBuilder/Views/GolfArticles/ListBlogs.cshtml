@@ -5,18 +5,18 @@
 }
 @model IList<PGAlineupBuilder.Models.BlogPost>
 
-<div class="body-content">
+<div class="body-content" style="text-align: left">
     @if (ViewBag.header == null)
     {
-        <div class="row">
-        <h2>All of our Golf Articles</h2>
+        <div class="row" style="text-align: center">
+        <h2>Our Latest Golf Articles</h2>
         </div>
 
     }
     else
     {
-       <div class="row">
-       <h2>Articles</h2>
+       <div class="row" style="text-align: center">
+       <h2>@ViewBag.header Articles</h2>
        </div>
     }
     
