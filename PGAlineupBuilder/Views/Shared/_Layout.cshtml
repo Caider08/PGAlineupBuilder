@@ -37,25 +37,25 @@
 <body style="background-color: #f3f2f2; color: #686764">
     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #e68a00; color: #000000; border: none">
         <div class="container" style="color: #000000" >
-            <div class="navbar-header" style="color: #000000" >
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">FantasyGolfMasters</a>
+                <a style="color: #000000" asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">FantasyGolfMasters</a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="GolfArticles" asp-action="Index">Golf Articles</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Golfers" asp-action="Index">Search Golfers</a></li>
-                    <li><a asp-area="" asp-controller="BuildLineups" asp-action="Index">Build Lineups</a></li>
+                <ul class="nav navbar-nav" id="tester">
+                    <li><a style="color: #000000" asp-area="" asp-controller="GolfArticles" asp-action="Index">Golf Articles</a></li>
+                    <li><a style="color: #000000" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a style="color: #000000" asp-area="" asp-controller="Golfers" asp-action="Index">Search Golfers</a></li>
+                    <li><a style="color: #000000" asp-area="" asp-controller="BuildLineups" asp-action="Index">Build Lineups</a></li>
                     @if (User.IsInRole("PGAguru"))
                     {
-                    <li><a asp-area="" asp-controller="ManageGolfArticles" asp-action="Index">Manage Articles</a></li>
-                    <li><a asp-area="" asp-controller="ImportExportSalaries" asp-action="Index">Upload Salaries</a></li>
+                    <li><a style="color: #000000" asp-area="" asp-controller="ManageGolfArticles" asp-action="Index">Manage Articles</a></li>
+                    <li><a style="color: #000000" asp-area="" asp-controller="ImportExportSalaries" asp-action="Index">Upload Salaries</a></li>
                     }
                    
                 </ul>

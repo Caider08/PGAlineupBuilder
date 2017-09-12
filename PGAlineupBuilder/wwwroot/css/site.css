@@ -85,7 +85,19 @@ h1, h2, h3, h4 {
     color: #686764;
 }
 
+li a {
+    color: #000000;
+}
 
+#tester {
+    color: #000000;
+}
+li a:hover {
+    color: #ffffff;
+}
+.nav navbar-nav ul li a{
+    color: #ff0000 !important;
+}
 /* buttons and links extension to use brackets: [ click me ] */
 .btn-bracketed::before {
     display: inline-block;

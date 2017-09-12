@@ -62,20 +62,12 @@ namespace PGAlineupBuilder.Controllers
 
             List<Golfer> selectedGolfers = context.GOLFER.Where(s => s.DkTourneyID == DKTid).ToList<Golfer>();
 
-            // TempData["dkSELECTED"] = new DkTourney() { Name = dkSelected.Name, Participants = dkSelected.Participants };
-            // selectedGolfers = (List<Golfer>)TempData["dkGOLFERS"];
-
-            //TempData.Keep("dkSELECTED");
-            // TempData.Keep("dkGOLFERS");
-
 
             DisplayTourneySalariesViewModel model = new DisplayTourneySalariesViewModel(dkSelected, selectedGolfers)
             {
 
             };
 
-            //ViewBag.SelectedDKT = dkSelected;
-            //ViewBag.SelectedDKgolfers = selectedGolfers;
             return View("DisplayDK", model);
         }
 
@@ -111,7 +103,6 @@ namespace PGAlineupBuilder.Controllers
             };
 
             return View("DisplayFDraft", model);
-
 
         }
 
@@ -150,8 +141,6 @@ namespace PGAlineupBuilder.Controllers
                 }
 
                 List<Golfer> NewExposureSorted = ExposureGolfers.OrderByDescending(g => g.Exposure).ToList();
-
-
 
                 List<DKlineup> generatedLineups = new List<DKlineup>();
 
@@ -203,7 +192,6 @@ namespace PGAlineupBuilder.Controllers
                             {
                                 break;
 
-
                             }
 
                             System.Threading.Thread.Sleep(5);
@@ -245,7 +233,7 @@ namespace PGAlineupBuilder.Controllers
                             DuplicateList.Clear();
                         }
 
-                        if (newLineup.LineupGolfers.Count() == 4 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 6500)))
+                        if (newLineup.LineupGolfers.Count() == 4 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 6100)))
                         {
                             //Increase the Exposure for each Golfer in the LineupGolfers since we're putting it back into selection pool
                             foreach (Golfer golfa in newLineup.LineupGolfers)
@@ -324,8 +312,6 @@ namespace PGAlineupBuilder.Controllers
 
                 //}
 
-
-
             }
             else
             {
@@ -334,8 +320,6 @@ namespace PGAlineupBuilder.Controllers
                 return View(model);
 
             }
-
-
 
 
         }
@@ -486,7 +470,7 @@ namespace PGAlineupBuilder.Controllers
                             DuplicateList.Clear();
                         }
 
-                        if (newLineup.LineupGolfers.Count() == 5 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 10400)))
+                        if (newLineup.LineupGolfers.Count() == 5 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 10000)))
                         {
                             //Increase the Exposure for each Golfer in the LineupGolfers since we're putting it back into selection pool
                             foreach (FDgolfer golfa in newLineup.LineupGolfers)
@@ -500,7 +484,7 @@ namespace PGAlineupBuilder.Controllers
                             DuplicateList.Clear();
                         }
 
-                        if (newLineup.LineupGolfers.Count() == 6 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 5200)))
+                        if (newLineup.LineupGolfers.Count() == 6 && ((newLineup.LineupSalary + chosenGolfer.Salary) > (maxS - 4600)))
                         {
                             //Increase the Exposure for each Golfer in the LineupGolfers since we're putting it back into selection pool
                             foreach (FDgolfer golfa in newLineup.LineupGolfers)

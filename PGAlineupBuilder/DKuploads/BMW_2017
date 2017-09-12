@@ -1,0 +1,78 @@
+G,G,G,G,G,G,,Instructions,,,,,,
+,,,,,,,1. Locate the player you want to select in the list below ,,,,,,
+,,,,,,,2. Copy the ID of your player (you can use the Name + ID column or the ID column) ,,,,,,
+,,,,,,,3. Paste the ID into the roster position desired ,,,,,,
+,,,,,,,4. You must include an ID for each player; you cannot use just the player's name ,,,,,,
+,,,,,,,5. You can create up to 500 lineups per file ,,,,,,
+ ,,,,,,,,,,,,,
+,,,,,,,Position,Name + ID,Name,ID,Salary,GameInfo,TeamAbbrev 
+,,,,,,,G,Jordan Spieth (9417344),Jordan Spieth,9417344,11800,BMW Championship,Golf
+,,,,,,,G,Dustin Johnson (9417345),Dustin Johnson,9417345,11500,BMW Championship,Golf
+,,,,,,,G,Rickie Fowler (9417346),Rickie Fowler,9417346,10700,BMW Championship,Golf
+,,,,,,,G,Jon Rahm (9417347),Jon Rahm,9417347,10500,BMW Championship,Golf
+,,,,,,,G,Justin Thomas (9417348),Justin Thomas,9417348,10300,BMW Championship,Golf
+,,,,,,,G,Hideki Matsuyama (9417349),Hideki Matsuyama,9417349,9900,BMW Championship,Golf
+,,,,,,,G,Jason Day (9417350),Jason Day,9417350,9600,BMW Championship,Golf
+,,,,,,,G,Rory McIlroy (9417351),Rory McIlroy,9417351,9400,BMW Championship,Golf
+,,,,,,,G,Paul Casey (9417352),Paul Casey,9417352,9200,BMW Championship,Golf
+,,,,,,,G,Brooks Koepka (9417353),Brooks Koepka,9417353,9100,BMW Championship,Golf
+,,,,,,,G,Henrik Stenson (9417354),Henrik Stenson,9417354,8900,BMW Championship,Golf
+,,,,,,,G,Louis Oosthuizen (9417355),Louis Oosthuizen,9417355,8800,BMW Championship,Golf
+,,,,,,,G,Sergio Garcia (9417356),Sergio Garcia,9417356,8700,BMW Championship,Golf
+,,,,,,,G,Patrick Cantlay (9417357),Patrick Cantlay,9417357,8600,BMW Championship,Golf
+,,,,,,,G,Justin Rose (9417358),Justin Rose,9417358,8500,BMW Championship,Golf
+,,,,,,,G,Kevin Chappell (9417359),Kevin Chappell,9417359,8400,BMW Championship,Golf
+,,,,,,,G,Zach Johnson (9417360),Zach Johnson,9417360,8300,BMW Championship,Golf
+,,,,,,,G,Matt Kuchar (9417361),Matt Kuchar,9417361,8200,BMW Championship,Golf
+,,,,,,,G,Ian Poulter (9417362),Ian Poulter,9417362,8100,BMW Championship,Golf
+,,,,,,,G,Patrick Reed (9417363),Patrick Reed,9417363,8000,BMW Championship,Golf
+,,,,,,,G,Kevin Na (9417364),Kevin Na,9417364,7900,BMW Championship,Golf
+,,,,,,,G,Jason Dufner (9417365),Jason Dufner,9417365,7800,BMW Championship,Golf
+,,,,,,,G,Tony Finau (9417366),Tony Finau,9417366,7800,BMW Championship,Golf
+,,,,,,,G,Marc Leishman (9417367),Marc Leishman,9417367,7700,BMW Championship,Golf
+,,,,,,,G,Webb Simpson (9417368),Webb Simpson,9417368,7700,BMW Championship,Golf
+,,,,,,,G,Charley Hoffman (9417369),Charley Hoffman,9417369,7600,BMW Championship,Golf
+,,,,,,,G,Pat Perez (9417370),Pat Perez,9417370,7600,BMW Championship,Golf
+,,,,,,,G,Charl Schwartzel (9417371),Charl Schwartzel,9417371,7600,BMW Championship,Golf
+,,,,,,,G,Russell Henley (9417372),Russell Henley,9417372,7600,BMW Championship,Golf
+,,,,,,,G,Emiliano Grillo (9417373),Emiliano Grillo,9417373,7600,BMW Championship,Golf
+,,,,,,,G,Daniel Berger (9417374),Daniel Berger,9417374,7500,BMW Championship,Golf
+,,,,,,,G,Chez Reavie (9417375),Chez Reavie,9417375,7500,BMW Championship,Golf
+,,,,,,,G,Ollie Schniederjans (9417376),Ollie Schniederjans,9417376,7500,BMW Championship,Golf
+,,,,,,,G,Brendan Steele (9417377),Brendan Steele,9417377,7500,BMW Championship,Golf
+,,,,,,,G,Bud Cauley (9417378),Bud Cauley,9417378,7500,BMW Championship,Golf
+,,,,,,,G,Si Woo Kim (9417379),Si Woo Kim,9417379,7500,BMW Championship,Golf
+,,,,,,,G,Francesco Molinari (9417380),Francesco Molinari,9417380,7400,BMW Championship,Golf
+,,,,,,,G,Kyle Stanley (9417381),Kyle Stanley,9417381,7400,BMW Championship,Golf
+,,,,,,,G,Bill Haas (9417382),Bill Haas,9417382,7400,BMW Championship,Golf
+,,,,,,,G,Ryan Moore (9417383),Ryan Moore,9417383,7400,BMW Championship,Golf
+,,,,,,,G,Stewart Cink (9417384),Stewart Cink,9417384,7400,BMW Championship,Golf
+,,,,,,,G,Kevin Tway (9417385),Kevin Tway,9417385,7400,BMW Championship,Golf
+,,,,,,,G,Phil Mickelson (9417386),Phil Mickelson,9417386,7300,BMW Championship,Golf
+,,,,,,,G,Keegan Bradley (9417387),Keegan Bradley,9417387,7300,BMW Championship,Golf
+,,,,,,,G,Jhonattan Vegas (9417388),Jhonattan Vegas,9417388,7300,BMW Championship,Golf
+,,,,,,,G,Jamie Lovemark (9417389),Jamie Lovemark,9417389,7300,BMW Championship,Golf
+,,,,,,,G,James Hahn (9417390),James Hahn,9417390,7300,BMW Championship,Golf
+,,,,,,,G,Kevin Kisner (9417391),Kevin Kisner,9417391,7200,BMW Championship,Golf
+,,,,,,,G,Lucas Glover (9417392),Lucas Glover,9417392,7200,BMW Championship,Golf
+,,,,,,,G,Bryson DeChambeau (9417393),Bryson DeChambeau,9417393,7200,BMW Championship,Golf
+,,,,,,,G,Danny Lee (9417394),Danny Lee,9417394,7200,BMW Championship,Golf
+,,,,,,,G,Wesley Bryan (9417395),Wesley Bryan,9417395,7200,BMW Championship,Golf
+,,,,,,,G,Gary Woodland (9417396),Gary Woodland,9417396,7100,BMW Championship,Golf
+,,,,,,,G,Adam Hadwin (9417397),Adam Hadwin,9417397,7100,BMW Championship,Golf
+,,,,,,,G,Rafael Cabrera-Bello (9417398),Rafael Cabrera-Bello,9417398,7100,BMW Championship,Golf
+,,,,,,,G,Robert Streb (9417399),Robert Streb,9417399,7100,BMW Championship,Golf
+,,,,,,,G,Sung Kang (9417400),Sung Kang,9417400,7100,BMW Championship,Golf
+,,,,,,,G,Charles Howell (9417401),Charles Howell,9417401,7100,BMW Championship,Golf
+,,,,,,,G,Brian Harman (9417402),Brian Harman,9417402,7000,BMW Championship,Golf
+,,,,,,,G,Grayson Murray (9417403),Grayson Murray,9417403,7000,BMW Championship,Golf
+,,,,,,,G,Hudson Swafford (9417404),Hudson Swafford,9417404,7000,BMW Championship,Golf
+,,,,,,,G,Scott Brown (9417405),Scott Brown,9417405,7000,BMW Championship,Golf
+,,,,,,,G,Sean O'Hair (9417406),Sean O'Hair,9417406,7000,BMW Championship,Golf
+,,,,,,,G,Cameron Smith (9417407),Cameron Smith,9417407,7000,BMW Championship,Golf
+,,,,,,,G,Xander Schauffele (9417408),Xander Schauffele,9417408,6900,BMW Championship,Golf
+,,,,,,,G,Billy Horschel (9417409),Billy Horschel,9417409,6900,BMW Championship,Golf
+,,,,,,,G,Martin Laird (9417410),Martin Laird,9417410,6900,BMW Championship,Golf
+,,,,,,,G,Luke List (9417411),Luke List,9417411,6900,BMW Championship,Golf
+,,,,,,,G,Anirban Lahiri (9417412),Anirban Lahiri,9417412,6900,BMW Championship,Golf
+,,,,,,,G,Mackenzie Hughes (9417413),Mackenzie Hughes,9417413,6900,BMW Championship,Golf
