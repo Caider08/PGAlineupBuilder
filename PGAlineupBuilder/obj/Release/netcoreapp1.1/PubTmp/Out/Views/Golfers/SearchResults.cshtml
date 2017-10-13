@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@section OverrideStyles
+{
+    <style>
+        table {
+            border: 1px;
+            width: 80%;
+            height: 100%;
+        }
+
+        th {
+            text-align: center;
+            background-color: #e68a00;
+            color: azure;
+        }
+
+        table caption {
+            font-size: 200%;
+        }
+
+        tr:hover {
+            background-color: #FFB273;
+        }
+
+        tr:nth-of-type(odd) {
+            background-color: #ffebcc;
+        }
+
+        tr:nth-of-type(even) {
+            background-color: #ffd699;
+        }
+    </style>
+}
+
+
+<h1>Your Search Results</h1>
+
+<h2>@ViewBag.Tourney.Name</h2>
+
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Tournament</th>
+        </tr>
+        @foreach(Golfer golfa in ViewBag.GolferResults)
+        {
+            <tr>
+                <td>@golfa.Name</td>
+                <td>@golfa.Salary</td>
+                <td>@golfa.GameInfo</td>
+            </tr>
+
+        }
+    </table>
+</div>

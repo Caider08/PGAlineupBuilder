@@ -1,0 +1,31 @@
+G - (17853),G - (17854),G - (17855),G - (17856),G - (17857),G - (17858),G - (17859),,Position,Name,ID,Name+ID,Team,Game,Avg FPPG,Salary,,Instructions
+,,,,,,,,G,Jordan Spieth,854712,Jordan Spieth (854712),Spieth,,127.23,19300,,1. Find your player in the player pool to the left.
+,,,,,,,,G,Dustin Johnson,854700,Dustin Johnson (854700),Johnson,,123.22,19100,,"2. Copy either the ""ID"" or ""Name+ID"" of the player you wish to add."
+,,,,,,,,G,Rickie Fowler,854694,Rickie Fowler (854694),Fowler,,124.85,18600,,"3. Paste the ""ID"" or ""Name+ID"" value into the corresponding roster position. Name alone cannot be used."
+,,,,,,,,G,Justin Thomas,854714,Justin Thomas (854714),Thomas,,116.13,18200,,4. You may create up to 500 lineups per file.
+,,,,,,,,G,Jason Day,854691,Jason Day (854691),Day,,103.94,18000,,5. Lineups must be valid and fit within the salary cap to be uploaded.
+,,,,,,,,G,Jon Rahm,854707,Jon Rahm (854707),Rahm,,124.8,17600,,
+,,,,,,,,G,Paul Casey,854689,Paul Casey (854689),Casey,,123.4,17200,,IMPORTANT: Altering the file format outside of the directions above may result in the file not being uploaded.
+,,,,,,,,G,Justin Rose,854709,Justin Rose (854709),Rose,,112,17000,,
+,,,,,,,,G,Marc Leishman,854704,Marc Leishman (854704),Leishman,,120,16800,,
+,,,,,,,,G,Hideki Matsuyama,854705,Hideki Matsuyama (854705),Matsuyama,,127.55,16600,,Processing Info - (DO NOT CHANGE THIS VALUE)
+,,,,,,,,G,Brooks Koepka,854702,Brooks Koepka (854702),Koepka,,107.81,16200,,EVG   2203
+,,,,,,,,G,Matt Kuchar,854703,Matt Kuchar (854703),Kuchar,,112.33,16000,,DEFAULT
+,,,,,,,,G,Sergio Garcia,854695,Sergio Garcia (854695),Garcia,,117.66,15800,,
+,,,,,,,,G,Kevin Chappell,854690,Kevin Chappell (854690),Chappell,,99.32,15600,,
+,,,,,,,,G,Patrick Cantlay,854717,Patrick Cantlay (854717),Cantlay,,115.16,15400,,
+,,,,,,,,G,Patrick Reed,854708,Patrick Reed (854708),Reed,,101.7,15200,,
+,,,,,,,,G,Webb Simpson,854711,Webb Simpson (854711),Simpson,,109.23,15000,,
+,,,,,,,,G,Tony Finau,854693,Tony Finau (854693),Finau,,113.53,14800,,
+,,,,,,,,G,Charley Hoffman,854699,Charley Hoffman (854699),Hoffman,,106.26,14800,,
+,,,,,,,,G,Daniel Berger,854688,Daniel Berger (854688),Berger,,104.12,14600,,
+,,,,,,,,G,Gary Woodland,854716,Gary Woodland (854716),Woodland,,103.75,14400,,
+,,,,,,,,G,Pat Perez,854706,Pat Perez (854706),Perez,,108.79,13800,,
+,,,,,,,,G,Xander Schauffele,854710,Xander Schauffele (854710),Schauffele,,94.76,13600,,
+,,,,,,,,G,Jason Dufner,854692,Jason Dufner (854692),Dufner,,105.27,13400,,
+,,,,,,,,G,Russell Henley,854698,Russell Henley (854698),Henley,,105.5,13200,,
+,,,,,,,,G,Kevin Kisner,854701,Kevin Kisner (854701),Kisner,,104.61,13000,,
+,,,,,,,,G,Brian Harman,854697,Brian Harman (854697),Harman,,99.44,12800,,
+,,,,,,,,G,Adam Hadwin,854696,Adam Hadwin (854696),Hadwin,,102.44,12600,,
+,,,,,,,,G,Kyle Stanley,854713,Kyle Stanley (854713),Stanley,,104.42,12400,,
+,,,,,,,,G,Jhonattan Vegas,854715,Jhonattan Vegas (854715),Vegas,,90.85,12400,,

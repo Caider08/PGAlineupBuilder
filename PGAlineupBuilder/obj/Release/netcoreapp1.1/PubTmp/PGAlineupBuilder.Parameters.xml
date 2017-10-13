@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="caider-001-site1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\caide\\Code\\PersonalC\#Projects\\PGAlineupBuilder\\PGAlineupBuilder\\obj\\Release\\netcoreapp1\.1\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="PGAlineupBuilder.Data.ApplicationDbContext" description="" value="Data Source=SQL5035.myASP.NET;Initial Catalog=DB_A2A78F_Caider;User Id=DB_A2A78F_Caider_admin;Password=fgm08MASP;" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\caide\\Code\\PersonalC\#Projects\\PGAlineupBuilder\\PGAlineupBuilder\\obj\\Release\\netcoreapp1\.1\\PubTmp\\EFSQLScripts\\PGAlineupBuilder\.Data\.ApplicationDbContext\.sql$" />
+  </parameter>
+  <parameter name="PGAlineupBuilder.Data.PGAlineupBuilderDbContext" description="" value="Data Source=SQL5035.myASP.NET;Initial Catalog=DB_A2A78F_Caider;User Id=DB_A2A78F_Caider_admin;Password=fgm08MASP;" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\caide\\Code\\PersonalC\#Projects\\PGAlineupBuilder\\PGAlineupBuilder\\obj\\Release\\netcoreapp1\.1\\PubTmp\\EFSQLScripts\\PGAlineupBuilder\.Data\.PGAlineupBuilderDbContext\.sql$" />
+  </parameter>
+</parameters>

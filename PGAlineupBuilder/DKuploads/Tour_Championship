@@ -1,0 +1,38 @@
+G,G,G,G,G,G,,Instructions,,,,,,
+,,,,,,,1. Locate the player you want to select in the list below ,,,,,,
+,,,,,,,2. Copy the ID of your player (you can use the Name + ID column or the ID column) ,,,,,,
+,,,,,,,3. Paste the ID into the roster position desired ,,,,,,
+,,,,,,,4. You must include an ID for each player; you cannot use just the player's name ,,,,,,
+,,,,,,,5. You can create up to 500 lineups per file ,,,,,,
+ ,,,,,,,,,,,,,
+,,,,,,,Position,Name + ID,Name,ID,Salary,GameInfo,TeamAbbrev 
+,,,,,,,G,Jordan Spieth (9494646),Jordan Spieth,9494646,11600,TOUR Championship,Golf
+,,,,,,,G,Dustin Johnson (9494647),Dustin Johnson,9494647,11400,TOUR Championship,Golf
+,,,,,,,G,Rickie Fowler (9494648),Rickie Fowler,9494648,10900,TOUR Championship,Golf
+,,,,,,,G,Jason Day (9494649),Jason Day,9494649,10100,TOUR Championship,Golf
+,,,,,,,G,Justin Thomas (9494650),Justin Thomas,9494650,9900,TOUR Championship,Golf
+,,,,,,,G,Jon Rahm (9494651),Jon Rahm,9494651,9500,TOUR Championship,Golf
+,,,,,,,G,Hideki Matsuyama (9494652),Hideki Matsuyama,9494652,9000,TOUR Championship,Golf
+,,,,,,,G,Justin Rose (9494653),Justin Rose,9494653,8900,TOUR Championship,Golf
+,,,,,,,G,Paul Casey (9494654),Paul Casey,9494654,8600,TOUR Championship,Golf
+,,,,,,,G,Marc Leishman (9494655),Marc Leishman,9494655,8400,TOUR Championship,Golf
+,,,,,,,G,Brooks Koepka (9494656),Brooks Koepka,9494656,8100,TOUR Championship,Golf
+,,,,,,,G,Sergio Garcia (9494657),Sergio Garcia,9494657,7900,TOUR Championship,Golf
+,,,,,,,G,Patrick Cantlay (9494658),Patrick Cantlay,9494658,7800,TOUR Championship,Golf
+,,,,,,,G,Matt Kuchar (9494659),Matt Kuchar,9494659,7700,TOUR Championship,Golf
+,,,,,,,G,Kevin Chappell (9494660),Kevin Chappell,9494660,7600,TOUR Championship,Golf
+,,,,,,,G,Patrick Reed (9494661),Patrick Reed,9494661,7500,TOUR Championship,Golf
+,,,,,,,G,Webb Simpson (9494662),Webb Simpson,9494662,7500,TOUR Championship,Golf
+,,,,,,,G,Charley Hoffman (9494663),Charley Hoffman,9494663,7300,TOUR Championship,Golf
+,,,,,,,G,Tony Finau (9494664),Tony Finau,9494664,7100,TOUR Championship,Golf
+,,,,,,,G,Daniel Berger (9494665),Daniel Berger,9494665,6900,TOUR Championship,Golf
+,,,,,,,G,Xander Schauffele (9494666),Xander Schauffele,9494666,6800,TOUR Championship,Golf
+,,,,,,,G,Kevin Kisner (9494667),Kevin Kisner,9494667,6700,TOUR Championship,Golf
+,,,,,,,G,Russell Henley (9494668),Russell Henley,9494668,6600,TOUR Championship,Golf
+,,,,,,,G,Jason Dufner (9494669),Jason Dufner,9494669,6500,TOUR Championship,Golf
+,,,,,,,G,Gary Woodland (9494670),Gary Woodland,9494670,6400,TOUR Championship,Golf
+,,,,,,,G,Pat Perez (9494671),Pat Perez,9494671,6400,TOUR Championship,Golf
+,,,,,,,G,Kyle Stanley (9494672),Kyle Stanley,9494672,6300,TOUR Championship,Golf
+,,,,,,,G,Brian Harman (9494673),Brian Harman,9494673,6300,TOUR Championship,Golf
+,,,,,,,G,Jhonattan Vegas (9494674),Jhonattan Vegas,9494674,6200,TOUR Championship,Golf
+,,,,,,,G,Adam Hadwin (9494675),Adam Hadwin,9494675,6200,TOUR Championship,Golf

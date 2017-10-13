@@ -1,0 +1,125 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    color: #686764;
+}
+
+a {
+    color: #e68a00;
+}
+
+a h1, h2, h3 {
+
+    color: #e68a00;
+
+}
+h3 a {
+
+    color:#e68a00;
+}
+.tools-right {
+    float: right;
+    
+    
+    margin-left: 10px;
+    margin-top: 25px;
+   
+    width: 10%;
+    font-size: .90em;
+}
+
+.tools-left {
+    float: left;
+    width: 10%;
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    color: #686764;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+table {
+    border: 1px;
+    width: 80%;
+    height: 100%;
+}
+
+th {
+    text-align: center;
+    background-color: #009999;
+    color: azure;
+}
+
+table caption {
+    font-size: 200%;
+}
+
+tr:hover {
+    background-color: #FFB273;
+}
+
+tr:nth-of-type(odd) {
+    background-color: #ffebcc;
+}
+
+tr:nth-of-type(even) {
+    background-color: #5CCCCC;
+}
+
+h1, h2, h3, h4 {
+    color: #686764;
+}
+
+li a {
+    color: #000000;
+}
+
+#tester {
+    color: #000000;
+}
+li a:hover {
+    color: #ffffff;
+}
+.nav navbar-nav ul li a{
+    color: #ff0000 !important;
+}
+/* buttons and links extension to use brackets: [ click me ] */
+.btn-bracketed::before {
+    display: inline-block;
+    content: "[";
+    padding-right: 0.5em;
+}
+
+.btn-bracketed::after {
+    display: inline-block;
+    content: "]";
+    padding-left: 0.5em;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}

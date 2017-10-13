@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+
+@model IList<PGAlineupBuilder.Models.BlogPost>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale-1.0" />
+    <title>@ViewData["Title"] - PGAlineupBuilder</title>
+    <style>
+
+    </style>
+
+    <!--TinyMCE for editing blogPosts-->
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=zm4ybtvzgks5eji7cbb0hzdq7i05m3gxskwnay3b5qdqgy26"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 300,
+            theme: 'modern',
+            plugins: 'lists advlist image imagetools'
+         
+        });
+    </script>
+
+</head>
+<body>
+    <h2>Manage Posts, Categories and Tags</h2>
+    <h3>Select Articles to Edit</h3>
+
+        @foreach (BlogPost article in Model)
+        {
+            <div>
+            <a asp-action="EditArticle" asp-controller="ManageGolfArticles" asp-route-id="@article.ID">@article.Name</a>
+            </div>
+    
+        }
+    <div style="margin-top: 50px; color: #e68a00">
+        <a asp-controller="GolfArticles" asp-action="Index">Return To Golf Articles</a>
+    </div>
+</body>
+
+</html>
+
+
+

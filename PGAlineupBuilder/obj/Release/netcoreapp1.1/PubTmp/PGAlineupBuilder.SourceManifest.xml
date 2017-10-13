@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Release\netcoreapp1.1\PubTmp\Out\" />
+  <dbfullsql path="C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Release\netcoreapp1.1\PubTmp\EFSQLScripts\PGAlineupBuilder.Data.ApplicationDbContext.sql" />
+  <dbfullsql path="C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Release\netcoreapp1.1\PubTmp\EFSQLScripts\PGAlineupBuilder.Data.PGAlineupBuilderDbContext.sql" />
+</sitemanifest>

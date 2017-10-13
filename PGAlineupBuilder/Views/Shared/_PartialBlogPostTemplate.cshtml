@@ -2,35 +2,36 @@
 
 <article>
   <div>
-    <div class="col-md-12" style=" color: #686764; margin-top: 15px ">
-        <header class="media-heading">
+      <div class="col-md-12" style=" color: #686764; margin-top: 15px ">
+          <header class="media-heading">
 
-            <div class="row">
-                <div>
-                    <h2><a asp-action="GetBlogPost" asp-controller="GolfArticles" asp-route-id="@Model.ID">@Html.Raw(Model.Name)</a></h2>
-                </div>
-                
-            </div>
+              <div class="row">
+                  <div>
+                      <h2><a asp-action="GetBlogPost" asp-controller="GolfArticles" asp-route-id="@Model.ID">@Html.Raw(Model.Name)</a></h2>
+                  </div>
 
-            <div class="row">
-                <div>
-                    <span>Category: </span><a asp-action="CategoryBlogs" asp-controller="GolfArticles" asp-route-id="@Model.Category.ID">@Model.Category.Name</a>
-                </div>
+              </div>
 
-                <div>
-                    <span>Tags: </span><a asp-action="TagBlogs" asp-controller="GolfArticles" asp-route-id="@Model.Tag.ID">@Model.Tag.Name</a>
-                </div>
+              <div class="row">
+                  <div>
+                      <span>Category: </span><a asp-action="CategoryBlogs" asp-controller="GolfArticles" asp-route-id="@Model.Category.ID">@Model.Category.Name</a>
+                  </div>
 
-                <div>
-                    <p> @Model.PublishedDate</p>
-                </div>
-            </div>
-        </header>
+                  <div>
+                      <span>Tags: </span><a asp-action="TagBlogs" asp-controller="GolfArticles" asp-route-id="@Model.Tag.ID">@Model.Tag.Name</a>
+                  </div>
 
-        <div class="row">
-           @Html.Raw(Model.Content)
-        </div>
-   
+                  <div>
+                      <p> @Model.PublishedDate</p>
+                  </div>
+              </div>
+          </header>
+
+          <div class="row">
+              @Html.Raw(Model.Content)
+          </div>
+          <div style=" height: 5px; margin-top: 25px; margin-bottom: 25px; text-align: center" class="sharethis-inline-share-buttons"></div>
+      
        </div>
   </div>
 </article>

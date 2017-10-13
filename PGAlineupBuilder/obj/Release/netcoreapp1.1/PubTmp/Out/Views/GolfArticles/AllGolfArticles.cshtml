@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IList<PGAlineupBuilder.Models.BlogPost>
+
+@foreach(BlogPost article in Model)
+{
+    <div>
+        <a asp-controller="GolfArticles" asp-action="DeleteArticle" asp-route-id="@article.ID">@article.Name</a>
+    </div>
+}

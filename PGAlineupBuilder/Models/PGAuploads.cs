@@ -53,6 +53,8 @@ namespace PGAlineupBuilder.Models
                 Golfers.Add(newGolfer);
             }
 
+            rows = new List<string[]>();
+        
            //Golfers.RemoveRange(0, 8);
         
             return Golfers;
@@ -81,6 +83,7 @@ namespace PGAlineupBuilder.Models
                         rows.Add(rowArrray);
                     }
                 }
+
             }
 
             //remove Directions and other fluff from top of csv file 
@@ -110,7 +113,7 @@ namespace PGAlineupBuilder.Models
             //   }
             
 
-            IsWeekLoaded = true;
+            IsWeekLoaded = false;
           
         }
 
@@ -152,11 +155,11 @@ namespace PGAlineupBuilder.Models
             return rowValues.ToArray();
         }
 
-        public static List<FDgolfer> WeeksFDgolfers(string tourneyName)
+        public static List<FDgolfer> WeeksFDgolfers(string FDtourneyName)
         {
             List<FDgolfer> fdGolfers = new List<FDgolfer>();
 
-            FDLoadWeek(tourneyName);
+            FDLoadWeek(FDtourneyName);
 
             int year = int.Parse(DateTime.Now.ToString("yyyy"));
 
@@ -167,7 +170,7 @@ namespace PGAlineupBuilder.Models
                     Name = row[13],
                     Playerid = (row[10]),
                     Salary = int.Parse(row[17]),
-                    GameInfo = $"{tourneyName} {year}",
+                    GameInfo = $"{FDtourneyName} {year}",
                     Website = "FD",
                     YearCreated = year,
 
@@ -175,12 +178,12 @@ namespace PGAlineupBuilder.Models
                 fdGolfers.Add(newGolfer);
             }
 
-
+            rows = new List<string[]>();
             return fdGolfers;
 
         }
 
-        private static void FDLoadWeek(string nameOfTourney)
+        private static void FDLoadWeek(string FDnameOfTourney)
         {
 
             if (IsWeekLoaded)
@@ -190,7 +193,7 @@ namespace PGAlineupBuilder.Models
 
 
 
-            using (StreamReader reader = File.OpenText($"FDuploads/{nameOfTourney}"))
+            using (StreamReader reader = File.OpenText($"FDuploads/{FDnameOfTourney}"))
             {
                 while (reader.Peek() >= 0)
                 {
@@ -201,7 +204,10 @@ namespace PGAlineupBuilder.Models
                         rows.Add(rowArrray);
                     }
                 }
+
+             
             }
+                      
 
             //remove Directions and other fluff from top of csv file 
 
@@ -209,14 +215,15 @@ namespace PGAlineupBuilder.Models
             
 
 
-            IsWeekLoaded = true;
+            IsWeekLoaded = false;
 
         }
-        public static List<FDraftGolfer> WeeksFDraftGolfers(string tourneyName)
+
+        public static List<FDraftGolfer> WeeksFDraftGolfers(string FDraftTourneyName)
         {
             List<FDraftGolfer> fDraftGolfers = new List<FDraftGolfer>();
 
-            FDraftLoadWeek(tourneyName);
+            FDraftLoadWeek(FDraftTourneyName);
 
             int year = int.Parse(DateTime.Now.ToString("yyyy"));
 
@@ -227,7 +234,7 @@ namespace PGAlineupBuilder.Models
                     Name = row[9],
                     Playerid = (row[10]),
                     Salary = int.Parse(row[15]),
-                    GameInfo = $"{tourneyName} {year}",
+                    GameInfo = $"{FDraftTourneyName} {year}",
                     Website = "FantasyDraft",
                     YearCreated = year,
 
@@ -236,12 +243,12 @@ namespace PGAlineupBuilder.Models
                 fDraftGolfers.Add(newGolfer);
             }
 
-
+            rows = new List<string[]>();
             return fDraftGolfers;
 
         }
 
-        private static void FDraftLoadWeek(string nameOfTourney)
+        private static void FDraftLoadWeek(string FDraftNameOfTourney)
         {
 
             if (IsWeekLoaded)
@@ -251,7 +258,7 @@ namespace PGAlineupBuilder.Models
 
 
 
-            using (StreamReader reader = File.OpenText($"FDraftUploads/{nameOfTourney}"))
+            using (StreamReader reader = File.OpenText($"FDraftUploads/{FDraftNameOfTourney}"))
             {
                 while (reader.Peek() >= 0)
                 {
@@ -262,6 +269,7 @@ namespace PGAlineupBuilder.Models
                         rows.Add(rowArrray);
                     }
                 }
+
             }
 
             //remove Directions and other fluff from top of csv file 
@@ -270,7 +278,7 @@ namespace PGAlineupBuilder.Models
 
 
 
-            IsWeekLoaded = true;
+            IsWeekLoaded = false;
 
         }
 

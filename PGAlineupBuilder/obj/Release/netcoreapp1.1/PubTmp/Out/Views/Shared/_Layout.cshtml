@@ -1,0 +1,119 @@
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+@inject IAuthorizationService AuthorizationService
+@using Microsoft.AspNetCore.Authorization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PGAlineupBuilder</title>
+    @RenderSection("MetaData", false)
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <!--TinyMCE for editing blogPosts-->
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=zm4ybtvzgks5eji7cbb0hzdq7i05m3gxskwnay3b5qdqgy26"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 300,
+            theme: 'modern',
+            plugins: 'lists advlist image imagetools'
+
+        });
+    </script>
+
+    @Html.Raw(JavaScriptSnippet.FullScript)
+
+    @RenderSection("OverrideStyles", false)
+</head>
+<body style="background-color: #f3f2f2; color: #686764">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #e68a00; color: #000000; border: none">
+        <div class="container" style="color: #000000" >
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a style="color: #000000" asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">FantasyGolfMasters</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" id="tester">
+                    <li><a style="color: #000000" asp-area="" asp-controller="GolfArticles" asp-action="Index">Golf Articles</a></li>
+                    <li><a style="color: #000000" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a style="color: #000000" asp-area="" asp-controller="Golfers" asp-action="Index">Search Golfers</a></li>
+                    <li><a style="color: #000000" asp-area="" asp-controller="BuildLineups" asp-action="Index">Build Lineups</a></li>
+                    @if (User.IsInRole("PGAguru"))
+                    {
+                    <li><a style="color: #000000" asp-area="" asp-controller="ManageGolfArticles" asp-action="Index">Manage Articles</a></li>
+                    <li><a style="color: #000000" asp-area="" asp-controller="ImportExportSalaries" asp-action="Index">Upload Salaries</a></li>
+                    }
+                   
+                </ul>
+                @await Html.PartialAsync("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content" style="color: #686764; margin-top:75px">
+      <main>
+          <div class="row" style="text-align: center">
+              <div class="col-md-9">
+                  @RenderBody()
+              </div>
+              <div class="col-md-3" >
+                  @Html.Partial("_SearchArticles")
+              </div>
+          </div>
+      </main>
+        <hr />
+        <footer>
+            <div class="row" style="text-align: center">
+                <div class="col-md-9">
+                    <form style="margin-top: 10px" method="post" asp-controller="SEOmarketing" asp-action="signUP">
+                        <label>Email:<input type="email" id="email" name="email" /></label>
+                        <input type="submit" value="Keep me Updated!" />
+                    </form>
+                    <a style="margin-top: 10px" href="mailto:cbdev08@gmail.com">For Golf questions caidbuch2010@gmail.com</a><br />
+                </div>
+
+                <div class="col-md-3">
+                    <p>&copy; cbDev - 2017 - Fantasy Golf Masters</p>
+                    <a style="margin-top: 100px" href="mailto:cbdev08@gmail.com">To reach our Development team cbdev08@gmail.com</a>
+                </div>          
+            </div>
+</footer>
+    </div>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

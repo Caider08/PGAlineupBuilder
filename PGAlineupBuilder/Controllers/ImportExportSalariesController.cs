@@ -218,9 +218,9 @@ namespace PGAlineupBuilder.Controllers
 
             if (!string.IsNullOrWhiteSpace(Uname))
             {
-                List<FDgolfer> theseGolfers = new List<FDgolfer>();
+                List<FDgolfer> theseFDGolfers = new List<FDgolfer>();
 
-                theseGolfers = PGAuploads.WeeksFDgolfers(Uname);         
+                theseFDGolfers = PGAuploads.WeeksFDgolfers(Uname);         
 
                 int year = int.Parse(DateTime.Now.ToString("yyyy"));
 
@@ -236,13 +236,13 @@ namespace PGAlineupBuilder.Controllers
                 }
                 else
                 {   //PUSH created Golfers and DkTourney to the Database
-                    foreach (FDgolfer golfer in theseGolfers)
+                    foreach (FDgolfer golfer in theseFDGolfers)
                     {
                         context.FDGOLFER.Add(golfer);
 
                     }
 
-                    FDtourney fdTourney = new FDtourney(theseGolfers)
+                    FDtourney fdTourney = new FDtourney(theseFDGolfers)
                     {
                         Name = GameInfo,
 
@@ -252,7 +252,7 @@ namespace PGAlineupBuilder.Controllers
                     context.SaveChanges();
 
                     ViewBag.Game = GameInfo;
-                    ViewBag.Golfers = theseGolfers;
+                    ViewBag.Golfers = theseFDGolfers;
                     return View("FDSalariesCreated");
                 }
 
@@ -315,9 +315,9 @@ namespace PGAlineupBuilder.Controllers
 
             if (!string.IsNullOrWhiteSpace(Uname))
             {
-                List<FDraftGolfer> theseGolfers = new List<FDraftGolfer>();
+                List<FDraftGolfer> theseFDraftGolfers = new List<FDraftGolfer>();
 
-                theseGolfers = PGAuploads.WeeksFDraftGolfers(Uname);
+                theseFDraftGolfers = PGAuploads.WeeksFDraftGolfers(Uname);
 
                 int year = int.Parse(DateTime.Now.ToString("yyyy"));
 
@@ -333,13 +333,13 @@ namespace PGAlineupBuilder.Controllers
                 }
                 else
                 {   //PUSH created Golfers and DkTourney to the Database
-                    foreach (FDraftGolfer golfer in theseGolfers)
+                    foreach (FDraftGolfer golfer in theseFDraftGolfers)
                     {
                         context.FDraftG.Add(golfer);
 
                     }
 
-                    FDraftTourney fDraftTourney = new FDraftTourney(theseGolfers)
+                    FDraftTourney fDraftTourney = new FDraftTourney(theseFDraftGolfers)
                     {
                         Name = GameInfo,
 
@@ -349,7 +349,7 @@ namespace PGAlineupBuilder.Controllers
                     context.SaveChanges();
 
                     ViewBag.Game = GameInfo;
-                    ViewBag.Golfers = theseGolfers;
+                    ViewBag.Golfers = theseFDraftGolfers;
                     return View("FDraftSalariesCreated");
                 }
 

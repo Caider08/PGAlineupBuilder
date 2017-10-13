@@ -1,0 +1,163 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+   @*var selectedDK = TempData["dkSELECTED"] as DkTourney;*@
+}
+@section OverrideStyles
+{
+    <style>
+        table {
+            border: 1px;
+            width: 80%;
+            height: 100%;
+        }
+
+        th {
+            text-align: center;
+            background-color: #e68a00;
+            color: azure;
+        }
+
+        table caption {
+            font-size: 200%;
+        }
+
+        tr:hover {
+            background-color: #FFB273;
+        }
+
+        tr:nth-of-type(odd) {
+            background-color: #ffebcc;
+        }
+
+        tr:nth-of-type(even) {
+            background-color: #ffd699;
+        }
+
+    </style>
+}
+@model PGAlineupBuilder.ViewModels.DisplayTourneySalariesViewModel
+
+@* @model List<PGAlineupBuilder.Models.Golfer>
+    <h1>@ViewBag.SelectedDKT.Name</h1>*@
+
+@*<form method="post" asp-controller="BuildLineups" asp-action="BuildDK">
+
+    <div class="form-group">
+        <label for="Rosters">How many Lineups would you like to Build? (1-150)</label>
+            <input class="form-control" type="number" name="Rosters" id="Rosters" />
+            <span validation-for="Rosters"></span>    
+    </div>
+
+    <div class="form-group">
+        <label for="MaxSalary">Ceiling for use of allocated Salary? ($50,000max)</label>
+        <input class="form-control" type="number" name="MaxSalary" id="MaxSalary"/>
+        <span validation-for="MaxSalary"> </span>
+    </div>
+
+    <div class="form-group">
+        <label for="MinSalary">Floor for use of allocated Salary? ($38,500min)</label>
+        <input class="form-control" type="number" name="MinSalary" id="MinSalary" />
+        <span validation-for="MinSalary"> </span>
+    </div>
+
+    <div class="form-group">
+        <table style="width:80%">
+            <tr>
+                <th>GolferID</th>
+                <th>Golfer</th>
+                <th>$ Cost</th>
+                <th>% Exposure</th>
+            </tr>
+            @foreach (Golfer golfer in Model)
+            {
+                <tr>
+                    <td>@golfer.Playerid</td>
+                    <td>@golfer.Name</td>
+                    <td>@golfer.Salary</td>
+                    <td><input class="form-control" type="number" name="@golfer.Exposure" /></td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+
+    <input value="Generate Lineups" type="submit" />
+</form>*@
+
+<form method="post" asp-controller="BuildLineups" asp-action="DisplayDK">
+    <div class="form-group">
+        <label asp-for="DKname">@Model.DKname.Name</label>
+        <input class="form-control" asp-for="DKname" type="hidden" />
+        <input class="form-control" asp-for="@Model.DKname.Name" type="hidden" />
+        <span asp-validation-for="DKname"></span>
+    </div>
+
+    @*<input asp-for="Name" type="hidden" value=""/>
+    <input asp-for="Participants" type="hidden" value=""/>
+    Html.HiddenFor(m => m.Name, new { Value  })
+    <input id="Name" name="Name" type="hidden" value="Model.Name"/>*@
+
+    <div class="form-group">
+        <label asp-for="NumberOfRosters"></label>
+        <input class="form-control" asp-for="NumberOfRosters" />
+        <span asp-validation-for="NumberOfRosters"> </span>
+    </div>
+ 
+    <div class="form-group">
+        <label asp-for="MaxSalary"></label>
+        <input class="form-control" asp-for="MaxSalary" />
+        <span asp-validation-for="MaxSalary"> </span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MinSalary"></label>
+        <input class="form-control" asp-for="MinSalary" />
+        <span asp-validation-for="MinSalary"> </span>
+    </div>
+
+    <div class="form-group"font color="#FF0000">@ViewBag.TenNeeded</div>
+    
+    <div class="form-group" font color="#FF0000">@ViewBag.Exception</div>
+
+    <div class="form-group" font color="#FF0000">@ViewBag.Attempts</div>
+
+    <div class="form-group" font color="#FF0000">@ViewBag.Duplicates</div>
+
+    <div class="form-group">
+    <table style="width:80%">
+        <tr>
+            <th>GolferID</th>
+            <th>Golfer</th>
+            <th>$ Cost</th>
+            <th>% Exposure</th>
+        </tr>
+        @for (var i=0; i< Model.TourneyParticipants.Count(); i++)
+        {
+             <tr>
+                    <td>@Model.TourneyParticipants[i].Playerid</td>
+                    <td>@Model.TourneyParticipants[i].Name</td>
+                    <td>@Model.TourneyParticipants[i].Salary</td>
+                    <td><input class="form-control" asp-for="@Model.TourneyParticipants[i].Exposure"/></td>
+                    <td><input class="form-control" asp-for="@Model.TourneyParticipants[i].Playerid" type="hidden"/></td>
+                    <td><input class="form-control" asp-for="@Model.TourneyParticipants[i].Name" type="hidden"/></td>
+                    <td><input class="form-control" asp-for="@Model.TourneyParticipants[i].Salary" type="hidden"/></td>
+            </tr>  
+        }
+
+    </table>
+    </div>
+
+    <input type="submit" value="Build Lineups" />
+</form>
+
+
+
+@* if(Model.Equals  )
+{
+    <p>No Tourneys Selected!</p>
+    <a asp-action="ChooseDK" asp-controller="BuildLineups">Go Choose a DK Tournament</a>
+}
+*@

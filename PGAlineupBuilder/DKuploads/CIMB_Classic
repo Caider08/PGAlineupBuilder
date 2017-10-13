@@ -1,0 +1,86 @@
+G,G,G,G,G,G,,Instructions,,,,,,
+,,,,,,,1. Locate the player you want to select in the list below ,,,,,,
+,,,,,,,2. Copy the ID of your player (you can use the Name + ID column or the ID column) ,,,,,,
+,,,,,,,3. Paste the ID into the roster position desired ,,,,,,
+,,,,,,,4. You must include an ID for each player; you cannot use just the player's name ,,,,,,
+,,,,,,,5. You can create up to 500 lineups per file ,,,,,,
+ ,,,,,,,,,,,,,
+,,,,,,,Position,Name + ID,Name,ID,Salary,GameInfo,TeamAbbrev 
+,,,,,,,G,Justin Thomas (9616585),Justin Thomas,9616585,12300,CIMB Classic,Golf
+,,,,,,,G,Hideki Matsuyama (9616586),Hideki Matsuyama,9616586,11200,CIMB Classic,Golf
+,,,,,,,G,Paul Casey (9616587),Paul Casey,9616587,10500,CIMB Classic,Golf
+,,,,,,,G,Charl Schwartzel (9616588),Charl Schwartzel,9616588,9800,CIMB Classic,Golf
+,,,,,,,G,Xander Schauffele (9616589),Xander Schauffele,9616589,9700,CIMB Classic,Golf
+,,,,,,,G,Branden Grace (9616590),Branden Grace,9616590,9200,CIMB Classic,Golf
+,,,,,,,G,Pat Perez (9616591),Pat Perez,9616591,9000,CIMB Classic,Golf
+,,,,,,,G,Ian Poulter (9616592),Ian Poulter,9616592,8900,CIMB Classic,Golf
+,,,,,,,G,Gary Woodland (9616593),Gary Woodland,9616593,8700,CIMB Classic,Golf
+,,,,,,,G,Thomas Pieters (9616594),Thomas Pieters,9616594,8600,CIMB Classic,Golf
+,,,,,,,G,Scott Piercy (9616595),Scott Piercy,9616595,8500,CIMB Classic,Golf
+,,,,,,,G,Cameron Smith (9616596),Cameron Smith,9616596,8400,CIMB Classic,Golf
+,,,,,,,G,Brendan Steele (9616597),Brendan Steele,9616597,8300,CIMB Classic,Golf
+,,,,,,,G,Kevin Na (9616598),Kevin Na,9616598,8200,CIMB Classic,Golf
+,,,,,,,G,Anirban Lahiri (9616599),Anirban Lahiri,9616599,8200,CIMB Classic,Golf
+,,,,,,,G,Russell Knox (9616600),Russell Knox,9616600,8100,CIMB Classic,Golf
+,,,,,,,G,Grayson Murray (9616601),Grayson Murray,9616601,8100,CIMB Classic,Golf
+,,,,,,,G,Ollie Schniederjans (9616602),Ollie Schniederjans,9616602,8000,CIMB Classic,Golf
+,,,,,,,G,Jason Dufner (9616603),Jason Dufner,9616603,7900,CIMB Classic,Golf
+,,,,,,,G,Emiliano Grillo (9616604),Emiliano Grillo,9616604,7800,CIMB Classic,Golf
+,,,,,,,G,Peter Uihlein (9616605),Peter Uihlein,9616605,7700,CIMB Classic,Golf
+,,,,,,,G,Luke List (9616606),Luke List,9616606,7600,CIMB Classic,Golf
+,,,,,,,G,Nick Taylor (9616607),Nick Taylor,9616607,7600,CIMB Classic,Golf
+,,,,,,,G,Bud Cauley (9616608),Bud Cauley,9616608,7600,CIMB Classic,Golf
+,,,,,,,G,Kyle Stanley (9616609),Kyle Stanley,9616609,7600,CIMB Classic,Golf
+,,,,,,,G,Chez Reavie (9616610),Chez Reavie,9616610,7600,CIMB Classic,Golf
+,,,,,,,G,Si Woo Kim (9616611),Si Woo Kim,9616611,7500,CIMB Classic,Golf
+,,,,,,,G,Jim Herman (9616612),Jim Herman,9616612,7500,CIMB Classic,Golf
+,,,,,,,G,Graham DeLaet (9616613),Graham DeLaet,9616613,7500,CIMB Classic,Golf
+,,,,,,,G,Jamie Lovemark (9616614),Jamie Lovemark,9616614,7500,CIMB Classic,Golf
+,,,,,,,G,Lucas Glover (9616615),Lucas Glover,9616615,7500,CIMB Classic,Golf
+,,,,,,,G,Charles Howell (9616616),Charles Howell,9616616,7400,CIMB Classic,Golf
+,,,,,,,G,Martin Flores (9616617),Martin Flores,9616617,7400,CIMB Classic,Golf
+,,,,,,,G,Rafael Cabrera-Bello (9616618),Rafael Cabrera-Bello,9616618,7400,CIMB Classic,Golf
+,,,,,,,G,Adam Hadwin (9616619),Adam Hadwin,9616619,7400,CIMB Classic,Golf
+,,,,,,,G,James Hahn (9616620),James Hahn,9616620,7400,CIMB Classic,Golf
+,,,,,,,G,Cody Gribble (9616621),Cody Gribble,9616621,7300,CIMB Classic,Golf
+,,,,,,,G,Michael Kim (9616622),Michael Kim,9616622,7300,CIMB Classic,Golf
+,,,,,,,G,Phachara Khongwatmai (9616623),Phachara Khongwatmai,9616623,7300,CIMB Classic,Golf
+,,,,,,,G,Poom Saksansin (9616624),Poom Saksansin,9616624,7300,CIMB Classic,Golf
+,,,,,,,G,Hao-Tong Li (9616625),Hao-Tong Li,9616625,7300,CIMB Classic,Golf
+,,,,,,,G,Harold Varner (9616626),Harold Varner,9616626,7200,CIMB Classic,Golf
+,,,,,,,G,Patrick Rodgers (9616627),Patrick Rodgers,9616627,7200,CIMB Classic,Golf
+,,,,,,,G,Danny Lee (9616628),Danny Lee,9616628,7200,CIMB Classic,Golf
+,,,,,,,G,Morgan Hoffmann (9616629),Morgan Hoffmann,9616629,7200,CIMB Classic,Golf
+,,,,,,,G,Chris Stroud (9616630),Chris Stroud,9616630,7200,CIMB Classic,Golf
+,,,,,,,G,Davis Love (9616631),Davis Love,9616631,7200,CIMB Classic,Golf
+,,,,,,,G,Whee Kim (9616632),Whee Kim,9616632,7100,CIMB Classic,Golf
+,,,,,,,G,Juvic Pagunsan (9616633),Juvic Pagunsan,9616633,7100,CIMB Classic,Golf
+,,,,,,,G,David Lipsky (9616634),David Lipsky,9616634,7100,CIMB Classic,Golf
+,,,,,,,G,Jonas Blixt (9616635),Jonas Blixt,9616635,7100,CIMB Classic,Golf
+,,,,,,,G,Gavin Green (9616636),Gavin Green,9616636,7100,CIMB Classic,Golf
+,,,,,,,G,Scott Hend (9616637),Scott Hend,9616637,7100,CIMB Classic,Golf
+,,,,,,,G,Richy Werenski (9616638),Richy Werenski,9616638,7000,CIMB Classic,Golf
+,,,,,,,G,Cheng-Tsung Pan (9616639),Cheng-Tsung Pan,9616639,7000,CIMB Classic,Golf
+,,,,,,,G,Camilo Villegas (9616640),Camilo Villegas,9616640,7000,CIMB Classic,Golf
+,,,,,,,G,Ben Crane (9616641),Ben Crane,9616641,7000,CIMB Classic,Golf
+,,,,,,,G,Keegan Bradley (9616642),Keegan Bradley,9616642,7000,CIMB Classic,Golf
+,,,,,,,G,Jhonattan Vegas (9616643),Jhonattan Vegas,9616643,7000,CIMB Classic,Golf
+,,,,,,,G,Stewart Cink (9616644),Stewart Cink,9616644,7000,CIMB Classic,Golf
+,,,,,,,G,Kevin Tway (9616645),Kevin Tway,9616645,7000,CIMB Classic,Golf
+,,,,,,,G,Rod Pampling (9616646),Rod Pampling,9616646,6900,CIMB Classic,Golf
+,,,,,,,G,Nicholas Fung (9616647),Nicholas Fung,9616647,6900,CIMB Classic,Golf
+,,,,,,,G,Hudson Swafford (9616648),Hudson Swafford,9616648,6900,CIMB Classic,Golf
+,,,,,,,G,Kelly Kraft (9616649),Kelly Kraft,9616649,6900,CIMB Classic,Golf
+,,,,,,,G,Richard T. Lee (9616650),Richard T. Lee,9616650,6900,CIMB Classic,Golf
+,,,,,,,G,Robert Streb (9616651),Robert Streb,9616651,6900,CIMB Classic,Golf
+,,,,,,,G,D.A. Points (9616652),D.A. Points,9616652,6900,CIMB Classic,Golf
+,,,,,,,G,Sung Kang (9616653),Sung Kang,9616653,6900,CIMB Classic,Golf
+,,,,,,,G,Scott Stallings (9616654),Scott Stallings,9616654,6800,CIMB Classic,Golf
+,,,,,,,G,Scott Brown (9616655),Scott Brown,9616655,6800,CIMB Classic,Golf
+,,,,,,,G,Chad Campbell (9616656),Chad Campbell,9616656,6800,CIMB Classic,Golf
+,,,,,,,G,Wesley Bryan (9616657),Wesley Bryan,9616657,6800,CIMB Classic,Golf
+,,,,,,,G,Jazz Janewattananond (9616658),Jazz Janewattananond,9616658,6800,CIMB Classic,Golf
+,,,,,,,G,Prayad Marksaeng (9616659),Prayad Marksaeng,9616659,6800,CIMB Classic,Golf
+,,,,,,,G,Shiv Chawrasia (9616660),Shiv Chawrasia,9616660,6800,CIMB Classic,Golf
+,,,,,,,G,Danny Chia (9616661),Danny Chia,9616661,6800,CIMB Classic,Golf
+,,,,,,,G,Colt Knost (9616662),Colt Knost,9616662,6800,CIMB Classic,Golf

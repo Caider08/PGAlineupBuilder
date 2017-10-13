@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<PGAlineupBuilder.Models.FDraftTourney>
+<div style="margin-top: 25px">
+    <form method="post" asp-action="getFDraft" asp-controller="BuildLineups">
+        <select name="FDraftSelected">
+            @foreach (var tourney in Model)
+            {
+                <option value="@tourney.Name">@tourney.Name</option>
+            }
+        </select>
+        <input type="submit" value="Build Lineups" />
+    </form>
+
+    @if (Model.Count == 0)
+    {
+        <p>No FanDuel Tournaments uploaded yet!</p>
+    }
+</div>

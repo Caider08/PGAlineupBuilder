@@ -1,0 +1,180 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@section OverrideStyles
+{
+    <style>
+        table {
+            border: 1px;
+            width: 80%;
+            height: 100%;
+        }
+
+        th {
+            text-align: center;
+            background-color: #e68a00;
+            color: azure;
+        }
+
+        table caption {
+            font-size: 200%;
+        }
+
+        tr:hover {
+            background-color: #FFB273;
+        }
+
+        tr:nth-of-type(odd) {
+            background-color: #ffebcc;
+        }
+
+        tr:nth-of-type(even) {
+            background-color: #ffd699;
+        }
+    </style>
+}
+
+@model PGAlineupBuilder.ViewModels.BuiltDKLineupsViewModel
+
+<h1>Generated Lineups for @Model.BuiltDK.Name</h1>
+
+<form method="post" asp-action="ExportLineupsCSV" asp-controller="BuildLineups">
+    <div class="form-group">
+        <label asp-for="BuiltDK"></label>
+        <input class="form-control" asp-for="@Model.BuiltDK.Name" type="hidden" />
+    </div>
+
+    <div class="form-group">
+        <table>
+               
+                @foreach (DKlineup lineup in Model.listDKlineups)
+                {
+                  <tr>
+                  
+                        @foreach (int playaID in lineup.Lineup)
+                        {
+                            <td>
+                                @playaID
+                        </td>
+                        }
+
+
+                    </tr>
+                }
+
+           
+           
+        </table>
+    </div>
+
+    <input type="submit" value="Export Your lineups as CSV" />
+
+    <div class="form-group">
+        <table>
+         
+            @for(int i = 0; i <Model.listDKlineups.Count(); i++)
+
+            {
+                    <tr>
+                @for (int j = 0; j < Model.listDKlineups[i].LineupGolfers.Count(); j++)
+                {
+                    
+                        <td>@Model.listDKlineups[i].LineupGolfers[j].Name</td>
+                        <td>@Model.listDKlineups[i].LineupGolfers[j].Salary</td>
+                        <td><input type="hidden" asp-for="@Model.listDKlineups[i].LineupGolfers[j].Name" /></td>
+                        <td><input type="hidden" asp-for="@Model.listDKlineups[i].LineupGolfers[j].Playerid" /></td>
+                        <td><input type="hidden" asp-for="@Model.listDKlineups[i].LineupGolfers[j].Salary" /></td>
+
+                 }
+                        <td>@Model.listDKlineups[i].LineupSalary</td>
+                        <td><input type="hidden" asp-for="@Model.listDKlineups[i].LineupSalary"/></td>
+                    </tr>
+             }
+
+      @*    @foreach (DKlineup lineup in Model.listDKlineups)
+            {
+                <tr>
+                @foreach(Golfer golfer in lineup.LineupGolfers)
+                {
+                    <td>@golfer.Name</td>
+                    <td><input asp-for="@golfer.ID" type="hidden" /></td>
+                    <td>$@golfer.Salary</td>
+
+                }
+                <td>$@lineup.LineupSalary</td>
+                </tr>
+            }*@
+          
+         </table>
+ 
+    </div>
+
+</form>
+
+
+@**<table>
+    <tr>
+        <th>Lineup#</th>
+        <th>Golfer1 ID</th>
+        <th>Golfer2 ID</th>
+        <th>Golfer3 ID</th>
+        <th>Golfer4 ID</th>
+        <th>Golfer5 ID</th>
+        <th>Golfer6 ID</th>
+    </tr>
+    <tr>
+        @foreach (DKlineup dkL in ViewBag.Success)
+        {
+            <td>@dkL.LineupID</td>
+            @foreach (int playerID in dkL.Lineup)
+            {
+
+                <td>@playerID</td>
+
+            }
+        }
+    </tr>
+   
+</table>
+<br />
+<br />
+
+<table>
+    <tr>
+        <th>Lineup#</th>
+        <th>Golfer1</th>
+        <th>Golfer1 Salary</th>
+        <th>Golfer2</th>
+        <th>Golfer2 Salary</th>
+        <th>Golfer3</th>
+        <th>Golfer3 Salary</th>
+        <th>Golfer4</th>
+        <th>Golfer4 Salary</th>
+        <th>Golfer5</th>
+        <th>Golfer5 Salary</th>
+        <th>Golfer6</th>
+        <th>Golfer6 Salary</th>
+        <th>Lineup Salary</th>
+      
+    </tr>
+    @foreach (DKlineup dkl in ViewBag.Success)
+    {
+        <tr>
+            <td>@dkl.LineupID</td>
+
+           @foreach (Golfer golfer in dkl.LineupGolfers)
+            {
+
+                <td>@golfer.Name</td>
+                <td>@golfer.Salary</td>
+               
+            }
+            <td>@dkl.LineupSalary</td>
+        </tr>
+
+    }
+
+
+</table>**@

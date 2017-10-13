@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+<div style="text-align: left">
+<form method="post" asp-action="DKimport" asp-controller="ImportExportSalaries" enctype="multipart/form-data">
+    <h2>Upload DK Salaries</h2>
+    <div class="form-group">
+           
+            <input type="file" name="DKfiles" multiple />
+    </div>
+
+    <div class="form-group">
+        <span>
+            <input type="text" name="uploadName" />
+        </span>
+    </div>
+    
+         <input type="submit" value="Upload DK Salaries" />
+        
+</form> 
+
+<div>@ViewBag.Message</div>
+</div>
+
+
+
+
+
+

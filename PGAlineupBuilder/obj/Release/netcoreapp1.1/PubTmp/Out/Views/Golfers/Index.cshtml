@@ -1,0 +1,99 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h1>Search Our DraftKings Database</h1>
+
+<form method="post" asp-controller="Golfers" asp-action="SearchD">
+
+    <div class="form-group">
+        <span>
+            <label for="SearchMethod">Search By Golfer</label>
+            <input type="radio" name="SearchMethod" id="SearchMethod"value="ByGolfer" checked="checked" />
+        </span>
+        <br />
+        <span>
+            <label for="SearchMethod">Search By Tournament</label>
+            <input type="radio" name="SearchMethod" id="SearchMethod" value="ByTournament" />
+        </span>
+        <br />
+        <span>@ViewBag.BlankTerm</span>
+        <span>@ViewBag.None</span>
+
+        <!--<span class="form-control">
+            
+        </span>-->
+    </div>
+
+    <div class="form-group">
+        <span>
+            <input type="text" name="searchTerm" id="searchTerm" />
+        </span>
+    </div>
+
+    <input type="submit" value="Search our DraftKings Database" />
+</form>
+
+<h1>Search Our FanDuel Database</h1>
+
+<form method="post" asp-controller="Golfers" asp-action="SearchFD">
+
+    <div class="form-group">
+        <span>
+            <label for="SearchMethodFD">Search By Golfer</label>
+            <input type="radio" name="SearchMethodFD" id="SearchMethodFD" value="ByGolfer" checked="checked" />
+        </span>
+        <br />
+        <span>
+            <label for="SearchMethodFD">Search By Tournament</label>
+            <input type="radio" name="SearchMethodFD" id="SearchMethodFD" value="ByTournament" />
+        </span>
+        <br />
+        <span>@ViewBag.BlankTermFD</span>
+        <span>@ViewBag.NoneFD</span>
+
+        <!--<span class="form-control">
+
+        </span>-->
+    </div>
+
+    <div class="form-group">
+        <span>
+            <input type="text" name="searchTermFD" id="searchTermFD" />
+        </span>
+    </div>
+
+    <input type="submit" value="Search our FanDuel Database" />
+</form>
+
+<h1>Search Our FantasyDraft Database</h1>
+
+<form method="post" asp-controller="Golfers" asp-action="SearchFDraft">
+
+    <div class="form-group">
+        <span>
+            <label for="SearchMethodFDraft">Search By Golfer</label>
+            <input type="radio" name="SearchMethodFDraft" id="SearchMethodFDraft" value="ByGolfer" checked="checked" />
+        </span>
+        <br />
+        <span>
+            <label for="SearchMethodFDraft">Search By Tournament</label>
+            <input type="radio" name="SearchMethodFDraft" id="SearchMethodFD" value="ByTournament" />
+        </span>
+        <br />
+        <span>@ViewBag.BlankTermFDraft</span>
+        <span>@ViewBag.NoneFDraft</span>
+
+    </div>
+
+    <div class="form-group">
+        <span>
+            <input type="text" name="searchTermFDraft" id="searchTermFDraft" />
+        </span>
+    </div>
+
+    <input type="submit" value="Search our FantasyDraft Database" />
+</form>

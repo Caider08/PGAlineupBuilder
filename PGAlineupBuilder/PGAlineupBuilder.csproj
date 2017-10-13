@@ -13,6 +13,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Properties\PublishProfiles\CustomProfile.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\images\bitcoin-225080_960_720.png" />
     <Content Include="wwwroot\images\DK_GIG_bottomAlign_dark.png" />
     <Content Include="wwwroot\images\DraftKings-logo-font.png" />
@@ -48,6 +52,7 @@
     <Folder Include="DKuploads\" />
     <Folder Include="FDuploads\" />
     <Folder Include="FDraftUploads\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="wwwroot\lib\jquery\Themes\" />
   
   </ItemGroup>
