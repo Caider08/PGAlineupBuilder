@@ -8,3 +8,5 @@ C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Deb
 C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Debug\netcoreapp1.1\PGAlineupBuilder.dll
 C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Debug\netcoreapp1.1\PGAlineupBuilder.pdb
 C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Debug\netcoreapp1.1\UserSecretsAssemblyInfo.cs
+C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Debug\netcoreapp1.1\PGAlineupBuilder.csproj.CoreCompileInputs.cache
+C:\Users\caide\Code\PersonalC#Projects\PGAlineupBuilder\PGAlineupBuilder\obj\Debug\netcoreapp1.1\PGAlineupBuilder.AssemblyInfoInputs.cache

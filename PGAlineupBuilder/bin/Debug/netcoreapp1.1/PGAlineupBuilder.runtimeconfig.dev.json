@@ -1,6 +1,7 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
+      "C:\\Users\\caide\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\caide\\.nuget\\packages"
     ]
   }

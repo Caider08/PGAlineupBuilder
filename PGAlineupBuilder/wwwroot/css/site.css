@@ -2,6 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     color: #686764;
+   
 }
 
 a {
@@ -34,10 +35,11 @@ h3 a {
 }
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
-.body-content {
+.container body-content {
     padding-left: 15px;
     padding-right: 15px;
     color: #686764;
+    font-size: 55px;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -47,6 +49,9 @@ textarea {
     max-width: 280px;
 }
 
+main {
+  
+}
 /* Carousel */
 .carousel-caption p {
     font-size: 20px;
