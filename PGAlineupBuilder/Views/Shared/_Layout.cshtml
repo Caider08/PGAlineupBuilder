@@ -20,6 +20,9 @@
         <link rel="stylesheet" type="text/css" href="~/css/site.css" />
     </environment>
     <link rel="stylesheet" type="text/css" href="~/css/site.css" />
+    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+
+    @Html.Partial("_Favicons")
     <!--TinyMCE for editing blogPosts-->
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=zm4ybtvzgks5eji7cbb0hzdq7i05m3gxskwnay3b5qdqgy26"></script>
     <script>
@@ -39,8 +42,8 @@
     @RenderSection("OverrideStyles", false)
 </head>
 <body style="background-color: #f3f2f2; color: #686764">
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #e68a00; color: #000000; border: none">
-        <div class="container" style="color: #000000" >
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #e68a00; color: #fff; border: none">
+        <div class="container" style="color: #fff" >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -48,18 +51,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a style="color: #000000" asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">FantasyGolfMasters</a>
+                <a style="color: #fff" asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">FantasyGolfMasters</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" id="tester">
-                    <li><a style="color: #000000" asp-area="" asp-controller="GolfArticles" asp-action="Index">Golf Articles</a></li>
-                    <li><a style="color: #000000" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a style="color: #000000" asp-area="" asp-controller="Golfers" asp-action="Index">Search Golfers</a></li>
-                    <li><a style="color: #000000" asp-area="" asp-controller="BuildLineups" asp-action="Index">Build Lineups</a></li>
+                    <li><a style="color: #fff" asp-area="" asp-controller="GolfArticles" asp-action="Index">Golf Articles</a></li>
+                    <li><a style="color: #fff" asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a style="color: #fff" asp-area="" asp-controller="Golfers" asp-action="Index">Search Golfers</a></li>
+                    <li><a style="color: #fff" asp-area="" asp-controller="BuildLineups" asp-action="Index">Build Lineups</a></li>
                     @if (User.IsInRole("PGAguru"))
                     {
-                    <li><a style="color: #000000" asp-area="" asp-controller="ManageGolfArticles" asp-action="Index">Manage Articles</a></li>
-                    <li><a style="color: #000000" asp-area="" asp-controller="ImportExportSalaries" asp-action="Index">Upload Salaries</a></li>
+                    <li><a style="color: #fff" asp-area="" asp-controller="ManageGolfArticles" asp-action="Index">Manage Articles</a></li>
+                    <li><a style="color: #fff" asp-area="" asp-controller="ImportExportSalaries" asp-action="Index">Upload Salaries</a></li>
                     }
                    
                 </ul>
@@ -83,10 +86,12 @@
             <div class="row" style="text-align: center">
                 <div class="col-md-9">
                     <form style="margin-top: 10px" method="post" asp-controller="SEOmarketing" asp-action="signUP">
-                        <label>Email:<input type="email" id="email" name="email" /></label>
-                        <input type="submit" value="Keep me Updated!" />
+                        <label>Email:<input style="border-radius: 25px; margin-left: 5px; margin-right: 5px" type="email" id="email" name="email" /></label>
+                        <input class="btn btn-default siteButtons" type="submit" value="Keep me Updated!" />
                     </form>
-                    <a style="margin-top: 10px" href="mailto:cbdev08@gmail.com">For Golf questions cbdev08@gmail.com</a><br />
+                    <div style="margin-top:15px">
+                        <a style="margin-top: 10px" href="mailto:cbdev08@gmail.com">For Golf questions cbdev08@gmail.com</a><br />
+                    </div>    
                 </div>
 
                 <div class="col-md-3">

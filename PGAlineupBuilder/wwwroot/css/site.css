@@ -39,7 +39,7 @@ h3 a {
     padding-left: 15px;
     padding-right: 15px;
     color: #686764;
-    font-size: 55px;
+    font-size: 25px;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -98,11 +98,22 @@ li a {
     color: #000000;
 }
 li a:hover {
+    border: 2px solid #fff;
     color: #ffffff;
 }
-.nav navbar-nav ul li a{
+
+.navbar-header a:hover {
+    border: 2px solid #fff;
+}
+.nav navbar-nav ul li a         {
     color: #ff0000 !important;
 }
+
+/*ul .nav navbar-nav li a:hover   {
+        border-bottom: 2px solid #fff;
+    }*/
+
+
 /* buttons and links extension to use brackets: [ click me ] */
 .btn-bracketed::before {
     display: inline-block;
@@ -128,3 +139,34 @@ li a:hover {
         display: none;
     }
 }
+
+.sidebarText {
+
+    font-size: 1.25em;
+    color: #000000;
+    display: inline;
+    text-align: center;
+}
+
+.siteButtons {
+    color: #fff;
+    background-color: #e68a00;
+}
+
+a i:hover,
+a img:hover {
+    transform: scale(1.15);
+}
+
+.icon-big {
+    font-size: 900%;
+    display: block;
+    color: #e68a00;
+
+}
+
+.nav navbar-nav li a:hover {
+    border-bottom: 2px solid #fff;
+
+}
+
