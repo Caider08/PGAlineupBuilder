@@ -24,7 +24,7 @@ namespace PGAlineupBuilder.Models
 
             LoadWeek(tourneyName);
 
-            gameINFO = $"{rows[8][12]} {year}";
+            gameINFO = $"{rows[8][13]} {year}";
 
             return gameINFO;
         }
@@ -44,8 +44,8 @@ namespace PGAlineupBuilder.Models
                 {
                     Name = row[9],
                     Playerid = int.Parse(row[10]),
-                    Salary = int.Parse(row[11]),
-                    GameInfo = $"{row[12]} {year}",
+                    Salary = int.Parse(row[12]),
+                    GameInfo = $"{row[13]} {year}",
                     Website = "DK",
                     YearCreated = year,
              

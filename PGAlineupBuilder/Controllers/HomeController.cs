@@ -24,7 +24,7 @@ namespace PGAlineupBuilder.Controllers
 
         public IActionResult Index()
         {
-            IList<BlogPost> recentPosts = context.BP.Include(bp => bp.Tag).Include(bp => bp.Category).OrderByDescending(bp => bp.PublishedDate).Take(10).ToList<BlogPost>();
+            IList<BlogPost> recentPosts = context.BP.Include(bp => bp.Tag).Include(bp => bp.Category).OrderByDescending(bp => bp.PublishedDate).Take(6).ToList<BlogPost>();
            
             return View(recentPosts);
         }
